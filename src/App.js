@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import NavBar from "./Components/Layout/NavBar";
+import Footer from "./Components/Layout/Footer";
+import Home from "./Pages/Home";
+import Aboutus from "./Pages/Aboutus";
+import NotFound from "./Pages/NotFound";
+import Contact from "./Pages/Contact";
+import Shop from "./Pages/Shop";
+import Product from "./Pages/Product";
+import Login from "./Pages/Login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="absolute w-full min-w-screen min-h-20 h-[15vh]">
+        <NavBar />
+      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/aboutus" element={<Aboutus />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Shop" element={<Shop />} />
+        <Route path="/Product" element={<Product />} />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+      <div className="min-w-screen">
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
