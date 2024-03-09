@@ -34,7 +34,7 @@ const Card2 = ({
   );
 
   return (
-    <div className="w-full h-96 rounded-2xl bg-gray-300">
+    <div className="w-full h-fit rounded-2xl bg-gray-300">
       <div className="relative w-full h-1/2 px-6 py-4 flex justify-center">
         <img
           src={image}
@@ -89,7 +89,7 @@ const Card2 = ({
         <div className="text-center">
           <button
             onClick={() => nav(`/product?NO=${NO}`)}
-            className="bg-gray-300 border border-black px-3 py-1 rounded-md hover:bg-gray-500 active:scale-95"
+            className="bg-gray-300 border border-black px-3 py-1 rounded-md hover:bg-gray-500 active:scale-95 mb-2"
           >
             More Info
           </button>
