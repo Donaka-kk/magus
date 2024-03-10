@@ -34,8 +34,8 @@ const Card2 = ({
   );
 
   return (
-    <div className="w-full h-fit rounded-2xl bg-gray-300">
-      <div className="relative w-full h-1/2 px-6 py-4 flex justify-center">
+    <div className="w-full rounded-2xl bg-gray-300">
+      <div className="relative w-full h-5/12 px-4 py-2 flex justify-center">
         <img
           src={image}
           alt=""
@@ -48,9 +48,9 @@ const Card2 = ({
           </div>
         )}
       </div>
-      <div className="h-1/2 flex flex-col justify-around px-5">
-        <div className="flex flex-col">
-          <p className="text-lg font-semibold">{name}</p>
+      <div className="h-7/12 flex flex-col justify-between px-5 text-sm sm:text-lg md:text-xl">
+        <div className="h-full flex flex-col justify-around">
+          <p className=" font-semibold">{name}</p>
           <div className="flex gap-3">
             <p className={`font-semibold ${discount && " line-through"}`}>
               ${price}
@@ -61,7 +61,7 @@ const Card2 = ({
               </span>
             )}
           </div>
-          <p className="text-lg">
+          <p className="">
             {available ? (
               <FontAwesomeIcon
                 icon={faCircleCheck}
@@ -75,8 +75,8 @@ const Card2 = ({
             )}
             {available ? " Available" : " Unavailable"}
           </p>
-          <div className="flex items-center justify-between">
-            <span className="m-1"> Sales : {sales}</span>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm sm:text-base gap-1">
+            <span className=""> Sales : {sales}</span>
             <div>
               {fullStars}
               {floatPart > 0 ? (
@@ -89,7 +89,7 @@ const Card2 = ({
         <div className="text-center">
           <button
             onClick={() => nav(`/product?NO=${NO}`)}
-            className="bg-gray-300 border border-black px-3 py-1 rounded-md hover:bg-gray-500 active:scale-95 mb-2"
+            className="bg-gray-300 border border-black px-3 py-1 rounded-md hover:bg-gray-500 active:scale-95 mb-2 text-sm sm:text-base"
           >
             More Info
           </button>

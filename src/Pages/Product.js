@@ -66,7 +66,7 @@ const Product = () => {
         />
       </div>
 
-      <div className="relative flex flex-row p-5 gap-5">
+      <div className="relative flex flex-col md:flex-row p-5 gap-5">
         <div className="w-full flex flex-col justify-between">
           {loading ? (
             <div className="w-full flex flex-col justify-around items-center gap-5 p-10">
@@ -184,7 +184,7 @@ const Product = () => {
           )}
         </div>
         <div className="sticky top-10 h-fit flex flex-col gap-5">
-          <div className="flex flex-col justify-center items-center w-44 text-sm md:w-60 md:text-base xl:w-72 xl:text-lg gap-4 border-2 border-black rounded-md p-4">
+          <div className="flex flex-col justify-center items-center w-full text-sm md:w-60 md:text-base xl:w-72 xl:text-lg gap-4 border-2 border-black rounded-md p-4">
             <p className="w-full text-center">You haven't logged in yet !</p>
             <button
               onClick={() => nav("/login")}

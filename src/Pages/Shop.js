@@ -20,6 +20,12 @@ const Shop = () => {
   const [page, setPage] = useState(0);
   const [disableNextBtn, setDisableNextBtn] = useState(false);
   const [disablePrevBtn, setDisablePrevBtn] = useState(true);
+
+  const handleChangeCategory = (newCategory) => {
+    setCategory(newCategory);
+    setPage(0);
+  };
+
   const fetchData = async () => {
     if (category === "All") {
       const { data } = await supabase().from("Product").select("*");
@@ -76,7 +82,7 @@ const Shop = () => {
 
       <div className="relative flex flex-row p-5 gap-5">
         <div className="w-full flex flex-col justify-between">
-          <div className="flex flex-col md:flex-row font-semibold text-lg rounded-md bg-gray-400 py-2">
+          <div className="flex flex-col md:flex-row font-semibold text-sm md:text-base lg:text-large rounded-md bg-gray-400 py-2">
             <p className="w-full flex justify-center text-center md:w-1/2 md:text-start">
               Total Products In This Category :{items && items.length}
             </p>
@@ -102,7 +108,7 @@ const Shop = () => {
                 );
               })}
           </div>
-          <div className="w-full flex justify-center gap-2 mt-3">
+          <div className="w-full h-7 flex justify-center text-sm sm:text-base items-center gap-2 mt-3">
             <button
               onClick={() => prevPage()}
               className="px-1 border border-black rounded-sm active:scale-95"
@@ -110,7 +116,7 @@ const Shop = () => {
             >
               <FontAwesomeIcon icon={faArrowLeft} />
             </button>
-            <p>
+            <p className="text-sm sm:text-base lg:text-large">
               Page {page + 1} from {items ? Math.ceil(items.length / 6) : 1}
             </p>
             <button
@@ -123,7 +129,7 @@ const Shop = () => {
           </div>
         </div>
         <div className="sticky top-10 h-fit flex flex-col gap-5">
-          <Categories toChangeCategory={setCategory} />
+          <Categories toChangeCategory={handleChangeCategory} />
           <button
             onClick={() => setCategory("Special Offers")}
             className="px-2 py-2 bg-red-500 rounded-full"
