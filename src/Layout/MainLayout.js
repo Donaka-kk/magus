@@ -1,0 +1,24 @@
+import { Outlet } from "react-router-dom";
+import NavBar from "../Components/Layout/NavBar";
+import Footer from "../Components/Layout/Footer";
+import HeroSection from "../Components/HeroSection/HeroSection";
+
+function MainLayout({ heroData }) {
+   return (
+      <>
+         <div className="sticky md:top-0 top-0 w-full min-w-screen min-h-20 h-[15vh] z-50">
+            <NavBar />
+         </div>
+         <div className="w-full h-[400px] overflow-hidden">
+            <HeroSection data={heroData} />
+         </div>
+         <main>
+            <Outlet />
+         </main>
+         <div className="min-w-screen">
+            <Footer />
+         </div>
+      </>
+   );
+}
+export default MainLayout;
