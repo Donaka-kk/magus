@@ -21,10 +21,22 @@ const Login = () => {
          //       return response;
          //    });
          // console.log(data);
-         updateUser({ name: "qwerty", age: 26, role: "customer" });
+         updateUser({
+            firstname: "Eden",
+            lastname: "Ivy",
+            image: "https://static1.personalitydatabase.net/2/pdb-images-prod/e7c147c6/profile_images/1aea7358806d4755a5860873c066f38e.png",
+            age: 26,
+            role: "customer",
+         });
          sessionStorage.setItem(
             "user",
-            JSON.stringify({ name: "qwerty", age: 26, role: "customer" })
+            JSON.stringify({
+               firstname: "Eden",
+               lastname: "Ivy",
+               image: "https://static1.personalitydatabase.net/2/pdb-images-prod/e7c147c6/profile_images/1aea7358806d4755a5860873c066f38e.png",
+               age: 26,
+               role: "customer",
+            })
          );
          sessionStorage.setItem("cart", JSON.stringify({}));
          nav("/");
