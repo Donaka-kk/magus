@@ -22,20 +22,26 @@ const Login = () => {
          //    });
          // console.log(data);
          updateUser({
-            firstname: "Eden",
-            lastname: "Ivy",
-            image: "https://static1.personalitydatabase.net/2/pdb-images-prod/e7c147c6/profile_images/1aea7358806d4755a5860873c066f38e.png",
+            firstname: "jalal",
+            lastname: "eshghi",
+            image: "https://economicconfidential.com/wp-content/uploads/2023/10/Jalal-Arabi.jpg",
             age: 26,
             role: "customer",
+            phoneNumber: 989123456789,
+            address: "siktir abad sofla , kooche shahid siktirian",
+            email: "an@gmail.com",
          });
          sessionStorage.setItem(
             "user",
             JSON.stringify({
-               firstname: "Eden",
-               lastname: "Ivy",
-               image: "https://static1.personalitydatabase.net/2/pdb-images-prod/e7c147c6/profile_images/1aea7358806d4755a5860873c066f38e.png",
+               firstname: "jalal",
+               lastname: "eshghi",
+               image: "https://economicconfidential.com/wp-content/uploads/2023/10/Jalal-Arabi.jpg",
                age: 26,
                role: "customer",
+               phoneNumber: 989123456789,
+               address: "siktir abad sofla , kooche shahid siktirian",
+               email: "an@gmail.com",
             })
          );
          sessionStorage.setItem("cart", JSON.stringify({}));

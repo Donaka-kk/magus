@@ -1,11 +1,31 @@
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/User";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import ProfileComponent from "../Components/Profile/ProfileComponent.tsx";
+import axios from "axios";
+
+const dummyDataNotif = [
+   {
+      subject: "qwerty1",
+      text: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      read: false,
+   },
+   {
+      subject: "qwerty2",
+      text: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      read: true,
+   },
+   {
+      subject: "qwerty3",
+      text: "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      read: false,
+   },
+];
 
 const Profile = () => {
    const { user, updateUser } = UserContext();
    const nav = useNavigate();
+   const [notifications, setNotifications] = useState([]);
 
    const handleLogOut = useCallback(() => {
       sessionStorage.clear("user");
@@ -13,6 +33,19 @@ const Profile = () => {
       updateUser(null);
       nav("/");
    }, []);
+
+   const getNotificationData = async () => {
+      try {
+         await axios.get("https://reqres.in/api/login", {
+            headers: {
+               "x-api-key": "reqres-free-v1",
+            },
+         });
+         return dummyDataNotif;
+      } catch (error) {
+         console.log(error);
+      }
+   };
 
    if (!user) {
       return (
@@ -27,10 +60,13 @@ const Profile = () => {
          </div>
       );
    }
-
    return (
       <div className="p-2">
-         <ProfileComponent user={user} handleLogOut={handleLogOut} />
+         <ProfileComponent
+            user={user}
+            handleLogOut={handleLogOut}
+            getNotificationData={getNotificationData}
+         />
       </div>
    );
 };

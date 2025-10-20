@@ -1,12 +1,10 @@
 import SideBarButton from "./SideBarButton.tsx";
-import { useState } from "react";
 import {
    faArrowRightFromBracket,
    faBell,
    faBookmark,
    faUserPen,
    faGift,
-   faClockRotateLeft,
    faTruckFast,
    faFileCircleQuestion,
    faPersonHiking,
@@ -27,6 +25,12 @@ function ProfileSideBar({
 
    return (
       <div className="flex flex-col gap-3">
+         <div className="w-full border-b-2 border-gray-300 p-2">
+            <h1 className="text-xl text-center font-bold">3DAVINCI</h1>
+            <p className="font-semibold text-center text-gray-500">
+               Design your dreams
+            </p>
+         </div>
          <SideBarButton
             setActiveTab={() => setActiveTab("notifications")}
             text={"Notifications"}
@@ -44,12 +48,6 @@ function ProfileSideBar({
             text={"Edit profile"}
             icon={faUserPen}
             active={activeTab === "editProfile" ? true : false}
-         />
-         <SideBarButton
-            setActiveTab={() => setActiveTab("recentlyViewed")}
-            text={"recently viewed"}
-            icon={faClockRotateLeft}
-            active={activeTab === "recentlyViewed" ? true : false}
          />
          <SideBarButton
             setActiveTab={() => setActiveTab("trackingOrder")}
