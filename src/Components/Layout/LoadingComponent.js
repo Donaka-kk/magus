@@ -4,9 +4,9 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 function LoadingComponent({ failed }) {
    if (failed) {
       return (
-         <div>
-            <p>something went wrong ...</p>
-            <p>try again </p>
+         <div className="w-full h-full flex flex-col items-center justify-center gap-4">
+            <p className="font-bold text-3xl">something went wrong ...</p>
+            <p className="font-semibold text-xl">try again </p>
          </div>
       );
    }
