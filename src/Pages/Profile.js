@@ -9,9 +9,9 @@ import EditProfile from "../Components/Profile/Sections/EditProfile.tsx";
 import GiftCards from "../Components/Profile/Sections/GiftCards/GiftCards.tsx";
 import Milestones from "../Components/Profile/Sections/Milestones.tsx";
 import Notifications from "../Components/Profile/Sections/Notifications/Notifications.tsx";
-import Tickets from "../Components/Profile/Sections/Tickets.tsx";
-import TrackingOrders from "../Components/Profile/Sections/TrackingOrders.tsx";
-import WishList from "../Components/Profile/Sections/WishList.tsx";
+import Tickets from "../Components/Profile/Sections/Tickets/Tickets.tsx";
+import Orders from "../Components/Profile/Sections/Orders/Orders.tsx";
+import WishList from "../Components/Profile/Sections/WishList/WishList.tsx";
 
 import { ProfileDummyData } from "../Components/API/Dummy.js";
 import { NewProfileDummyData } from "../Components/API/Dummy.js";
@@ -77,9 +77,9 @@ const Profile = () => {
             handleReadingNotification={handleReadingNotification}
          />
       ),
-      tickets: <Tickets user={user} tickets={data?.tickets} />,
-      trackingOrder: <TrackingOrders user={user} orders={data?.orders} />,
-      wishlist: <WishList user={user} wishList={data?.wishList} />,
+      tickets: <Tickets tickets={data?.tickets} />,
+      trackingOrder: <Orders orders={data?.orders} />,
+      wishlist: <WishList wishList={data?.wishList} />,
    };
    const ActiveComponent = tabs[activeTab];
 
