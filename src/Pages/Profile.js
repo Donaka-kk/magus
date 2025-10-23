@@ -6,7 +6,7 @@ import ProfileSideBar from "../Components/Profile/ProfileSideBar.tsx";
 import HeadBar from "../Components/Profile/HeadBar.tsx";
 //sections
 import EditProfile from "../Components/Profile/Sections/EditProfile.tsx";
-import GiftCards from "../Components/Profile/Sections/GiftCards.tsx";
+import GiftCards from "../Components/Profile/Sections/GiftCards/GiftCards.tsx";
 import Milestones from "../Components/Profile/Sections/Milestones.tsx";
 import Notifications from "../Components/Profile/Sections/Notifications/Notifications.tsx";
 import Tickets from "../Components/Profile/Sections/Tickets.tsx";
@@ -69,7 +69,7 @@ const Profile = () => {
 
    const tabs = {
       editProfile: <EditProfile user={user} />,
-      giftCards: <GiftCards user={user} giftCards={data?.giftCards} />,
+      giftCards: <GiftCards giftCards={data?.giftCards} />,
       milestones: <Milestones user={user} mileStones={data?.mileStones} />,
       notifications: (
          <Notifications

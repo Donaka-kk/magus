@@ -1,38 +1,31 @@
-import LoadingComponent from "../../../Layout/LoadingComponent";
 import { useEffect, useState } from "react";
-import Notification from "./Notification.tsx";
+import { GiftCardType } from "../../../../Types/GiftCardType.tsx";
+import LoadingComponent from "../../../Layout/LoadingComponent";
+import GiftCard from "./GiftCard.tsx";
 import NotifyingPopUp from "../../../Layout/NotifyingPopUp.tsx";
-import { NotificationType } from "../../../../Types/NotificationType.tsx";
 
-interface NotificationsProps {
-   notifications?: NotificationType[];
-   handleReadingNotification: (id: number) => void;
+interface GiftCards {
+   giftCards: GiftCardType[];
 }
 
-function Notifications({
-   notifications,
-   handleReadingNotification,
-}: NotificationsProps) {
+function GiftCards({ giftCards }: GiftCards) {
    const [status, setStatus] = useState<"loading" | "failed" | "succeed">(
       "loading"
    );
    const [popUp, setPopUp] = useState<React.ReactNode>(null);
-   const createPopUp = (notification: NotificationType) => {
-      if (!notification.read) {
-         handleReadingNotification(notification.id);
-      }
-
+   const createPopUp = (giftCard: GiftCardType) => {
       setPopUp(
          <NotifyingPopUp
-            subject={notification.subject}
-            text={notification.message}
+            subject={giftCard.subject}
+            text={`for purchases between ${giftCard.minimalPurchase}$ and ${giftCard.maximalPurchase}$ you have ${giftCard.dicount}% discount from ${giftCard.beginningDate} until ${giftCard.expirationDate}  :)`}
+            code={giftCard.code}
             handleClosingPopUp={() => setPopUp(null)}
          />
       );
    };
 
    useEffect(() => {
-      if (!notifications) {
+      if (!giftCards) {
          setStatus("loading");
          const timer = setTimeout(() => {
             setStatus("failed");
@@ -41,8 +34,7 @@ function Notifications({
       } else {
          setStatus("succeed");
       }
-   }, [notifications]);
-
+   }, [giftCards]);
    if (status === "loading") {
       return <LoadingComponent failed={false} />;
    }
@@ -50,16 +42,15 @@ function Notifications({
    if (status === "failed") {
       return <LoadingComponent failed={true} />;
    }
-
    return (
       <div>
          {popUp}
          <div className="flex flex-col w-full h-full gap-2">
-            {notifications?.map((notification, index) => {
+            {giftCards?.map((giftCard, index) => {
                return (
-                  <Notification
+                  <GiftCard
                      key={index}
-                     notification={notification}
+                     giftCard={giftCard}
                      createPopUp={createPopUp}
                   />
                );
@@ -68,4 +59,4 @@ function Notifications({
       </div>
    );
 }
-export default Notifications;
+export default GiftCards;
