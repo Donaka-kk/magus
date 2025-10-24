@@ -1,5 +1,5 @@
 import { OrderType } from "../../Types/OrderType";
-interface NotifyingPopUp {
+interface NotifyingPopUpProps {
    subject: string;
    text?: string;
    code?: string;
@@ -15,7 +15,7 @@ function NotifyingPopUp({
    order,
    status,
    handleClosingPopUp,
-}: NotifyingPopUp) {
+}: NotifyingPopUpProps) {
    return (
       <div className="fixed w-screen h-screen top-0 left-0 flex justify-center items-center z-10">
          <div className="relative border border-black p-5 flex flex-col gap-5 bg-white z-30">

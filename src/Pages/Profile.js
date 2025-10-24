@@ -5,9 +5,9 @@ import axios from "axios";
 import ProfileSideBar from "../Components/Profile/ProfileSideBar.tsx";
 import HeadBar from "../Components/Profile/HeadBar.tsx";
 //sections
-import EditProfile from "../Components/Profile/Sections/EditProfile.tsx";
+import EditProfile from "../Components/Profile/Sections/EditProfile/EditProfile.tsx";
 import GiftCards from "../Components/Profile/Sections/GiftCards/GiftCards.tsx";
-import Milestones from "../Components/Profile/Sections/Milestones.tsx";
+import Milestones from "../Components/Profile/Sections/MileStones/Milestones.tsx";
 import Notifications from "../Components/Profile/Sections/Notifications/Notifications.tsx";
 import Tickets from "../Components/Profile/Sections/Tickets/Tickets.tsx";
 import Orders from "../Components/Profile/Sections/Orders/Orders.tsx";
@@ -21,6 +21,7 @@ const Profile = () => {
    const nav = useNavigate();
    const [activeTab, setActiveTab] = useState("notifications");
    const [data, setData] = useState();
+   const [message, setMessage] = useState("");
 
    const handleReadingNotification = async (id) => {
       try {
@@ -29,7 +30,6 @@ const Profile = () => {
             JSON.stringify({
                updatedAt: "string",
             }),
-
             {
                headers: {
                   "x-api-key": "reqres-free-v1",
@@ -37,6 +37,33 @@ const Profile = () => {
             }
          );
          setData({ ...data, notifications: NewProfileDummyData.notifications });
+      } catch (error) {
+         console.log(error);
+      }
+   };
+   const createNewTicket = async (event, subject, text) => {
+      console.log("submiting");
+      event.preventDefault();
+      try {
+         await axios
+            .patch(
+               "https://reqres.in/api/user/12",
+               JSON.stringify({
+                  updatedAt: "string",
+               }),
+               {
+                  headers: {
+                     "x-api-key": "reqres-free-v1",
+                  },
+               }
+            )
+            .then((response) => {
+               if (response?.status === 200) {
+                  setMessage("succeed");
+               } else {
+                  setMessage("failed");
+               }
+            });
       } catch (error) {
          console.log(error);
       }
@@ -77,7 +104,13 @@ const Profile = () => {
             handleReadingNotification={handleReadingNotification}
          />
       ),
-      tickets: <Tickets tickets={data?.tickets} />,
+      tickets: (
+         <Tickets
+            tickets={data?.tickets}
+            createNewTicket={createNewTicket}
+            message={message}
+         />
+      ),
       trackingOrder: <Orders orders={data?.orders} />,
       wishlist: <WishList wishList={data?.wishList} />,
    };

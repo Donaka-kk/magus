@@ -129,10 +129,22 @@ const NavBar = () => {
                   </li>
                </ul>
                <ul className="w-full flex flex-col items-center text-xl gap-4 py-4 border-t-2 border-white text-white">
-                  <li className="border-b-2 border-transparent hover:border-white hover:cursor-pointer active:scale-95">
+                  <li
+                     onClick={() => {
+                        closeSideNav();
+                        nav("/profile");
+                     }}
+                     className="border-b-2 border-transparent hover:border-white hover:cursor-pointer active:scale-95"
+                  >
                      Profile
                   </li>
-                  <li className="border-b-2 border-transparent hover:border-white hover:cursor-pointer active:scale-95">
+                  <li
+                     onClick={() => {
+                        closeSideNav();
+                        nav("/cart");
+                     }}
+                     className="border-b-2 border-transparent hover:border-white hover:cursor-pointer active:scale-95"
+                  >
                      Cart
                   </li>
                </ul>

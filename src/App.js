@@ -10,7 +10,7 @@ import Product from "./Pages/Product";
 import Login from "./Pages/Login";
 import Cart from "./Pages/Cart";
 import Profile from "./Pages/Profile";
-import Admin from "./Pages/Admin";
+import AdminLogin from "./Pages/AdminLogin";
 // for hero Section
 import image1 from "./utilities/hero1.jpg";
 import image2 from "./utilities/hero2.jpg";
@@ -20,7 +20,7 @@ import AdminLayout from "./Layout/AdminLayout";
 import MainLayout from "./Layout/MainLayout";
 import ProtectedRoute from "./Components/AdminPanel/ProtectedRoute";
 //admin section
-import Panel from "./Pages/Panel";
+import AdminPanel from "./Pages/AdminPanel";
 import Blogs from "./Pages/Blogs";
 import Items from "./Pages/Items";
 import ItemUpsert from "./Pages/ItemUpsert";
@@ -78,7 +78,7 @@ function App() {
                </Route>
 
                {/* Admin layout */}
-               <Route path="/admin" element={<Admin />} />
+               <Route path="/admin" element={<AdminLogin />} />
                <Route
                   path="/admin/*"
                   element={
@@ -87,7 +87,7 @@ function App() {
                      </ProtectedRoute>
                   }
                >
-                  <Route path="panel" element={<Panel />} />
+                  <Route path="panel" element={<AdminPanel />} />
                   <Route path="panel/blogs" element={<Blogs />} />
                   <Route path="panel/items" element={<Items />} />
                   <Route path="panel/itemUpsert" element={<ItemUpsert />} />
