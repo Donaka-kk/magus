@@ -11,16 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
-const Card2 = ({
-   name,
-   image,
-   score,
-   price,
-   available,
-   id,
-   sales,
-   discount,
-}) => {
+const Card2 = ({ name, image, score, price, id, sales, discount }) => {
    const nav = useNavigate();
    //
    const floatPart = score - Math.floor(score);
@@ -61,20 +52,6 @@ const Card2 = ({
                      </span>
                   )}
                </div>
-               <p className="">
-                  {available ? (
-                     <FontAwesomeIcon
-                        icon={faCircleCheck}
-                        style={{ color: "#2e8f2c" }}
-                     />
-                  ) : (
-                     <FontAwesomeIcon
-                        icon={faCircleXmark}
-                        style={{ color: "#991515" }}
-                     />
-                  )}
-                  {available ? " Available" : " Unavailable"}
-               </p>
                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm sm:text-base gap-1">
                   <span className=""> Sales : {sales}</span>
                   <div>

@@ -2,15 +2,20 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ContactForm from "../Components/ContactForm/ContactForm.tsx";
 import ContactSocialMedia from "../Components/ContactSocialMedia/ContactSocialMedia.tsx";
+import { ContactPostType } from "../Types/ContactPostType.tsx";
+import { MessageType } from "../Types/MessageType.tsx";
 
 const Contact = () => {
-   const [message, setMessage] = useState();
+   const [message, setMessage] = useState<MessageType>();
 
    useEffect(() => {
       window.scrollTo(0, 0);
    }, []);
 
-   const handleSubmit = async (event, contactPost) => {
+   const handleSubmit = async (
+      event: React.FormEvent<HTMLFormElement>,
+      contactPost: ContactPostType
+   ) => {
       event.preventDefault();
       try {
          await axios
@@ -39,8 +44,8 @@ const Contact = () => {
                   });
                }
             });
-      } catch (error) {
-         console.log(error.message);
+      } catch (error: unknown) {
+         if (axios.isAxiosError(error)) console.log(error.message);
       }
    };
 

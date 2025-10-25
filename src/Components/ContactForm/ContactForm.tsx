@@ -7,7 +7,7 @@ interface ContactFormType {
       event: React.FormEvent<HTMLFormElement>,
       contactPost: ContactPostType
    ) => void;
-   message: MessageType;
+   message?: MessageType;
 }
 function ContactForm({ handleSubmit, message }: ContactFormType) {
    const [author, setAuthor] = useState<string>("");

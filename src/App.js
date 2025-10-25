@@ -3,10 +3,10 @@ import { UserProvider } from "./Context/User";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import Home from "./Pages/Home";
+import Home from "./Pages/Home.tsx";
 import Aboutus from "./Pages/Aboutus.tsx";
 import NotFound from "./Pages/NotFound";
-import Contact from "./Pages/Contact";
+import Contact from "./Pages/Contact.tsx";
 import Shop from "./Pages/Shop";
 import Product from "./Pages/Product";
 import Login from "./Pages/Login";
