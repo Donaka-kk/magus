@@ -2,15 +2,16 @@ import { Outlet } from "react-router-dom";
 import NavBar from "../Components/Layout/NavBar";
 import Footer from "../Components/Layout/Footer";
 import HeroSection from "../Components/HeroSection/HeroSection";
+import { HeroSectionDummyData } from "../Components/API/HeroSectionDummyData.tsx";
 
-function MainLayout({ heroData }) {
+function MainLayout() {
    return (
       <>
          <div className="sticky md:top-0 top-0 w-full min-w-screen min-h-20 h-[15vh] z-50">
             <NavBar />
          </div>
          <div className="w-full h-[400px] overflow-hidden">
-            <HeroSection data={heroData} />
+            <HeroSection data={HeroSectionDummyData} />
          </div>
          <main>
             <Outlet />
