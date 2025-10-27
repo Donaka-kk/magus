@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ItemsList from "../Components/AdminPanel/ItemList.js";
 import axios from "axios";
-import PopUp from "../Components/Layout/PopUp.js";
+import ApprovalPopUp from "../Components/Layout/ApprovalPopUp.js";
 
 const dummyData = [
    {
@@ -74,7 +74,7 @@ function Items() {
             setSelectedItem={setSelectedItem}
          />
          {showPopUp && (
-            <PopUp
+            <ApprovalPopUp
                text="are you sure you want to delete this item ?"
                showPopUp={setShowPopUp}
                handleDeleteItem={handleDeleteItem}

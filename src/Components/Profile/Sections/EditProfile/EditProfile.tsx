@@ -1,62 +1,40 @@
-interface EditProfileProps {
-   user: {
-      firstname: string;
-      lastname: string;
-      image: string;
-      age: number;
-      role: string;
-      phoneNumber: number;
-      address: string;
-      email: string;
-   };
-}
+import axios from "axios";
+import EditProfileForm from "./EditProfileForm.tsx";
 
-function EditProfile({ user }: EditProfileProps) {
+import { UserContext } from "../../../../Context/User";
+import { UserType } from "../../../../Types/UserType";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { NewProfileDummyData } from "../../../API/ProfileDummyData.tsx";
+
+function EditProfile() {
+   const { user, updateUser } = UserContext();
+   const queryClient = useQueryClient();
+   const editProfile = useMutation({
+      mutationFn: async (userInformations: UserType) => {
+         const response = await axios.patch(
+            "https://reqres.in/api/users/1",
+            JSON.stringify({
+               data: userInformations,
+            }),
+            {
+               headers: {
+                  "x-api-key": "reqres-free-v1",
+               },
+            }
+         );
+         //change this to response before build
+         updateUser(NewProfileDummyData.user);
+         return NewProfileDummyData.user || response;
+      },
+      onSuccess: async () => {
+         //change these lines before build
+         // await queryClient.invalidateQueries({ queryKey: ["notification"] });
+         await queryClient.setQueryData(["user"], NewProfileDummyData.user);
+      },
+   });
    return (
       <div>
-         <form className="flex flex-col justify-center items-center gap-10">
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
-               <div className="flex flex-col">
-                  <label className="">First name</label>
-                  <input
-                     defaultValue={user.firstname}
-                     className="border border-gray-500 outline-none"
-                  />
-               </div>
-               <div className="flex flex-col">
-                  <label className="">Last name</label>
-                  <input
-                     defaultValue={user.lastname}
-                     className="border border-gray-500 outline-none"
-                  />
-               </div>
-               <div className="flex flex-col">
-                  <label className="">Phone number</label>
-                  <input
-                     defaultValue={user.phoneNumber}
-                     className="border border-gray-500 outline-none"
-                  />
-               </div>
-               <div className="flex flex-col">
-                  <label className="">Email</label>
-                  <input
-                     defaultValue={user.email}
-                     className="border border-gray-500 outline-none"
-                  />
-               </div>
-               <div className="flex flex-col">
-                  <label className="">Address</label>
-                  <input
-                     defaultValue={user.address}
-                     className="border border-gray-500 outline-none"
-                  />
-               </div>
-            </div>
-
-            <button type="submit" className="p-1 border border-black">
-               Submit
-            </button>
-         </form>
+         <EditProfileForm user={user} handleEdit={editProfile.mutate} />
       </div>
    );
 }

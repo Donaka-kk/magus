@@ -1,4 +1,4 @@
-function PopUp({ text, showPopUp, handleDeleteItem }) {
+function ApprovalPopUp({ text, showPopUp, handleDeleteItem }) {
    return (
       <div className="fixed w-screen h-screen top-0 left-0 flex justify-center items-center z-10">
          <div className="relative border border-black p-5 flex flex-col gap-5 bg-white z-30">
@@ -25,4 +25,4 @@ function PopUp({ text, showPopUp, handleDeleteItem }) {
       </div>
    );
 }
-export default PopUp;
+export default ApprovalPopUp;

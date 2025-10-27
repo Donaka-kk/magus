@@ -1,59 +1,41 @@
-import { useEffect, useState } from "react";
-import { GiftCardType } from "../../../../Types/GiftCardType.tsx";
 import LoadingComponent from "../../../Layout/LoadingComponent";
+import axios from "axios";
 import GiftCard from "./GiftCard.tsx";
-import NotifyingPopUp from "../../../Layout/NotifyingPopUp.tsx";
 
-interface GiftCards {
-   giftCards: GiftCardType[];
-}
+import { ProfileDummyData } from "../../../API/ProfileDummyData.tsx";
+import { useQuery } from "@tanstack/react-query";
 
-function GiftCards({ giftCards }: GiftCards) {
-   const [status, setStatus] = useState<"loading" | "failed" | "succeed">(
-      "loading"
-   );
-   const [popUp, setPopUp] = useState<React.ReactNode>(null);
-   const createPopUp = (giftCard: GiftCardType) => {
-      setPopUp(
-         <NotifyingPopUp
-            subject={giftCard.subject}
-            text={`for purchases between ${giftCard.minimalPurchase}$ and ${giftCard.maximalPurchase}$ you have ${giftCard.dicount}% discount from ${giftCard.beginningDate} until ${giftCard.expirationDate}  :)`}
-            code={giftCard.code}
-            handleClosingPopUp={() => setPopUp(null)}
-         />
-      );
-   };
+function GiftCards() {
+   const {
+      data: giftCards,
+      isPending,
+      isError,
+   } = useQuery({
+      queryKey: ["GiftCards"],
+      queryFn: async () => {
+         const response = await axios.get("https://reqres.in/api/users/1", {
+            headers: {
+               "x-api-key": "reqres-free-v1",
+            },
+         });
+         //change this to response before build
+         return ProfileDummyData.giftCards || response;
+      },
+   });
 
-   useEffect(() => {
-      if (!giftCards) {
-         setStatus("loading");
-         const timer = setTimeout(() => {
-            setStatus("failed");
-         }, 5000);
-         return () => clearTimeout(timer);
-      } else {
-         setStatus("succeed");
-      }
-   }, [giftCards]);
-   if (status === "loading") {
+   if (isPending) {
       return <LoadingComponent failed={false} />;
    }
 
-   if (status === "failed") {
+   if (isError) {
       return <LoadingComponent failed={true} />;
    }
+
    return (
       <div>
-         {popUp}
          <div className="flex flex-col w-full h-full gap-2">
-            {giftCards?.map((giftCard, index) => {
-               return (
-                  <GiftCard
-                     key={index}
-                     giftCard={giftCard}
-                     createPopUp={createPopUp}
-                  />
-               );
+            {giftCards.map((giftCard, index) => {
+               return <GiftCard key={index} giftCard={giftCard} />;
             })}
          </div>
       </div>

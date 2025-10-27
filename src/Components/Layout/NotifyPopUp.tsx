@@ -8,7 +8,7 @@ interface NotifyingPopUpProps {
    handleClosingPopUp: () => void;
 }
 
-function NotifyingPopUp({
+function NotifyPopUp({
    subject,
    text,
    code,
@@ -53,4 +53,4 @@ function NotifyingPopUp({
       </div>
    );
 }
-export default NotifyingPopUp;
+export default NotifyPopUp;

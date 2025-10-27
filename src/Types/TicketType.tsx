@@ -3,3 +3,8 @@ export interface TicketType {
    text: string;
    status: string;
 }
+
+export interface NewTicketType {
+   subject: string;
+   text: string;
+}

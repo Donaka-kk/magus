@@ -1,13 +1,10 @@
 import { useState } from "react";
-
+import { MessageType } from "../../Types/MessageType";
+import { NewTicketType } from "../../Types/TicketType";
 interface FormPopUpProps {
    handleClosingPopUp: () => void;
-   message: string;
-   createNewTicket: (
-      event: React.FormEvent<HTMLFormElement>,
-      subject: string,
-      text: string
-   ) => void;
+   message?: MessageType;
+   createNewTicket: (data: NewTicketType) => void;
 }
 function FormPopUp({
    createNewTicket,
@@ -20,8 +17,8 @@ function FormPopUp({
       <div className="fixed w-screen h-screen top-0 left-0 flex justify-center items-center z-10">
          <form
             onSubmit={(event) => {
-               //    handleClosingPopUp();
-               createNewTicket(event, subject, text);
+               event.preventDefault();
+               createNewTicket({ subject, text });
             }}
             className="relative border border-black p-5 flex flex-col gap-5 bg-white z-30"
          >
@@ -29,7 +26,11 @@ function FormPopUp({
             <input onChange={(event) => setSubject(event.target.value)} />
             <label>message</label>
             <input onChange={(event) => setText(event.target.value)} />
-            <p>{message && message}</p>
+            <p
+               className={`${message?.status === "succeed" ? "text-green-500" : "text-red-500"}`}
+            >
+               {message?.text}
+            </p>
             <div className="flex justify-center gap-5">
                <button
                   type="button"

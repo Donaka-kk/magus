@@ -1,18 +1,30 @@
+import { useState } from "react";
 import { TicketType } from "../../../../Types/TicketType";
+import NotifyPopUp from "../../../Layout/NotifyPopUp.tsx";
 interface TicketProps {
    ticket: TicketType;
-   createPopUp: (ticket: TicketType) => void;
 }
-function Ticket({ ticket, createPopUp }: TicketProps) {
+function Ticket({ ticket }: TicketProps) {
+   const [notifyPopUp, setNotifyPopUp] = useState<TicketType>();
    return (
-      <div
-         onClick={() => createPopUp(ticket)}
-         className="w-full border-2 border-black hover:cursor-pointer active:scale-95"
-      >
-         <h1>Subject: {ticket.subject}</h1>
-         <p>Message: {ticket.text}</p>
-         <p>Status: {ticket.status}</p>
-      </div>
+      <>
+         {notifyPopUp && (
+            <NotifyPopUp
+               subject={notifyPopUp.subject}
+               text={notifyPopUp.text}
+               status={notifyPopUp.status}
+               handleClosingPopUp={() => setNotifyPopUp(undefined)}
+            />
+         )}
+         <div
+            onClick={() => setNotifyPopUp(ticket)}
+            className="w-full border-2 border-black hover:cursor-pointer active:scale-95"
+         >
+            <h1>Subject: {ticket.subject}</h1>
+            <p>Message: {ticket.text}</p>
+            <p>Status: {ticket.status}</p>
+         </div>
+      </>
    );
 }
 export default Ticket;

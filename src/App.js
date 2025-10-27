@@ -11,7 +11,7 @@ import Shop from "./Pages/Shop";
 import Product from "./Pages/Product";
 import Login from "./Pages/Login";
 import Cart from "./Pages/Cart";
-import Profile from "./Pages/Profile";
+import Profile from "./Pages/Profile.tsx";
 import AdminLogin from "./Pages/AdminLogin";
 //layouts
 import AdminLayout from "./MainLayouts/AdminLayout";

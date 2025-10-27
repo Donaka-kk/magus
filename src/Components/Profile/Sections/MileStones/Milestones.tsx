@@ -1,4 +1,4 @@
-function Milestones({ user }: any) {
+function Milestones() {
    return <div>Milestones</div>;
 }
 export default Milestones;

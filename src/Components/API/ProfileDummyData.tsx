@@ -1,4 +1,6 @@
-export const ProfileDummyData = {
+import { ProfileDataType } from "../../Types/ProfileDataType";
+
+export const ProfileDummyData: ProfileDataType = {
    notifications: [
       {
          subject: "qwerty1",
@@ -48,9 +50,9 @@ export const ProfileDummyData = {
                product: {
                   id: 123,
                   name: "qwer",
-                  price: "123",
+                  price: 123,
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-                  discount: "10",
+                  discount: 10,
                   category: "George",
                   selectedColor: "#E8320E",
                   selectedSize: "sm",
@@ -61,9 +63,9 @@ export const ProfileDummyData = {
                product: {
                   id: 123,
                   name: "qwer",
-                  price: "123",
+                  price: 123,
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-                  discount: "10",
+                  discount: 10,
                   category: "George",
                   selectedColor: "#E8320E",
                   selectedSize: "sm",
@@ -74,9 +76,9 @@ export const ProfileDummyData = {
                product: {
                   id: 123,
                   name: "qwer",
-                  price: "123",
+                  price: 123,
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-                  discount: "10",
+                  discount: 10,
                   category: "George",
                   selectedColor: "#E8320E",
                   selectedSize: "sm",
@@ -87,9 +89,9 @@ export const ProfileDummyData = {
                product: {
                   id: 123,
                   name: "qwer",
-                  price: "123",
+                  price: 123,
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-                  discount: "10",
+                  discount: 10,
                   category: "George",
                   selectedColor: "#E8320E",
                   selectedSize: "sm",
@@ -110,9 +112,9 @@ export const ProfileDummyData = {
                product: {
                   id: 123,
                   name: "qwer",
-                  price: "123",
+                  price: 123,
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-                  discount: "10",
+                  discount: 10,
                   category: "George",
                   selectedColor: "#E8320E",
                   selectedSize: "sm",
@@ -123,9 +125,9 @@ export const ProfileDummyData = {
                product: {
                   id: 123,
                   name: "qwer",
-                  price: "123",
+                  price: 123,
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-                  discount: "10",
+                  discount: 10,
                   category: "George",
                   selectedColor: "#E8320E",
                   selectedSize: "sm",
@@ -136,9 +138,9 @@ export const ProfileDummyData = {
                product: {
                   id: 123,
                   name: "qwer",
-                  price: "123",
+                  price: 123,
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-                  discount: "10",
+                  discount: 10,
                   category: "George",
                   selectedColor: "#E8320E",
                   selectedSize: "sm",
@@ -159,9 +161,9 @@ export const ProfileDummyData = {
                product: {
                   id: 123,
                   name: "qwer",
-                  price: "123",
+                  price: 123,
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-                  discount: "10",
+                  discount: 10,
                   category: "George",
                   selectedColor: "#E8320E",
                   selectedSize: "sm",
@@ -172,9 +174,9 @@ export const ProfileDummyData = {
                product: {
                   id: 123,
                   name: "qwer",
-                  price: "123",
+                  price: 123,
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-                  discount: "10",
+                  discount: 10,
                   category: "George",
                   selectedColor: "#E8320E",
                   selectedSize: "sm",
@@ -195,9 +197,9 @@ export const ProfileDummyData = {
                product: {
                   id: 123,
                   name: "qwer",
-                  price: "123",
+                  price: 123,
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-                  discount: "10",
+                  discount: 10,
                   category: "George",
                   selectedColor: "#E8320E",
                   selectedSize: "sm",
@@ -209,14 +211,14 @@ export const ProfileDummyData = {
    wishList: [
       {
          name: "qwerty",
-         price: "123",
+         price: 123,
          available: true,
          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
          id: 123,
       },
       {
          name: "qwerty",
-         price: "321",
+         price: 321,
          available: false,
          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
          id: 213,
@@ -229,9 +231,9 @@ export const ProfileDummyData = {
          prize: {
             id: 123,
             name: "qwer",
-            price: "123",
+            price: 123,
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-            discount: "10",
+            discount: 10,
             category: "George",
             selectedColor: "#E8320E",
             selectedSize: "sm",
@@ -243,9 +245,9 @@ export const ProfileDummyData = {
          prize: {
             id: 1233,
             name: "qwer",
-            price: "123",
+            price: 123,
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-            discount: "10",
+            discount: 10,
             category: "George",
             selectedColor: "#E8320E",
             selectedSize: "sm",
@@ -257,9 +259,9 @@ export const ProfileDummyData = {
          prize: {
             id: 1234,
             name: "qwer",
-            price: "123",
+            price: 123,
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
-            discount: "10",
+            discount: 10,
             category: "George",
             selectedColor: "#E8320E",
             selectedSize: "sm",
@@ -288,6 +290,16 @@ export const ProfileDummyData = {
          expirationDate: "2003/01/02",
       },
    ],
+   user: {
+      firstname: "amir",
+      lastname: "gol",
+      image: "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
+      age: 20,
+      role: "qwerty",
+      phoneNumber: 989123456789,
+      address: "karajiii",
+      email: "amir@gmail.com",
+   },
 };
 
 export const NewProfileDummyData = {
@@ -580,4 +592,14 @@ export const NewProfileDummyData = {
          expirationDate: "2003/01/02",
       },
    ],
+   user: {
+      firstname: "jafar",
+      lastname: "chagh",
+      image: "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
+      age: 30,
+      role: "qwerty",
+      phoneNumber: 989123456789,
+      address: "karajiii",
+      email: "amir@gmail.com",
+   },
 };
