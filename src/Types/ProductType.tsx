@@ -7,4 +7,6 @@ export interface ProductType {
    category: string;
    selectedColor: string;
    selectedSize: string;
+   score: number;
+   sales: number;
 }

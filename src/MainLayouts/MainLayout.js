@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "../Components/Layout/NavBar";
-import Footer from "../Components/Layout/Footer";
+import NavBar from "../Components/Layout/NavBar.tsx";
+import Footer from "../Components/Layout/Footer.tsx";
 import HeroSection from "../Components/HeroSection/HeroSection";
 import { HeroSectionDummyData } from "../Components/API/HeroSectionDummyData.tsx";
 

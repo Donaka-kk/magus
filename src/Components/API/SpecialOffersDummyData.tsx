@@ -1,4 +1,5 @@
-export const DiscountDummyData = [
+import { ProductType } from "../../Types/ProductType";
+export const SpecialOffersDummyData: ProductType[] = [
    {
       id: 110,
       name: "Tulip",
@@ -6,6 +7,10 @@ export const DiscountDummyData = [
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/tulips-flowers.jpg.avif",
       discount: 5,
       category: "flower",
+      selectedColor: "#4287f5",
+      selectedSize: "sm",
+      score: 3,
+      sales: 100,
    },
    {
       id: 116,
@@ -14,6 +19,10 @@ export const DiscountDummyData = [
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/lotus-flowers.jpg.avif",
       discount: 20,
       category: "flower",
+      selectedColor: "#43afe6",
+      selectedSize: "md",
+      score: 3,
+      sales: 100,
    },
    {
       id: 113,
@@ -22,5 +31,9 @@ export const DiscountDummyData = [
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/lilies-flowers.jpg.avif",
       discount: 3,
       category: "flower",
+      selectedColor: "#f5426f",
+      selectedSize: "lg",
+      score: 3,
+      sales: 100,
    },
 ];

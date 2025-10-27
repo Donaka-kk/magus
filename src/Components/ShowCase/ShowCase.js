@@ -1,4 +1,4 @@
-import Card2 from "../Carousel/Card2";
+import Card2 from "../Carousel/Card2.tsx";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
