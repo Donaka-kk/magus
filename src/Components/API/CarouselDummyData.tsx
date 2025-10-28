@@ -10,6 +10,7 @@ export const CarouselDummyData = [
       selectedSize: "md",
       score: 3,
       sales: 200,
+      available: true,
    },
    {
       id: 111,
@@ -22,6 +23,7 @@ export const CarouselDummyData = [
       selectedSize: "md",
       score: 3,
       sales: 200,
+      available: true,
    },
    {
       id: 112,
@@ -34,6 +36,7 @@ export const CarouselDummyData = [
       selectedSize: "md",
       score: 3,
       sales: 200,
+      available: true,
    },
    {
       id: 113,
@@ -46,6 +49,7 @@ export const CarouselDummyData = [
       selectedSize: "md",
       score: 3,
       sales: 200,
+      available: true,
    },
    {
       id: 114,
@@ -58,6 +62,7 @@ export const CarouselDummyData = [
       selectedSize: "md",
       score: 3,
       sales: 200,
+      available: true,
    },
    {
       id: 115,
@@ -70,6 +75,7 @@ export const CarouselDummyData = [
       selectedSize: "md",
       score: 3,
       sales: 200,
+      available: true,
    },
    {
       id: 116,
@@ -82,6 +88,7 @@ export const CarouselDummyData = [
       selectedSize: "md",
       score: 3,
       sales: 200,
+      available: true,
    },
    {
       id: 117,
@@ -94,6 +101,7 @@ export const CarouselDummyData = [
       selectedSize: "md",
       score: 3,
       sales: 200,
+      available: true,
    },
    {
       id: 118,
@@ -106,6 +114,7 @@ export const CarouselDummyData = [
       selectedSize: "md",
       score: 3,
       sales: 200,
+      available: true,
    },
    {
       id: 119,
@@ -118,5 +127,6 @@ export const CarouselDummyData = [
       selectedSize: "md",
       score: 3,
       sales: 200,
+      available: true,
    },
 ];

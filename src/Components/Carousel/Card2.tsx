@@ -3,11 +3,7 @@ import {
    faStarHalfStroke,
    faTag,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-   faStar as faEmptyStar,
-   faCircleCheck,
-   faCircleXmark,
-} from "@fortawesome/free-regular-svg-icons";
+import { faStar as faEmptyStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { ProductType } from "../../Types/ProductType";
@@ -17,10 +13,9 @@ interface Card2Props {
 
 const Card2 = ({ product }: Card2Props) => {
    const nav = useNavigate();
-   //
-   const floatPart = product.score - Math.floor(product.score);
+
+   const floatPart = product.score - Math.floor(product?.score);
    const fullStars = Array.from({ length: product.score }, (_, index) => (
-      // style={{ color: "#FFD43B" }}
       <FontAwesomeIcon key={index} icon={faStar} />
    ));
    const emptyStars = Array.from(
@@ -29,14 +24,14 @@ const Card2 = ({ product }: Card2Props) => {
    );
 
    return (
-      <div className="flex flex-col items-center w-1/2 h-fit rounded-2xl bg-green-200">
+      <div className="flex flex-col items-center w-full h-fit rounded-2xl bg-green-200">
          <div className="relative flex justify-center w-full sm:w-[80%] h-5/12">
             <img
                src={product.image}
-               alt=""
+               alt="productImage"
                className="w-full h-full object-cover p-2"
             />
-            {product.discount && (
+            {product.discount !== 0 && (
                <div className="absolute top-2 right-2 flex justify-center items-center w-12 h-12 text-sm md:w-14 md:h-14 md:text-base rounded-full font-semibold bg-red-500">
                   <FontAwesomeIcon icon={faTag} />
                   {product.discount + "%"}

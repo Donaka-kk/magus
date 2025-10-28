@@ -9,4 +9,5 @@ export interface ProductType {
    selectedSize: string;
    score: number;
    sales: number;
+   available: boolean;
 }
