@@ -14,7 +14,7 @@ function ItemUpsert() {
       image: "",
       category: "",
       colors: [],
-      sizez: [],
+      sizes: [],
    });
 
    const [allCategories, setAllCategories] = useState([]);

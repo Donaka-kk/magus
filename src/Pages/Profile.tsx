@@ -2,7 +2,7 @@ import ProfileSideBar from "../Components/Profile/ProfileSideBar.tsx";
 import HeadBar from "../Components/Profile/HeadBar.tsx";
 
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../Context/User.js";
+import { useUser } from "../Context/User.tsx";
 import { useState } from "react";
 //sections
 import EditProfile from "../Components/Profile/Sections/EditProfile/EditProfile.tsx";
@@ -14,16 +14,9 @@ import Orders from "../Components/Profile/Sections/Orders/Orders.tsx";
 import WishList from "../Components/Profile/Sections/WishList/WishList.tsx";
 
 const Profile = () => {
-   const { user, updateUser } = UserContext();
+   const { user, logout } = useUser();
    const nav = useNavigate();
    const [activeTab, setActiveTab] = useState<string>("notifications");
-
-   const handleLogOut = () => {
-      sessionStorage.removeItem("user");
-      sessionStorage.removeItem("cart");
-      updateUser(null);
-      nav("/");
-   };
 
    const tabs: Record<string, React.ReactNode> = {
       editProfile: <EditProfile />,
@@ -38,13 +31,13 @@ const Profile = () => {
 
    if (!user) {
       return (
-         <div className="flex flex-col justify-center items-center text-3xl font-bold gap-4">
+         <div className="flex flex-col justify-center items-center font-bold gap-4 p-5 text-lg md:text-xl lg:text-3xl">
             <p>You have to login first !</p>
             <button
                onClick={() => nav("/login")}
                className="border-2 border-black rounded-md p-3 active:scale-95"
             >
-               login
+               Login
             </button>
          </div>
       );
@@ -55,7 +48,7 @@ const Profile = () => {
          <div className="flex border-2 border-black w-full">
             <div className="flex flex-col gap-2 w-16 md:w-60 border-r border-black p-2">
                <ProfileSideBar
-                  handleLogOut={handleLogOut}
+                  handleLogOut={logout}
                   activeTab={activeTab}
                   setActiveTab={setActiveTab}
                />

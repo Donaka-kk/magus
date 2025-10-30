@@ -7,33 +7,22 @@ function PasswordLoginForm({ onSumbit, switchMode }) {
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
 
-   const handleLogin = async (event) => {
-      event.preventDefault();
-      try {
-         onSumbit({
-            username: username,
-            password: password,
-            method: "password",
-            codeRequired: false,
-         }).then((response) => {
-            if (response?.status > 400) {
-               setMessage(
-                  "Username or password is incorrect : " + response.status
-               );
-            } else if (response?.status < 400) {
-            } else {
-               setMessage("Something went wrong !");
-            }
-         });
-      } catch (error) {
-         console.log(error);
-      }
+   const handleLogin = async () => {
+      onSumbit({
+         username: username,
+         password: password,
+         method: "password",
+         codeRequired: false,
+      });
    };
 
    return (
       <div className="w-[600px] h-fit flex flex-col justify-between items-center border-2 border-black rounded-md p-5 gap-5">
          <form
-            onSubmit={(event) => handleLogin(event)}
+            onSubmit={(event) => {
+               event.preventDefault();
+               handleLogin();
+            }}
             className="flex flex-col w-full h-fit gap-7"
          >
             <p className="text-2xl font-bold text-center">

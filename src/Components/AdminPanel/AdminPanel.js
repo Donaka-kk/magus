@@ -5,11 +5,11 @@ import {
    faRightFromBracket,
    faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "../../Context/User";
+import { useUser } from "../../Context/User.tsx";
 import { useNavigate } from "react-router-dom";
 
 function AdminPanel() {
-   const { updateUser } = UserContext();
+   const { updateUser } = useUser();
    const nav = useNavigate();
 
    const handleLogOut = () => {

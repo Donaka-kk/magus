@@ -1,13 +1,13 @@
 import axios from "axios";
 import EditProfileForm from "./EditProfileForm.tsx";
 
-import { UserContext } from "../../../../Context/User";
+import { useUser } from "../../../../Context/User.tsx";
 import { UserType } from "../../../../Types/UserType";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { NewProfileDummyData } from "../../../API/ProfileDummyData.tsx";
 
 function EditProfile() {
-   const { user, updateUser } = UserContext();
+   const { user, updateUser } = useUser();
    const queryClient = useQueryClient();
    const editProfile = useMutation({
       mutationFn: async (userInformations: UserType) => {

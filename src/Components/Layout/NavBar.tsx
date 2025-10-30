@@ -9,15 +9,15 @@ const NavBar = () => {
    const nav = useNavigate();
 
    return (
-      <div className="w-full h-full flex flex-row items-center justify-between px-10 md:justify-around md:px-3 border-b-2 border-black bg-backGround">
-         <div className="flex text-2xl">
+      <div className="w-full h-24 flex flex-row items-center justify-between px-10 md:justify-around md:px-3 border-b-2 border-black bg-backGround">
+         <div className="flex">
             <button
                onClick={() => {
                   nav("/");
-                  window.scrollTo(0, 0);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                }}
             >
-               <img src={Logo} alt="logo" className="w-20" />
+               <img src={Logo} alt="logo" className="w-14 md:w-20" />
             </button>
          </div>
 

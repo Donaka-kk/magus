@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
-import { UserContext } from "../Context/User";
+import { useUser } from "../Context/User.tsx";
 const ProtectedRoute = ({ children, allowedRole }) => {
-   const { user } = UserContext();
+   const { user } = useUser();
    if (!user) {
       return <Navigate to="/admin" replace />;
    }

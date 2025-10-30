@@ -14,7 +14,7 @@ function MobileNavBar() {
             className={`z-20 ${
                sideBar
                   ? `fixed top-3 right-5 text-white text-2xl sm:text-3xl`
-                  : `relative text-5xl`
+                  : `relative text-4xl`
             }`}
          >
             {sideBar ? (
@@ -24,7 +24,7 @@ function MobileNavBar() {
             )}
          </button>
          <div
-            className={`fixed w-4/12 sm:w-56 h-screen top-0 right-0 bg-transparent08 pt-2 border-l-2 z-10 border-black ${
+            className={`fixed w-5/12 sm:w-56 h-screen top-0 right-0 bg-transparent08 pt-2 border-l-2 z-10 border-black ${
                sideBar ? `translate-x-0` : `translate-x-full`
             } ease-in-out duration-[500ms]`}
          >
@@ -64,6 +64,15 @@ function MobileNavBar() {
                   className="border-b-2 border-transparent hover:border-white hover:cursor-pointer active:scale-95"
                >
                   Contact
+               </li>
+               <li
+                  onClick={() => {
+                     setSideBar(false);
+                     nav("/login");
+                  }}
+                  className="border-b-2 border-transparent hover:border-white hover:cursor-pointer active:scale-95"
+               >
+                  Login
                </li>
                <li
                   onClick={() => {

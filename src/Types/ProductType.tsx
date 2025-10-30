@@ -11,3 +11,14 @@ export interface ProductType {
    sales: number;
    available: boolean;
 }
+
+export interface NewProductType extends ProductType {
+   name: string;
+   price: number;
+   image: string;
+   discount: number;
+   category: string;
+   Colors: string[];
+   Sizes: string[];
+   available: boolean;
+}

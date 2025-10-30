@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { UserProvider } from "./Context/User";
+import { UserProvider } from "./Context/User.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { persistQueryClient } from "@tanstack/react-query-persist-client";
+import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 
 import Home from "./Pages/Home.tsx";
 import Aboutus from "./Pages/Aboutus.tsx";
@@ -9,7 +11,7 @@ import NotFound from "./Pages/NotFound";
 import Contact from "./Pages/Contact.tsx";
 import Shop from "./Pages/Shop.tsx";
 import Product from "./Pages/Product";
-import Login from "./Pages/Login";
+import Login from "./Pages/Login.tsx";
 import Cart from "./Pages/Cart";
 import Profile from "./Pages/Profile.tsx";
 import AdminLogin from "./Pages/AdminLogin";
@@ -25,12 +27,16 @@ import ItemUpsert from "./Pages/ItemUpsert";
 import BlogUpsert from "./Pages/BlogUpsert";
 
 const queryClient = new QueryClient();
+const persister = createAsyncStoragePersister({
+   storage: window.sessionStorage,
+});
+persistQueryClient({ queryClient, persister });
 
 function App() {
    return (
       <Router>
-         <UserProvider>
-            <QueryClientProvider client={queryClient}>
+         <QueryClientProvider client={queryClient}>
+            <UserProvider>
                <Routes>
                   {/* Main site layout */}
                   <Route element={<MainLayout />}>
@@ -64,8 +70,8 @@ function App() {
                   </Route>
                </Routes>
                <ReactQueryDevtools />
-            </QueryClientProvider>
-         </UserProvider>
+            </UserProvider>
+         </QueryClientProvider>
       </Router>
    );
 }

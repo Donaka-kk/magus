@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "../../Context/User";
+import { useUser } from "../../Context/User.tsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function MiniProfile() {
    const [activeProf, setActiveProf] = useState(false);
    const nav = useNavigate();
-   const { user } = UserContext();
+   const { user } = useUser();
    return (
       <div className="hidden md:flex text-2xl gap-4">
          <button onClick={() => nav("/cart")}>
