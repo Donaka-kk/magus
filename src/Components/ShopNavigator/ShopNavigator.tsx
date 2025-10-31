@@ -19,7 +19,6 @@ function ShopNavigator({
          <button
             onClick={() => prevPage()}
             className={`px-1 border border-black rounded-sm ${currentPage > 1 ? " active:scale-95" : " opacity-50"}`}
-            disabled={!(currentPage > 1)}
          >
             <FontAwesomeIcon icon={faArrowLeft} />
          </button>
@@ -29,7 +28,6 @@ function ShopNavigator({
          <button
             onClick={() => nextPage()}
             className={`px-1 border border-black rounded-sm ${currentPage < allPages ? " active:scale-95" : " opacity-50"}`}
-            disabled={!(currentPage < allPages)}
          >
             <FontAwesomeIcon icon={faArrowRight} />
          </button>

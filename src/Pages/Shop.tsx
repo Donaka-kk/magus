@@ -58,10 +58,8 @@ const Shop = () => {
          },
          initialPageParam: 1,
          getNextPageParam: (lastPage) => {
-            if (lastPage?.pageNumber === lastPage?.totalPages) return undefined;
-            else {
-               return lastPage.pageNumber + 1;
-            }
+            if (lastPage.pageNumber >= lastPage.totalPages) return undefined;
+            return lastPage.pageNumber + 1;
          },
       });
    const page: ShopPageType = data?.pages[index - 1]!;
@@ -91,15 +89,17 @@ const Shop = () => {
    };
 
    const nextPage = async () => {
-      window.scrollTo({ top: 400, behavior: "smooth" });
-      if (data && index === data.pages.length && hasNextPage) {
+      console.log(data);
+      console.log(index);
+      if (index < page.totalPages) {
+         window.scrollTo({ top: 400, behavior: "smooth" });
          await fetchNextPage();
+         setIndex((prev) => prev + 1);
       }
-      setIndex((prev) => prev + 1);
    };
    const prevPage = () => {
-      window.scrollTo({ top: 400, behavior: "smooth" });
-      if (index > 0) {
+      if (index > 1) {
+         window.scrollTo({ top: 400, behavior: "smooth" });
          setIndex((prev) => prev - 1);
       }
    };

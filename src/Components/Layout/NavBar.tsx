@@ -9,7 +9,7 @@ const NavBar = () => {
    const nav = useNavigate();
 
    return (
-      <div className="w-full h-24 flex flex-row items-center justify-between px-10 md:justify-around md:px-3 border-b-2 border-black bg-backGround">
+      <div className="w-full h-full flex flex-row items-center justify-between px-10 md:justify-around md:px-3 border-b-2 border-black bg-backGround">
          <div className="flex">
             <button
                onClick={() => {

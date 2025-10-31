@@ -7,7 +7,7 @@ import { HeroSectionDummyData } from "../Components/API/HeroSectionDummyData.tsx
 function MainLayout() {
    return (
       <>
-         <div className="sticky md:top-0 top-0 w-full min-w-screen min-h-20 h-[15vh] z-50">
+         <div className="sticky md:top-0 top-0 w-full min-w-screen h-24 z-50">
             <NavBar />
          </div>
          <div className="w-full h-[400px] overflow-hidden">
