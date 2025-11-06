@@ -46,7 +46,7 @@ function HeroSection({ data }) {
                className={`absolute w-full h-full ${!heroState.switcher ? "animate-hero_fadeInLeft" : "animate-hero_fadeOutLeft"}`}
                key={heroState.leftCase.id}
             >
-               <div className="w-full h-[400px]">
+               <div className="w-full h-full">
                   <img
                      src={heroState.leftCase.image}
                      alt="heroImage"
@@ -54,7 +54,7 @@ function HeroSection({ data }) {
                   />
                </div>
                <div className="absolute top-0 w-full h-full">
-                  <div className="flex flex-col absolute top-1/3 right-[20%] gap-3">
+                  <div className="flex flex-col absolute top-1/3 right-[20%] gap-3 ">
                      <h2>{heroState.leftCase.header}</h2>
                      <p className="text-secondary font-bold text-2xl">
                         {heroState.leftCase.text}
@@ -77,7 +77,7 @@ function HeroSection({ data }) {
                className={`absolute w-full h-full ${heroState.switcher ? "animate-hero_fadeInRight" : "animate-hero_fadeOutRight"}`}
                key={heroState.rightCase.id}
             >
-               <div className="w-full h-[400px]">
+               <div className="w-full h-full">
                   <img
                      src={heroState.rightCase.image}
                      alt="heroImage"

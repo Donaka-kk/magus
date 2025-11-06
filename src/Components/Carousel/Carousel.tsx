@@ -24,9 +24,11 @@ const Carousel = ({ data }: CarouselProps) => {
 
    return (
       <div className="flex flex-col gap-4">
-         <h1 className="text-center font-bold text-3xl">
-            Most Popular Products
-         </h1>
+         <div className="flex justify-center">
+            <h1 className="text-center font-bold text-3xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+               Most Popular Products
+            </h1>
+         </div>
 
          <div className="flex items-center gap-2 px-2">
             <button
@@ -68,21 +70,20 @@ const Carousel = ({ data }: CarouselProps) => {
                <button
                   key={index}
                   className={`w-3 h-3 rounded-full ${
-                     index === currentIndex ? "bg-secondary" : "bg-gray-400"
+                     index === currentIndex ? "bg-primary" : "bg-secondary"
                   }`}
                   onClick={() => setCurrentIndex(index)}
                />
             ))}
          </div>
-
-         <div className="text-center">
-            <button
-               onClick={() => nav("/shop")}
-               className="border border-black rounded-sm px-3 py-1"
-            >
-               Show All Products
-            </button>
-         </div>
+         <button
+            onClick={() => {
+               nav("/shop");
+            }}
+            className="w-full bg-secondary text-primary text-center text-base font-semibold outline-none p-2 md:p-4 md:text-xl rounded-lg transition-colors duration-200 ease-in-out active:bg-primary active:text-secondary"
+         >
+            Visit the shop
+         </button>
       </div>
    );
 };

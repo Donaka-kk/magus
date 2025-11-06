@@ -31,7 +31,7 @@ const Profile = () => {
 
    if (!user) {
       return (
-         <div className="flex flex-col justify-center items-center font-bold gap-4 p-5 text-lg md:text-xl lg:text-3xl">
+         <div className="flex flex-col justify-center items-center font-bold gap-4 p-5 text-lg md:text-xl lg:text-3xl bg-background">
             <p>You have to login first !</p>
             <button
                onClick={() => nav("/login")}
@@ -44,19 +44,17 @@ const Profile = () => {
    }
 
    return (
-      <div className="p-2">
-         <div className="flex border-2 border-black w-full">
-            <div className="flex flex-col gap-2 w-16 md:w-60 border-r border-black p-2">
-               <ProfileSideBar
-                  handleLogOut={logout}
-                  activeTab={activeTab}
-                  setActiveTab={setActiveTab}
-               />
-            </div>
-            <div className="flex flex-col w-full p-2 gap-2">
-               <HeadBar user={user} />
-               {ActiveComponent}
-            </div>
+      <div className="relative flex flex-row w-full bg-background">
+         <div className="sticky top-28 flex flex-col self-start min-w-24 max-w-24 w-24 md:w-60 md:min-w-60 md:max-w-60 py-2 px-2">
+            <ProfileSideBar
+               handleLogOut={logout}
+               activeTab={activeTab}
+               setActiveTab={setActiveTab}
+            />
+         </div>
+         <div className="flex flex-col w-full p-2 gap-2">
+            <HeadBar user={user} />
+            {ActiveComponent}
          </div>
       </div>
    );

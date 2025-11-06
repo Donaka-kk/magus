@@ -18,11 +18,17 @@ function Ticket({ ticket }: TicketProps) {
          )}
          <div
             onClick={() => setNotifyPopUp(ticket)}
-            className="w-full border-2 border-black hover:cursor-pointer active:scale-95"
+            className="w-full h-28 md:h-14 flex flex-col md:flex-row justify-around items-center border rounded-lg shadow-xl active:scale-95 active:shadow-inner gap-2 p-1"
          >
-            <h1>Subject: {ticket.subject}</h1>
-            <p>Message: {ticket.text}</p>
-            <p>Status: {ticket.status}</p>
+            <h1 className="w-full md:w-2/12 text-base lg:text-lg font-semibold text-center">
+               {ticket.subject}
+            </h1>
+            <p className="w-full md:w-8/12 text-sm overflow-clip line-clamp-2 md:line-clamp-1">
+               {ticket.text}
+            </p>
+            <p className="w-full md:w-2/12 text-base lg:text-lg font-semibold text-center">
+               Status: {ticket.status}
+            </p>
          </div>
       </>
    );

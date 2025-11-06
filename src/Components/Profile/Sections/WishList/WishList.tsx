@@ -32,7 +32,7 @@ function WishList() {
    }
 
    return (
-      <div className="flex flex-col w-full h-full gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center items-start w-full h-full gap-2">
          {wishList.map((wishListItem, index) => {
             return <WishListItem key={index} wishListItem={wishListItem} />;
          })}

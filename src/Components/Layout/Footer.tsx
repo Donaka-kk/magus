@@ -4,7 +4,7 @@ import Logo from "../../utilities/logo-no-background.webp";
 const Footer = () => {
    const nav = useNavigate();
    return (
-      <div className="w-full h-full flex flex-col md:flex-row gap-5 justify-around items-center py-5 border-t-2 border-black bg-backGround">
+      <div className="w-full h-full flex flex-col md:flex-row gap-5 justify-around items-center py-5 border-t-2 border-black bg-background">
          <div className="flex items-center gap-5 font-semibold text-sm md:text-base">
             <Link
                to="/"

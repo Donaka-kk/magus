@@ -79,7 +79,7 @@ function Tickets() {
    }
 
    return (
-      <div className="flex flex-col justify-center items-center w-full h-full gap-2">
+      <div className="relative w-full h-full flex flex-col items-center justify-around gap-2">
          {showFormPopUp && (
             <FormPopUp
                createNewTicket={createNewTicket.mutate}
@@ -87,9 +87,11 @@ function Tickets() {
                message={message}
             />
          )}
-         {tickets?.map((ticket, index) => {
-            return <Ticket key={index} ticket={ticket} />;
-         })}
+         <div className="flex flex-col sm:grid-cols-2 md:grid-cols-3 w-full h-full gap-5">
+            {tickets?.map((ticket, index) => {
+               return <Ticket key={index} ticket={ticket} />;
+            })}
+         </div>
          <button
             onClick={() => setShowFormPopUp(true)}
             className="flex flex-col border-2 border-black justify-center items-center w-fit p-2"

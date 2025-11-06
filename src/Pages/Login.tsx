@@ -42,16 +42,15 @@ const Login = () => {
       },
       onSuccess: (data) => {
          const user = {
-            firstname: "jalal",
-            lastname: "eshghi",
-            image: "https://economicconfidential.com/wp-content/uploads/2023/10/Jalal-Arabi.jpg",
+            firstname: "Qwertyuiop",
+            lastname: "asodiwerweryn",
+            image: "https://cdn.web.imagine.art/imagine-frontend/assets/images/ai-image-generator-hero-image.png",
             age: 26,
             role: "customer",
             phoneNumber: 989123456789,
             address: "siktir abad sofla , kooche shahid siktirian",
             email: "an@gmail.com",
          };
-         console.log(data.data);
          queryClient.setQueryData(["user"], user);
          updateUser(user);
          window.scrollTo({ top: 0, behavior: "smooth" });

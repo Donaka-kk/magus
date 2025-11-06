@@ -26,19 +26,19 @@ function Notification({ notification, readingNotif }: NotificationProps) {
                if (!notification.read) readingNotif(notification.id);
                setNotifyPopUp(notification);
             }}
-            className={`relative flex flex-row justify-around items-center border-2 active:scale-95 border-black ${notification.read === false ? " text-black" : " text-gray-400"}`}
+            className={`relative h-20 md:h-14 flex flex-col md:flex-row justify-around items-center border rounded-lg shadow-xl active:scale-95 active:shadow-inner ${notification.read === false ? " text-black" : " text-gray-400"}`}
          >
-            <span className="absolute top-0 left-2 text-red-600 text-xl">
+            <span className="absolute top-0 left-1 text-red-600 text-sm">
                {notification.read === false && (
                   <FontAwesomeIcon icon={faCertificate} />
                )}
             </span>
-            <h1 className="text-xl font-semibold">{notification.subject}</h1>
-            <div className="text-sm p-2">
+            <h1 className="text-sm sm:text-base md:text-xl font-semibold">
+               {notification.subject}
+            </h1>
+            <div className="text-xs p-2">
                <p>Sent: {notification.sentDate}</p>
-               {notification.read === true && (
-                  <p>Read: {notification.readDate}</p>
-               )}
+               <p>Read: {notification.readDate || "Not Read"}</p>
             </div>
          </button>
       </>

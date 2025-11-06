@@ -68,7 +68,7 @@ function Notifications() {
 
    return (
       <div>
-         <div className="flex flex-col w-full h-full gap-2">
+         <div className="flex flex-col w-full h-full gap-4">
             {notifications.map((notification, index) => {
                return (
                   <Notification

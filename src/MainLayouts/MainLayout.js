@@ -10,7 +10,7 @@ function MainLayout() {
          <div className="sticky md:top-0 top-0 w-full min-w-screen h-24 z-50">
             <NavBar />
          </div>
-         <div className="w-full h-[400px] overflow-hidden">
+         <div className="w-full h-[300px] overflow-hidden">
             <HeroSection data={HeroSectionDummyData} />
          </div>
          <main>

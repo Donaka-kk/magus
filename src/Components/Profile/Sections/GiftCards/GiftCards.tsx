@@ -33,7 +33,7 @@ function GiftCards() {
 
    return (
       <div>
-         <div className="flex flex-col w-full h-full gap-2">
+         <div className="flex flex-col w-full h-full gap-4">
             {giftCards.map((giftCard, index) => {
                return <GiftCard key={index} giftCard={giftCard} />;
             })}

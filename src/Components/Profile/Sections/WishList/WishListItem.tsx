@@ -7,26 +7,28 @@ interface WishListItemProps {
 function WishListItem({ wishListItem }: WishListItemProps) {
    const nav = useNavigate();
    return (
-      <div className="flex flex-row justify-between items-center border-2 border-black">
-         <div className="flex flex-row justify-start items-center w-1/4 gap-2">
-            <img src={wishListItem.image} alt="product" className="w-20 h-20" />
-            <p>{wishListItem.name}</p>
+      <div className="flex flex-col justify-between items-center border-2 border-black rounded-lg p-2 gap-1">
+         <img
+            src={wishListItem.image}
+            alt="product"
+            className="w-20 h-20 border border-black"
+         />
+         <p>{wishListItem.name}</p>
+         <p>{wishListItem.price}$</p>
+         <div className="flex flex-row gap-2">
+            <button
+               onClick={() => {}}
+               className="border rounded-lg shadow-lg px-2 py-1 active:scale-95 text-sm active:shadow-inner"
+            >
+               Remove
+            </button>
+            <button
+               onClick={() => nav(`/product?id=${wishListItem.id}`)}
+               className="border rounded-lg shadow-lg px-2 py-1 active:scale-95 text-sm active:shadow-inner"
+            >
+               More info
+            </button>
          </div>
-         <p className="w-1/4 text-center">{wishListItem.price}$</p>
-         <p className="w-1/4 text-center">
-            Availability :
-            {wishListItem.available ? (
-               <span className="text-green-500">available</span>
-            ) : (
-               <span className="text-red-500"> Not available</span>
-            )}
-         </p>
-         <button
-            onClick={() => nav(`/product?id=${wishListItem.id}`)}
-            className="border border-black mr-2 p-1 active:scale-95"
-         >
-            More info
-         </button>
       </div>
    );
 }

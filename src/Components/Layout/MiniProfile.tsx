@@ -15,7 +15,7 @@ function MiniProfile() {
          </button>
          {user ? (
             <div
-               className="flex flex-row relative justify-center items-center p-2 gap-3 rounded-full bg-gray-600 text-white hover:cursor-pointer"
+               className="flex flex-row relative justify-center items-center p-2 gap-3 rounded-full text-white hover:cursor-pointer"
                onMouseEnter={() => setActiveProf(true)}
                onMouseLeave={() => setActiveProf(false)}
                onClick={() => nav("/Profile")}

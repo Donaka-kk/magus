@@ -20,16 +20,12 @@ function GiftCard({ giftCard }: GiftCardProps) {
 
          <button
             onClick={() => setNotifyPopUp(giftCard)}
-            className={`relative flex flex-row justify-around items-center border-2 active:scale-95 border-black ${giftCard.used === false ? " text-black" : " text-gray-400"}`}
+            className={`relative h-28 md:h-14 flex flex-col md:flex-row justify-around items-center border rounded-lg shadow-xl active:scale-95 active:shadow-inner ${giftCard.used === false ? " text-black" : " text-gray-400"}`}
          >
-            <h1 className="text-xl font-semibold">{giftCard.subject}</h1>
-            <div className="text-sm p-2">
-               <p>Discount: {giftCard.dicount}%</p>
-               <p>
-                  for purchases between {giftCard.minimalPurchase}$ and{" "}
-                  {giftCard.maximalPurchase}$
-               </p>
-            </div>
+            <h1 className="font-semibold lg:text-xl">{giftCard.subject}</h1>
+            <p className="font-semibold lg:text-xl">
+               Discount: {giftCard.dicount}%
+            </p>
          </button>
       </>
    );

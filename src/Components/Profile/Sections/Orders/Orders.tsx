@@ -32,7 +32,7 @@ function Orders() {
    }
 
    return (
-      <div className="flex flex-col w-full h-full gap-2">
+      <div className="flex flex-col w-full h-full gap-4">
          {orders?.map((order, index) => {
             return <Order key={index} order={order} />;
          })}

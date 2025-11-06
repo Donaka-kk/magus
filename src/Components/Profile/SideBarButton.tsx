@@ -17,7 +17,7 @@ function SideBarButton({
    return (
       <button
          onClick={() => setActiveTab()}
-         className={`flex items-center w-full hover:underline active:scale-95 px-1 ${active === true ? " font-semibold underline" : ""}`}
+         className={`flex items-center w-full hover:underline active:scale-95 px-1 text-primary ${active === true ? " font-semibold underline text-red-600 md:text-black" : ""}`}
       >
          <span className="w-full md:w-8 text-center">
             <FontAwesomeIcon icon={icon} />
