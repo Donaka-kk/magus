@@ -45,7 +45,7 @@ const Home = () => {
       });
 
    return (
-      <div className="h-full bg-backGround text-primary">
+      <div className="h-full bg-backGround text-primary bg-background">
          <div className="w-full p-4">
             {!carouselDataPending && <Carousel data={carouselData ?? []} />}
          </div>
