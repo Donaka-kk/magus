@@ -22,7 +22,7 @@ import ProtectedRoute from "./MainLayouts/ProtectedRoute";
 //admin section
 import AdminPanel from "./Pages/AdminPanel";
 import Blogs from "./Pages/Blogs";
-import Items from "./Pages/Items";
+import Items from "./Pages/Items.tsx";
 import ItemUpsert from "./Pages/ItemUpsert";
 import BlogUpsert from "./Pages/BlogUpsert";
 

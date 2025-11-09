@@ -4,6 +4,9 @@ import {
    faFileLines,
    faRightFromBracket,
    faChartLine,
+   faBell,
+   faTruckFast,
+   faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import { useUser } from "../../Context/User.tsx";
 import { useNavigate } from "react-router-dom";
@@ -35,6 +38,34 @@ function AdminPanel() {
             >
                <FontAwesomeIcon icon={faFileLines} />
                <h1>Blogs</h1>
+            </button>
+            <button
+               onClick={() => nav("")}
+               className="w-full h-full active:scale-95 border border-black p-2 hover:scale-105"
+            >
+               <FontAwesomeIcon icon={faTruckFast} />
+               <h1>orders</h1>
+            </button>
+            <button
+               onClick={() => nav("")}
+               className="w-full h-full active:scale-95 border border-black p-2 hover:scale-105"
+            >
+               <FontAwesomeIcon icon={faFileLines} />
+               <h1>tickets</h1>
+            </button>
+            <button
+               onClick={() => nav("")}
+               className="w-full h-full active:scale-95 border border-black p-2 hover:scale-105"
+            >
+               <FontAwesomeIcon icon={faCircleQuestion} />
+               <h1>special orders</h1>
+            </button>
+            <button
+               onClick={() => nav("")}
+               className="w-full h-full active:scale-95 border border-black p-2 hover:scale-105"
+            >
+               <FontAwesomeIcon icon={faBell} />
+               <h1>notifications</h1>
             </button>
             <button
                onClick={() => nav("")}
