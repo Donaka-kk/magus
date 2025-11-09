@@ -1,24 +1,20 @@
-import RatingStars from "../Rating/RatingStars.tsx";
-import RatingBars from "../Rating/RatingBars.tsx";
-
-import { faTag } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { ProductSchemeType } from "../../Types/ProductType";
-interface Card2Props {
+import RatingStars from "../Rating/RatingStars.tsx";
+import { faBoxesPacking, faTag } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ProductSchemeType } from "../../Types/ProductType.tsx";
+interface Card3Props {
    product: ProductSchemeType;
 }
-
-const Card2 = ({ product }: Card2Props) => {
+const Card3 = ({ product }: Card3Props) => {
    const nav = useNavigate();
-
    return (
-      <div className="flex flex-col items-center w-full h-fit rounded-2xl p-2 gap-2 bg-gray-200">
-         <div className="relative flex justify-center w-full h-5/12">
+      <div className="flex flex-col rounded-2xl bg-gray-200 max-w-80 p-2 gap-2 group">
+         <div className="relative rounded-2xl overflow-hidden">
             <img
                src={product.image}
                alt="productImage"
-               className="w-full h-full object-cover rounded-2xl"
+               className="max-w-full rounded-xl duration-200 group-hover:scale-110"
             />
             {product.discount !== 0 && (
                <div className="absolute top-0 left-0 flex justify-center items-center w-16 h-6 text-sm md:text-base rounded-tl-lg rounded-br-lg font-semibold bg-red-500 text-black">
@@ -29,7 +25,7 @@ const Card2 = ({ product }: Card2Props) => {
                </div>
             )}
          </div>
-         <div className="w-full flex gap-2">
+         <div className="flex gap-2">
             {product.colors.map((color, index) => {
                return (
                   <button
@@ -40,11 +36,11 @@ const Card2 = ({ product }: Card2Props) => {
                );
             })}
          </div>
-         <div className="w-full flex flex-col">
-            <p className="text-gray-400">{product.category}</p>
-            <p className="text-xl font-bold">{product.name}</p>
+         <div className="">
+            <p className="text-sm text-gray-400">{product.category}</p>
+            <p className="text-xl font-semibold">{product.name}</p>
          </div>
-         <div className="w-full flex gap-2">
+         <div className="flex gap-2">
             <p className="text-xl font-bold text-center">
                {product.price - (product.price * product.discount) / 100}$
             </p>
@@ -52,14 +48,13 @@ const Card2 = ({ product }: Card2Props) => {
                {product.price}$
             </p>
          </div>
-         <button
-            onClick={() => nav(`/product?id=${product.id}`)}
-            className="w-full bg-secondary text-primary px-3 py-1 rounded-md text-sm sm:text-base active:bg-primary active:text-secondary"
-         >
-            Visit the Product
-         </button>
+         <div>
+            <button className="w-full bg-secondary text-primary px-3 py-1 rounded-md text-sm sm:text-base active:bg-primary active:text-secondary">
+               Visit the product
+            </button>
+         </div>
       </div>
    );
 };
 
-export default Card2;
+export default Card3;

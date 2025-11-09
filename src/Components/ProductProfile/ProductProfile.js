@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import ProductScore from "./ProductScore";
 import ProductOptions from "./ProductOptions.tsx";
 import ProductInfo from "./ProductInfo.tsx";
+import RatingStars from "../Rating/RatingStars.tsx";
+import RatingBars from "../Rating/RatingBars.tsx";
 
 function ProductProfile({
    product,
@@ -17,7 +18,8 @@ function ProductProfile({
                <ProductInfo product={product} />
             </div>
             <div>
-               <ProductScore score={product.score} sales={product.sales} />
+               <RatingStars score={product.score} />
+               <RatingBars score={product.score} />
             </div>
             <div>
                <ProductOptions

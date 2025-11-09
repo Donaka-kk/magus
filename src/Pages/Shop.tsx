@@ -15,7 +15,7 @@ import { useState } from "react";
 
 const Shop = () => {
    const [index, setIndex] = useState<number>(1);
-   const { data, isPending, isError, fetchNextPage, hasNextPage } =
+   const { data, isPending, isError, fetchNextPage } =
       useInfiniteQuery<ShopPageType>({
          queryKey: ["shopProducts"],
          queryFn: async ({ pageParam }) => {
@@ -105,36 +105,34 @@ const Shop = () => {
    };
 
    return (
-      <div>
-         <div className="relative flex flex-row p-5 gap-5">
-            <div className="w-full flex flex-col justify-between">
-               {page && (
-                  <>
-                     <ShowCase
-                        products={page.products}
-                        isPending={isPending}
-                        isError={isError}
-                     />
-                     <ShopNavigator
-                        currentPage={index}
-                        allPages={data?.pages[0].totalPages!}
-                        nextPage={nextPage}
-                        prevPage={prevPage}
-                     />
-                  </>
-               )}
-            </div>
-            <div className="sticky top-28 h-fit flex flex-col gap-5 w-2/5 text-sm md:w-2/6 md:text-base lg:w-3/12 lg:text-lg">
-               {categories && (
-                  <Categories
-                     categories={categories}
-                     toChangeCategory={handleChangeCategory}
-                     toHandleSearch={handleSearch}
-                     categoriesPending={categoriesPending}
-                     categoriesError={categoriesError}
+      <div className="relative flex flex-row p-5 gap-5">
+         <div className="w-full flex flex-col justify-between">
+            {page && (
+               <>
+                  <ShowCase
+                     products={page.products}
+                     isPending={isPending}
+                     isError={isError}
                   />
-               )}
-            </div>
+                  <ShopNavigator
+                     currentPage={index}
+                     allPages={data?.pages[0].totalPages!}
+                     nextPage={nextPage}
+                     prevPage={prevPage}
+                  />
+               </>
+            )}
+         </div>
+         <div className="sticky top-28 h-fit flex flex-col gap-5 w-2/5 text-sm md:w-2/6 md:text-base lg:w-3/12 lg:text-lg">
+            {categories && (
+               <Categories
+                  categories={categories}
+                  toChangeCategory={handleChangeCategory}
+                  toHandleSearch={handleSearch}
+                  categoriesPending={categoriesPending}
+                  categoriesError={categoriesError}
+               />
+            )}
          </div>
       </div>
    );

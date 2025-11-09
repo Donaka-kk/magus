@@ -20,7 +20,7 @@ const Card1 = ({ product }) => {
             <div className="">
                <p className="text-sm text-gray-400">{product.category}</p>
                <p className="text-xl font-semibold">{product.name}</p>
-               <RatingStars score={3.3} />
+               <RatingStars score={product.score} />
                <p className="text-xl font-semibold">${product.price}</p>
             </div>
             <div className="flex flex-col justify-end">

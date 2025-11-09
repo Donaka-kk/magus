@@ -3,12 +3,19 @@ import { useEffect, useState } from "react";
 import LoadingComponent from "../Components/Layout/LoadingComponent";
 import FloatingProfile from "../Components/FloatingProfile/FloatingProfile";
 import ProductProfile from "../Components/ProductProfile/ProductProfile";
+import { ScoreType } from "../Types/ScoreType.tsx";
 
 const dummyProduct = {
    id: 123,
    name: "qwer",
    price: "123",
-   score: "2.4",
+   score: {
+      totalScore: 2.5,
+      quality: 2,
+      conformity: 2,
+      intact: 3,
+      economical: 3,
+   },
    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROHxYft1f_Ln_y_scKnh8-g5rLMmce7JKyPQ&s",
    discount: "10",
    available: true,

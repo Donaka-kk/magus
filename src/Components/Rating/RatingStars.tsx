@@ -2,8 +2,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
 import { ReactElement } from "react";
+import { ScoreType } from "../../Types/ScoreType";
+
 interface RatingStarsType {
-   score: number;
+   score: ScoreType;
 }
 
 function RatingStars({ score }: RatingStarsType) {
@@ -11,13 +13,14 @@ function RatingStars({ score }: RatingStarsType) {
    let floatPart: number;
    let emptyStars: ReactElement[];
 
-   floatPart = score - Math.floor(score);
-   fullStars = Array.from({ length: score }, (_, index) => (
+   floatPart = score.totalScore - Math.floor(score.totalScore);
+   fullStars = Array.from({ length: score.totalScore }, (_, index) => (
       <FontAwesomeIcon key={index} icon={faStar} />
    ));
-   emptyStars = Array.from({ length: Math.floor(5 - score) }, (_, index) => (
-      <FontAwesomeIcon key={index} icon={emptyStar} />
-   ));
+   emptyStars = Array.from(
+      { length: Math.floor(5 - score.totalScore) },
+      (_, index) => <FontAwesomeIcon key={index} icon={emptyStar} />
+   );
    return (
       <div className="">
          {fullStars}

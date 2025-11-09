@@ -7,6 +7,7 @@ import { CarouselDummyData } from "../Components/API/CarouselDummyData.tsx";
 import { SpecialOffersDummyData } from "../Components/API/SpecialOffersDummyData.tsx";
 import { useQuery } from "@tanstack/react-query";
 import { ProductType } from "../Types/ProductType.tsx";
+import { ProductSchemeType } from "../Types/ProductType.tsx";
 
 const Home = () => {
    const { data: carouselData, isPending: carouselDataPending } = useQuery<
@@ -28,10 +29,10 @@ const Home = () => {
    });
 
    const { data: SpecialOffersData, isPending: SpecialOffersDataPending } =
-      useQuery<ProductType[]>({
+      useQuery<ProductSchemeType[]>({
          queryKey: ["discountData"],
          queryFn: async () => {
-            const response = await axios.get<ProductType[]>(
+            const response = await axios.get<ProductSchemeType[]>(
                "https://reqres.in/api/users/1",
                {
                   headers: {
@@ -55,7 +56,6 @@ const Home = () => {
                <SpecialOffers SpecialOffers={SpecialOffersData ?? []} />
             )}
          </div>
-
          <div className="">
             <Comments />
          </div>

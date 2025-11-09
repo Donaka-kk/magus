@@ -1,3 +1,5 @@
+import { ScoreType } from "./ScoreType";
+
 export interface ProductType {
    id: number;
    name: string;
@@ -7,9 +9,23 @@ export interface ProductType {
    category: string;
    selectedColor: string;
    selectedSize: string;
-   score: number;
+   score: ScoreType;
    sales: number;
-   available: boolean;
+}
+
+export interface ProductSchemeType {
+   id: number;
+   name: string;
+   price: number;
+   image: string;
+   discount: number;
+   category: string;
+   selectedColor: string;
+   selectedSize: string;
+   colors: string[];
+   sizes: string[];
+   score: ScoreType;
+   sales: number;
 }
 
 export interface NewProductType extends ProductType {
@@ -20,5 +36,4 @@ export interface NewProductType extends ProductType {
    category: string;
    Colors: string[];
    Sizes: string[];
-   available: boolean;
 }
