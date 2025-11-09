@@ -2,10 +2,6 @@ import image1 from "../../utilities/hero4.jpg";
 import image2 from "../../utilities/hero5.jpg";
 import image3 from "../../utilities/hero6.jpg";
 
-import HighRes1 from "../../utilities/r1.jpg";
-import HighRes2 from "../../utilities/r2.jpg";
-import HighRes3 from "../../utilities/r3.jpeg";
-
 export const HeroSectionDummyData = [
    {
       image: image1,

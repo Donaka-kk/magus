@@ -38,7 +38,6 @@ function Items() {
    const handleDeleteItem = () => {
       if (!selectedItem) return;
       setShowPopUp(false);
-      const request = axios;
       setMessage("successfully deleted");
    };
 

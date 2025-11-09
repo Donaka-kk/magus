@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import RatingStars from "../Rating/RatingStars.tsx";
-import { faBoxesPacking, faTag } from "@fortawesome/free-solid-svg-icons";
+import { faTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProductSchemeType } from "../../Types/ProductType.tsx";
 interface Card3Props {
@@ -49,7 +48,10 @@ const Card3 = ({ product }: Card3Props) => {
             </p>
          </div>
          <div>
-            <button className="w-full bg-secondary text-primary px-3 py-1 rounded-md text-sm sm:text-base active:bg-primary active:text-secondary">
+            <button
+               onClick={() => nav(`/product?id=${product.id}`)}
+               className="w-full bg-secondary text-primary px-3 py-1 rounded-md text-sm sm:text-base active:bg-primary active:text-secondary"
+            >
                Visit the product
             </button>
          </div>

@@ -1,6 +1,3 @@
-import RatingStars from "../Rating/RatingStars.tsx";
-import RatingBars from "../Rating/RatingBars.tsx";
-
 import { faTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
