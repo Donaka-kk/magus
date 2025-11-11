@@ -8,7 +8,7 @@ function RatingBars({ score }: RatingStarsType) {
    return (
       <div className="">
          <div className="flex gap-3 justify-between items-center">
-            <p>quality</p>
+            <p>Quality</p>
             <div className="relative w-20 h-2 bg-gray-600">
                <div
                   className={`absolute h-full bg-yellow-400`}
@@ -19,7 +19,7 @@ function RatingBars({ score }: RatingStarsType) {
             </div>
          </div>
          <div className="flex gap-3 justify-between items-center">
-            <p>conformity</p>
+            <p>Conformity</p>
             <div className="relative w-20 h-2 bg-gray-600">
                <div
                   className={`absolute h-full bg-yellow-400`}
@@ -30,7 +30,7 @@ function RatingBars({ score }: RatingStarsType) {
             </div>
          </div>
          <div className="flex gap-3 justify-between items-center">
-            <p>intact</p>
+            <p>Intact</p>
             <div className="relative w-20 h-2 bg-gray-600">
                <div
                   className={`absolute h-full bg-yellow-400`}
@@ -41,7 +41,7 @@ function RatingBars({ score }: RatingStarsType) {
             </div>
          </div>
          <div className="flex gap-3 justify-between items-center">
-            <p>economical</p>
+            <p>Economical</p>
             <div className="relative w-20 h-2 bg-gray-600">
                <div
                   className={`absolute h-full bg-yellow-400`}

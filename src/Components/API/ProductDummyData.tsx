@@ -1,0 +1,20 @@
+export const ProductDummyData = {
+   id: 123,
+   name: "My product",
+   price: 123,
+   score: {
+      totalScore: 2.5,
+      quality: 2,
+      conformity: 2,
+      intact: 3,
+      economical: 3,
+   },
+   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVO45YLIcsBAxQ57BwYLkbb83hpmMpdsHWpg&s",
+   discount: 10,
+   sales: 123,
+   category: "Plants",
+   colors: ["#E8320E", "#0E32E8", "#0EE827", "#f0dc48"],
+   selectedColor: "#E8320E",
+   sizes: ["sm", "lg", "xl"],
+   selectedSize: "sm",
+};

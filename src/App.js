@@ -10,7 +10,7 @@ import Aboutus from "./Pages/Aboutus.tsx";
 import NotFound from "./Pages/NotFound";
 import Contact from "./Pages/Contact.tsx";
 import Shop from "./Pages/Shop.tsx";
-import Product from "./Pages/Product";
+import Product from "./Pages/Product.tsx";
 import Login from "./Pages/Login.tsx";
 import Cart from "./Pages/Cart";
 import Profile from "./Pages/Profile.tsx";

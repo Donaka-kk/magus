@@ -1,4 +1,3 @@
-import Card2 from "../Carousel/Card2.tsx";
 import Card3 from "../Cards/Card3.tsx";
 
 import { ProductSchemeType } from "../../Types/ProductType";

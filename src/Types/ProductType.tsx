@@ -27,13 +27,3 @@ export interface ProductSchemeType {
    score: ScoreType;
    sales: number;
 }
-
-export interface NewProductType extends ProductType {
-   name: string;
-   price: number;
-   image: string;
-   discount: number;
-   category: string;
-   Colors: string[];
-   Sizes: string[];
-}
