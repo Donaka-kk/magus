@@ -37,17 +37,15 @@ function Blogs() {
    useEffect(() => {
       const getData = async () => {
          try {
-            // const data = await axios
-            //    .post(
-            //       "https://47cc28b5d9f6491c0e30d1fc16e1de93.serveo.net/api/v1/users/login",
-            //       { username: "09111111111", password: "1" }
-            //    )
-            //    .then((response) => {
-            //       return response;
-            //    });
-            // console.log(data);
-            // return data;
-            return 0;
+            const data = await axios
+               .post(
+                  "https://47cc28b5d9f6491c0e30d1fc16e1de93.serveo.net/api/v1/users/login",
+                  { username: "09111111111", password: "1" }
+               )
+               .then((response) => {
+                  return response;
+               });
+            return dummyData | data;
          } catch (error) {
             console.log(error.message);
          }

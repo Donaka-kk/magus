@@ -1,4 +1,3 @@
-import FloatingProfile from "../Components/FloatingProfile/FloatingProfile.js";
 import axios from "axios";
 import ProductInfo from "../Components/ProductProfile/ProductInfo.tsx";
 
@@ -29,7 +28,7 @@ const Product = () => {
       queryKey: ["Product"],
       queryFn: async () => {
          const response = await axios.get<ProductSchemeType>(
-            "https://reqres.in/api/users/1",
+            `https://reqres.in/api/users/${id}`,
             {
                headers: {
                   "x-api-key": "reqres-free-v1",
@@ -58,9 +57,6 @@ const Product = () => {
                />
             )}
          </div>
-         {/* <div className="sticky top-28 h-fit">
-            <FloatingProfile />
-         </div> */}
       </div>
    );
 };

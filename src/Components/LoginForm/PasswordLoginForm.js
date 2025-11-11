@@ -3,7 +3,7 @@ import { useState } from "react";
 function PasswordLoginForm({ onSumbit, switchMode }) {
    const [isUsernameFocused, setIsUsernameFocused] = useState(false);
    const [isPasswordFocused, setIsPasswordFocused] = useState(false);
-   const [message, setMessage] = useState("");
+   // const [message, setMessage] = useState("");
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
 

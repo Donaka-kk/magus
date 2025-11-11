@@ -1,6 +1,5 @@
 import OneTimeLoginForm from "../Components/LoginForm/OneTimeLoginForm";
 import PasswordLoginForm from "../Components/LoginForm/PasswordLoginForm";
-import axios from "axios";
 import { useUser } from "../Context/User.tsx";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";

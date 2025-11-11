@@ -42,13 +42,14 @@ function ItemUpsert() {
                         setIsLoading(false);
                      }
                   });
+               return request;
             } catch (error) {
                console.log(error);
             }
          }
       };
       getData();
-   }, [searchParams]);
+   }, [param]);
 
    return (
       <div className="w-screen h-screen flex flex-col justify-center items-center">

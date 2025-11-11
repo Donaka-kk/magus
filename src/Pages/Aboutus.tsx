@@ -12,7 +12,7 @@ const Aboutus = () => {
       queryKey: ["posts"],
       staleTime: Infinity,
       queryFn: async () => {
-         const response = await axios.get("https://reqres.in/api/users/1", {
+         await axios.get("https://reqres.in/api/users/1", {
             headers: {
                "x-api-key": "reqres-free-v1",
             },
