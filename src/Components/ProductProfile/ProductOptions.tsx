@@ -23,7 +23,7 @@ function ProductOptions({
    const [sizeDropDown, setSizeDropDown] = useState<boolean>(false);
    if (!product) return;
    return (
-      <div className="w-full flex flex-row justify-around">
+      <div className="w-full flex flex-row justify-around gap-2">
          <div className="Color w-24">
             <h1>Color</h1>
             <div className="relative">

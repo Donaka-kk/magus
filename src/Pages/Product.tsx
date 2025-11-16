@@ -1,5 +1,5 @@
 import axios from "axios";
-import ProductInfo from "../Components/ProductProfile/ProductInfo.tsx";
+import ProductWrapper from "../Components/ProductProfile/ProductWrapper.tsx";
 
 import { useState } from "react";
 import { ProductSchemeType } from "../Types/ProductType.tsx";
@@ -23,8 +23,12 @@ const Product = () => {
    const handleAddToCart = () => {
       console.log("adding to cart");
    };
+   const handleAddToWishlist = () => {
+      console.log("adding to wishlist");
+   };
 
-   const { data, isPending } = useQuery({
+   //const { data, isPending } =
+   useQuery({
       queryKey: ["Product"],
       queryFn: async () => {
          const response = await axios.get<ProductSchemeType>(
@@ -41,23 +45,18 @@ const Product = () => {
       },
    });
 
-   if (isPending) {
+   if (!product) {
       return <div>...loading!</div>;
    }
 
    return (
-      <div className="relative flex flex-row p-2 gap-2 md:p-4 md:gap-4 bg-background">
-         <div className="flex">
-            {data && (
-               <ProductInfo
-                  product={data}
-                  handleChangeSize={handleChangeSize}
-                  handleChangeColor={handleChangeColor}
-                  handleAddToCart={handleAddToCart}
-               />
-            )}
-         </div>
-      </div>
+      <ProductWrapper
+         product={product}
+         handleChangeSize={handleChangeSize}
+         handleChangeColor={handleChangeColor}
+         handleAddToCart={handleAddToCart}
+         handleAddToWishlist={handleAddToWishlist}
+      />
    );
 };
 

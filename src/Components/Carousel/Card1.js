@@ -25,7 +25,7 @@ const Card1 = ({ product }) => {
             </div>
             <div className="flex flex-col justify-end">
                <button
-                  onClick={() => nav(`/product?NO=${product.id}`)}
+                  onClick={() => nav(`/product?id=${product.id}`)}
                   className="text-lg font-semibold bg-secondary w-12 aspect-square rounded-full px-2 py-1 active:scale-95"
                >
                   <FontAwesomeIcon icon={faBoxesPacking} />

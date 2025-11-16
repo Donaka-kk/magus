@@ -1,3 +1,4 @@
+import { CommentType } from "./CommentType";
 import { ScoreType } from "./ScoreType";
 
 export interface ProductType {
@@ -26,4 +27,6 @@ export interface ProductSchemeType {
    sizes: string[];
    score: ScoreType;
    sales: number;
+   description: string;
+   comments: CommentType[];
 }

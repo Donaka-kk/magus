@@ -1,6 +1,6 @@
 export const CarouselDummyData = [
    {
-      id: 110,
+      id: 10,
       name: "Tulip",
       price: 1,
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/tulips-flowers.jpg.avif",
@@ -19,10 +19,10 @@ export const CarouselDummyData = [
       available: true,
    },
    {
-      id: 111,
+      id: 11,
       name: "Orchid",
       price: 2,
-      image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/orchids-flowers.jpg.avif",
+      image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/orchids-lowers.jpg.avif",
       discount: 0,
       category: "flower",
       selectedColor: "#4287f5",
@@ -38,7 +38,7 @@ export const CarouselDummyData = [
       available: true,
    },
    {
-      id: 112,
+      id: 12,
       name: "Sunflower",
       price: 3,
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/sunflower-flower.jpg.avif",
@@ -57,7 +57,7 @@ export const CarouselDummyData = [
       available: true,
    },
    {
-      id: 113,
+      id: 13,
       name: "Lily",
       price: 3.5,
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/lilies-flowers.jpg.avif",
@@ -76,7 +76,7 @@ export const CarouselDummyData = [
       available: true,
    },
    {
-      id: 114,
+      id: 14,
       name: "Daffodil",
       price: 2.5,
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/daffodils-flowers1.jpg.avif",
@@ -95,7 +95,7 @@ export const CarouselDummyData = [
       available: true,
    },
    {
-      id: 115,
+      id: 15,
       name: "Marigold",
       price: 1.5,
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/marigold-flowers1.jpg.avif",
@@ -114,7 +114,7 @@ export const CarouselDummyData = [
       available: true,
    },
    {
-      id: 116,
+      id: 16,
       name: "Lotus",
       price: 7,
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/lotus-flowers.jpg.avif",
@@ -133,7 +133,7 @@ export const CarouselDummyData = [
       available: true,
    },
    {
-      id: 117,
+      id: 17,
       name: "Dahlia",
       price: 3,
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/dahlia-flowers.jpg.avif",
@@ -152,7 +152,7 @@ export const CarouselDummyData = [
       available: true,
    },
    {
-      id: 118,
+      id: 18,
       name: "Gladioli",
       price: 4,
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/gladiolus-flowers.jpg.avif",
@@ -171,7 +171,7 @@ export const CarouselDummyData = [
       available: true,
    },
    {
-      id: 119,
+      id: 19,
       name: "Carnation",
       price: 5,
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/carnations-flowers.jpg.avif",
