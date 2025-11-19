@@ -5,7 +5,7 @@ interface NotifyingPopUpProps {
    code?: string;
    order?: OrderType;
    status?: string;
-   handleClosingPopUp: () => void;
+   toClose: () => void;
 }
 
 function NotifyPopUp({
@@ -14,7 +14,7 @@ function NotifyPopUp({
    code,
    order,
    status,
-   handleClosingPopUp,
+   toClose,
 }: NotifyingPopUpProps) {
    return (
       <div className="fixed w-screen h-screen top-0 left-0 flex justify-center items-center z-10">
@@ -47,7 +47,7 @@ function NotifyPopUp({
             )}
          </div>
          <div
-            onClick={() => handleClosingPopUp()}
+            onClick={() => toClose()}
             className="absolute w-full h-full bg-transparent06 z-20"
          />
       </div>

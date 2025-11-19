@@ -1,13 +1,22 @@
-import { useState } from "react";
+import Chrome from "@uiw/react-color-chrome";
 
 import { hsvaToHex } from "@uiw/color-convert";
-
-import Chrome from "@uiw/react-color-chrome";
+import { useState } from "react";
 import { GithubPlacement } from "@uiw/react-color-github";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
-function Palette({ colors, handleAddingColor, handleDeletingColor }) {
+interface PaletteProps {
+   colors: string[];
+   handleAddingColor: (selectedColor: string) => void;
+   handleDeletingColor: (selectedColor: string) => void;
+}
+
+function Palette({
+   colors,
+   handleAddingColor,
+   handleDeletingColor,
+}: PaletteProps) {
    const [hsva, setHsva] = useState({ h: 77, s: 56, v: 61, a: 1 });
    const hex = hsvaToHex(hsva);
    return (

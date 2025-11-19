@@ -20,11 +20,11 @@ import AdminLayout from "./MainLayouts/AdminLayout";
 import MainLayout from "./MainLayouts/MainLayout";
 import ProtectedRoute from "./MainLayouts/ProtectedRoute";
 //admin section
-import AdminPanel from "./Pages/AdminPanel";
-import Blogs from "./Pages/Blogs";
-import Items from "./Pages/Items.tsx";
-import ItemUpsert from "./Pages/ItemUpsert";
-import BlogUpsert from "./Pages/BlogUpsert";
+import AdminPanel from "./Pages/AdminPanel.tsx";
+import AdminBlogs from "./Pages/AdminBlogs.tsx";
+import AdminProducts from "./Pages/AdminProducts.tsx";
+import ProductUpsert from "./Pages/ProductUpsert.tsx";
+import BlogUpsert from "./Pages/BlogUpsert.tsx";
 
 const queryClient = new QueryClient();
 const persister = createAsyncStoragePersister({
@@ -62,9 +62,15 @@ function App() {
                      }
                   >
                      <Route path="panel" element={<AdminPanel />} />
-                     <Route path="panel/blogs" element={<Blogs />} />
-                     <Route path="panel/items" element={<Items />} />
-                     <Route path="panel/itemUpsert" element={<ItemUpsert />} />
+                     <Route path="panel/AdminBlogs" element={<AdminBlogs />} />
+                     <Route
+                        path="panel/AdminProducts"
+                        element={<AdminProducts />}
+                     />
+                     <Route
+                        path="panel/ProductUpsert"
+                        element={<ProductUpsert />}
+                     />
                      <Route path="panel/BlogUpsert" element={<BlogUpsert />} />
                      <Route path="*" element={<NotFound />} />
                   </Route>

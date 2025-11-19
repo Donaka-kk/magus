@@ -1,13 +1,17 @@
-export const CarouselDummyData = [
+import { ProductSchemeType } from "../../Types/ProductType.tsx";
+
+export const CarouselDummyData: ProductSchemeType[] = [
    {
       id: 10,
       name: "Tulip",
-      price: 1,
+      price: 12,
       image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/tulips-flowers.jpg.avif",
       discount: 5,
       category: "flower",
       selectedColor: "#4287f5",
       selectedSize: "md",
+      colors: ["#638ccf", "#3f1d7a"],
+      sizes: ["sm", "md"],
       score: {
          totalScore: 3.5,
          quality: 4,
@@ -16,7 +20,27 @@ export const CarouselDummyData = [
          economical: 3,
       },
       sales: 200,
-      available: true,
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit voluptas reprehenderit libero placeat nobis officia nostrum tempore optio voluptatum architecto fugit quidem blanditiis nam, magni, expedita rerum, culpa in quas.",
+      comments: [
+         {
+            id: 3,
+            authorFullName: "ame",
+            authorImage:
+               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRcaYv7qg0hxUBeEjRTE-orhFk3WXlC4o7ZQ&s",
+            date: "02/20/2000",
+            time: "12:12",
+            message:
+               "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            score: {
+               totalScore: 2,
+               quality: 2,
+               conformity: 2,
+               intact: 2,
+               economical: 2,
+            },
+         },
+      ],
    },
    {
       id: 11,
@@ -27,6 +51,8 @@ export const CarouselDummyData = [
       category: "flower",
       selectedColor: "#4287f5",
       selectedSize: "md",
+      colors: ["#638ccf", "#3f1d7a"],
+      sizes: ["sm", "md"],
       score: {
          totalScore: 3.5,
          quality: 4,
@@ -35,7 +61,27 @@ export const CarouselDummyData = [
          economical: 3,
       },
       sales: 200,
-      available: true,
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit voluptas reprehenderit libero placeat nobis officia nostrum tempore optio voluptatum architecto fugit quidem blanditiis nam, magni, expedita rerum, culpa in quas.",
+      comments: [
+         {
+            id: 3,
+            authorFullName: "ame",
+            authorImage:
+               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRcaYv7qg0hxUBeEjRTE-orhFk3WXlC4o7ZQ&s",
+            date: "02/20/2000",
+            time: "12:12",
+            message:
+               "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            score: {
+               totalScore: 2,
+               quality: 2,
+               conformity: 2,
+               intact: 2,
+               economical: 2,
+            },
+         },
+      ],
    },
    {
       id: 12,
@@ -46,6 +92,8 @@ export const CarouselDummyData = [
       category: "flower",
       selectedColor: "#4287f5",
       selectedSize: "md",
+      colors: ["#638ccf", "#3f1d7a"],
+      sizes: ["sm", "md"],
       score: {
          totalScore: 3.5,
          quality: 4,
@@ -54,7 +102,27 @@ export const CarouselDummyData = [
          economical: 3,
       },
       sales: 200,
-      available: true,
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit voluptas reprehenderit libero placeat nobis officia nostrum tempore optio voluptatum architecto fugit quidem blanditiis nam, magni, expedita rerum, culpa in quas.",
+      comments: [
+         {
+            id: 3,
+            authorFullName: "ame",
+            authorImage:
+               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRcaYv7qg0hxUBeEjRTE-orhFk3WXlC4o7ZQ&s",
+            date: "02/20/2000",
+            time: "12:12",
+            message:
+               "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            score: {
+               totalScore: 2,
+               quality: 2,
+               conformity: 2,
+               intact: 2,
+               economical: 2,
+            },
+         },
+      ],
    },
    {
       id: 13,
@@ -65,6 +133,8 @@ export const CarouselDummyData = [
       category: "flower",
       selectedColor: "#4287f5",
       selectedSize: "md",
+      colors: ["#638ccf", "#3f1d7a"],
+      sizes: ["sm", "md"],
       score: {
          totalScore: 3.5,
          quality: 4,
@@ -73,7 +143,27 @@ export const CarouselDummyData = [
          economical: 3,
       },
       sales: 200,
-      available: true,
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit voluptas reprehenderit libero placeat nobis officia nostrum tempore optio voluptatum architecto fugit quidem blanditiis nam, magni, expedita rerum, culpa in quas.",
+      comments: [
+         {
+            id: 3,
+            authorFullName: "ame",
+            authorImage:
+               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRcaYv7qg0hxUBeEjRTE-orhFk3WXlC4o7ZQ&s",
+            date: "02/20/2000",
+            time: "12:12",
+            message:
+               "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            score: {
+               totalScore: 2,
+               quality: 2,
+               conformity: 2,
+               intact: 2,
+               economical: 2,
+            },
+         },
+      ],
    },
    {
       id: 14,
@@ -84,6 +174,8 @@ export const CarouselDummyData = [
       category: "flower",
       selectedColor: "#4287f5",
       selectedSize: "md",
+      colors: ["#638ccf", "#3f1d7a"],
+      sizes: ["sm", "md"],
       score: {
          totalScore: 3.5,
          quality: 4,
@@ -92,7 +184,27 @@ export const CarouselDummyData = [
          economical: 3,
       },
       sales: 200,
-      available: true,
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit voluptas reprehenderit libero placeat nobis officia nostrum tempore optio voluptatum architecto fugit quidem blanditiis nam, magni, expedita rerum, culpa in quas.",
+      comments: [
+         {
+            id: 3,
+            authorFullName: "ame",
+            authorImage:
+               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRcaYv7qg0hxUBeEjRTE-orhFk3WXlC4o7ZQ&s",
+            date: "02/20/2000",
+            time: "12:12",
+            message:
+               "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            score: {
+               totalScore: 2,
+               quality: 2,
+               conformity: 2,
+               intact: 2,
+               economical: 2,
+            },
+         },
+      ],
    },
    {
       id: 15,
@@ -103,6 +215,8 @@ export const CarouselDummyData = [
       category: "flower",
       selectedColor: "#4287f5",
       selectedSize: "md",
+      colors: ["#638ccf", "#3f1d7a"],
+      sizes: ["sm", "md"],
       score: {
          totalScore: 3.5,
          quality: 4,
@@ -111,7 +225,27 @@ export const CarouselDummyData = [
          economical: 3,
       },
       sales: 200,
-      available: true,
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit voluptas reprehenderit libero placeat nobis officia nostrum tempore optio voluptatum architecto fugit quidem blanditiis nam, magni, expedita rerum, culpa in quas.",
+      comments: [
+         {
+            id: 3,
+            authorFullName: "ame",
+            authorImage:
+               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRcaYv7qg0hxUBeEjRTE-orhFk3WXlC4o7ZQ&s",
+            date: "02/20/2000",
+            time: "12:12",
+            message:
+               "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            score: {
+               totalScore: 2,
+               quality: 2,
+               conformity: 2,
+               intact: 2,
+               economical: 2,
+            },
+         },
+      ],
    },
    {
       id: 16,
@@ -122,6 +256,8 @@ export const CarouselDummyData = [
       category: "flower",
       selectedColor: "#4287f5",
       selectedSize: "md",
+      colors: ["#638ccf", "#3f1d7a"],
+      sizes: ["sm", "md"],
       score: {
          totalScore: 3.5,
          quality: 4,
@@ -130,7 +266,27 @@ export const CarouselDummyData = [
          economical: 3,
       },
       sales: 200,
-      available: true,
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit voluptas reprehenderit libero placeat nobis officia nostrum tempore optio voluptatum architecto fugit quidem blanditiis nam, magni, expedita rerum, culpa in quas.",
+      comments: [
+         {
+            id: 3,
+            authorFullName: "ame",
+            authorImage:
+               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRcaYv7qg0hxUBeEjRTE-orhFk3WXlC4o7ZQ&s",
+            date: "02/20/2000",
+            time: "12:12",
+            message:
+               "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            score: {
+               totalScore: 2,
+               quality: 2,
+               conformity: 2,
+               intact: 2,
+               economical: 2,
+            },
+         },
+      ],
    },
    {
       id: 17,
@@ -141,6 +297,8 @@ export const CarouselDummyData = [
       category: "flower",
       selectedColor: "#4287f5",
       selectedSize: "md",
+      colors: ["#638ccf", "#3f1d7a"],
+      sizes: ["sm", "md"],
       score: {
          totalScore: 3.5,
          quality: 4,
@@ -149,7 +307,27 @@ export const CarouselDummyData = [
          economical: 3,
       },
       sales: 200,
-      available: true,
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit voluptas reprehenderit libero placeat nobis officia nostrum tempore optio voluptatum architecto fugit quidem blanditiis nam, magni, expedita rerum, culpa in quas.",
+      comments: [
+         {
+            id: 3,
+            authorFullName: "ame",
+            authorImage:
+               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRcaYv7qg0hxUBeEjRTE-orhFk3WXlC4o7ZQ&s",
+            date: "02/20/2000",
+            time: "12:12",
+            message:
+               "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            score: {
+               totalScore: 2,
+               quality: 2,
+               conformity: 2,
+               intact: 2,
+               economical: 2,
+            },
+         },
+      ],
    },
    {
       id: 18,
@@ -160,6 +338,8 @@ export const CarouselDummyData = [
       category: "flower",
       selectedColor: "#4287f5",
       selectedSize: "md",
+      colors: ["#638ccf", "#3f1d7a"],
+      sizes: ["sm", "md"],
       score: {
          totalScore: 3.5,
          quality: 4,
@@ -168,7 +348,27 @@ export const CarouselDummyData = [
          economical: 3,
       },
       sales: 200,
-      available: true,
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit voluptas reprehenderit libero placeat nobis officia nostrum tempore optio voluptatum architecto fugit quidem blanditiis nam, magni, expedita rerum, culpa in quas.",
+      comments: [
+         {
+            id: 3,
+            authorFullName: "ame",
+            authorImage:
+               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRcaYv7qg0hxUBeEjRTE-orhFk3WXlC4o7ZQ&s",
+            date: "02/20/2000",
+            time: "12:12",
+            message:
+               "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            score: {
+               totalScore: 2,
+               quality: 2,
+               conformity: 2,
+               intact: 2,
+               economical: 2,
+            },
+         },
+      ],
    },
    {
       id: 19,
@@ -179,6 +379,8 @@ export const CarouselDummyData = [
       category: "flower",
       selectedColor: "#4287f5",
       selectedSize: "md",
+      colors: ["#638ccf", "#3f1d7a"],
+      sizes: ["sm", "md"],
       score: {
          totalScore: 3.5,
          quality: 4,
@@ -187,6 +389,26 @@ export const CarouselDummyData = [
          economical: 3,
       },
       sales: 200,
-      available: true,
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit voluptas reprehenderit libero placeat nobis officia nostrum tempore optio voluptatum architecto fugit quidem blanditiis nam, magni, expedita rerum, culpa in quas.",
+      comments: [
+         {
+            id: 3,
+            authorFullName: "ame",
+            authorImage:
+               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRcaYv7qg0hxUBeEjRTE-orhFk3WXlC4o7ZQ&s",
+            date: "02/20/2000",
+            time: "12:12",
+            message:
+               "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            score: {
+               totalScore: 2,
+               quality: 2,
+               conformity: 2,
+               intact: 2,
+               economical: 2,
+            },
+         },
+      ],
    },
 ];

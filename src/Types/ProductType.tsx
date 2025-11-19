@@ -30,3 +30,13 @@ export interface ProductSchemeType {
    description: string;
    comments: CommentType[];
 }
+
+export interface NewProductType {
+   name: string;
+   price: number;
+   image: File | string;
+   category: string;
+   newCategory: string;
+   colors: string[];
+   sizes: string[];
+}

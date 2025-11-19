@@ -2,8 +2,18 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
-function SizeComponent({ sizes, handleAddingSize, handleDeletingSize }) {
-   const [input, setInput] = useState();
+interface SizeComponentProps {
+   sizes: string[];
+   handleAddingSize: (selectedSize: string) => void;
+   handleDeletingSize: (selectedSize: string) => void;
+}
+
+function SizeComponent({
+   sizes,
+   handleAddingSize,
+   handleDeletingSize,
+}: SizeComponentProps) {
+   const [input, setInput] = useState<string>("");
    return (
       <div className="flex flex-row gap-3 border-t-2 border-black pt-2">
          <div className="w-[230px] flex flex-col gap-3">
