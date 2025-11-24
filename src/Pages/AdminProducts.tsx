@@ -1,20 +1,45 @@
 import axios from "axios";
-import ProductsWrapper from "../Components/AdminPanel/Products/ProductsWrapper.tsx";
+import ProductsWrapper from "../AdminComponents/Products/ProductsWrapper.tsx";
 
 import { useQuery } from "@tanstack/react-query";
 import { CarouselDummyData } from "../Components/API/CarouselDummyData.tsx";
 import { ProductSchemeType } from "../Types/ProductType.js";
-import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 function AdminProducts() {
-   const [deletingStatus, setDeletingStatus] = useState<string>("");
+   console.log("AdminProduct");
+   const queryClient = useQueryClient();
+
    const handleDelete = (productId: number, productName: string) => {
       if (productId === 0) return;
-      console.log("deleting...");
-      setDeletingStatus(`${productName} deleted!`);
+      deletion.mutate({ productId, productName });
    };
 
-   console.log("AdminProduct");
+   const deletion = useMutation({
+      mutationKey: ["req"],
+      mutationFn: async (data: { productId: number; productName: string }) => {
+         console.log("deleting...");
+         const response = await axios.post<ProductSchemeType[]>(
+            "https://reqres.in/api/login",
+            JSON.stringify({
+               email: "eve.holt@reqres.in",
+               password: "cityslicka",
+            }),
+            {
+               headers: {
+                  "x-api-key": "reqres-free-v1",
+                  "Content-Type": "application/json",
+               },
+            }
+         );
+         return response;
+      },
+      onSuccess: async () => {
+         console.log("invalidation...");
+         await queryClient.invalidateQueries({ queryKey: ["AllProducts"] });
+      },
+   });
+
    const { data, isPending, isError } = useQuery({
       queryKey: ["AllProducts"],
       queryFn: async () => {
@@ -38,8 +63,7 @@ function AdminProducts() {
       <ProductsWrapper
          products={data}
          handleDelete={handleDelete}
-         deletingStatus={deletingStatus}
-         toCloseNotify={() => setDeletingStatus("")}
+         deletion={deletion}
       />
    );
 }

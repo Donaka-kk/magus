@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BlogType } from "../../../Types/BlogType.tsx";
+import { BlogType } from "../../Types/BlogType.tsx";
 import { useNavigate } from "react-router-dom";
 
 interface BlogFormProps {

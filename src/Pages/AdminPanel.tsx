@@ -1,4 +1,4 @@
-import AdminPanelWrapper from "../Components/AdminPanel/AdminPanelWrapper.tsx";
+import AdminPanelWrapper from "../AdminComponents/AdminPanel/AdminPanelWrapper.tsx";
 function Panel() {
    return <AdminPanelWrapper />;
 }

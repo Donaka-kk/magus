@@ -1,22 +1,26 @@
 import ProductsList from "./ProductsList.tsx";
-import ApprovalPopUp from "../../Layout/ApprovalPopUp.tsx";
-import NotifyPopUp from "../../Layout/NotifyPopUp.tsx";
+import ApprovalPopUp from "../../Components/Layout/ApprovalPopUp.tsx";
+import NotifyPopUp from "../../Components/Layout/NotifyPopUp.tsx";
 
-import { ProductSchemeType } from "../../../Types/ProductType.tsx";
+import { ProductSchemeType } from "../../Types/ProductType.tsx";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useState } from "react";
+import { UseMutationResult } from "@tanstack/react-query";
 
 interface ProductsWrapperProps {
    products: ProductSchemeType[];
    handleDelete: (productId: number, productName: string) => void;
-   deletingStatus: string;
-   toCloseNotify: () => void;
+   deletion: UseMutationResult<
+      any,
+      unknown,
+      { productId: number; productName: string },
+      unknown
+   >;
 }
 function ProductsWrapper({
    products,
    handleDelete,
-   deletingStatus,
-   toCloseNotify,
+   deletion,
 }: ProductsWrapperProps) {
    const nav = useNavigate();
    const [approval, setApproval] = useState<{
@@ -39,20 +43,19 @@ function ProductsWrapper({
          {approval?.message && (
             <ApprovalPopUp
                message={approval?.message}
-               toClose={() =>
-                  setApproval({
-                     message: "",
-                     productName: "",
-                     productId: 0,
-                  })
-               }
+               toClose={() => setApproval(null)}
                onConfirm={() =>
                   handleDelete(approval.productId, approval.productName)
                }
             />
          )}
-         {deletingStatus && (
-            <NotifyPopUp subject={deletingStatus} toClose={toCloseNotify} />
+         {(deletion.isSuccess || deletion.isError) && (
+            <NotifyPopUp
+               subject={
+                  deletion.isSuccess ? "Deletion Successful" : "Deletion Failed"
+               }
+               toClose={() => deletion.reset()}
+            />
          )}
          <div className="Container p-2 md:p-4">
             <div className="w-full flex justify-center gap-5">

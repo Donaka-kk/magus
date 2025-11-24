@@ -1,5 +1,5 @@
 import axios from "axios";
-import BlogUpsertWrapper from "../Components/AdminPanel/BlogUpsert/BlogUpsertWrapper.tsx";
+import BlogUpsertWrapper from "../AdminComponents/BlogUpsert/BlogUpsertWrapper.tsx";
 
 import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";

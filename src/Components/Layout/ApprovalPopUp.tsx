@@ -1,3 +1,5 @@
+import ReactDOM from "react-dom";
+
 interface ApprovalPopUpProps {
    message: string;
    toClose: () => void;
@@ -6,7 +8,7 @@ interface ApprovalPopUpProps {
 
 function ApprovalPopUp({ message, toClose, onConfirm }: ApprovalPopUpProps) {
    console.log("ApprovalPopUp");
-   return (
+   const temp = (
       <div className="fixed w-screen h-screen top-0 left-0 flex justify-center items-center z-10">
          <div className="relative border border-black p-5 flex flex-col gap-5 bg-white z-30">
             <p>{message}</p>
@@ -33,6 +35,10 @@ function ApprovalPopUp({ message, toClose, onConfirm }: ApprovalPopUpProps) {
             className="absolute w-full h-full bg-transparent06 z-20"
          />
       </div>
+   );
+   return ReactDOM.createPortal(
+      temp,
+      document.getElementById("portal") as HTMLElement
    );
 }
 export default ApprovalPopUp;

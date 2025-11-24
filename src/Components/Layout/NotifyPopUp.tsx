@@ -20,7 +20,7 @@ function NotifyPopUp({
       <div className="fixed w-screen h-screen top-0 left-0 flex justify-center items-center z-10">
          <div className="relative border border-black p-5 flex flex-col gap-5 bg-white z-30">
             <p>{subject}</p>
-            <p>{text && text}</p>
+            {text && <p>text</p>}
             {status && <p>Status: {status}</p>}
             {code && <p>Code: {code}</p>}
             {order && (

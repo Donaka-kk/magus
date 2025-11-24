@@ -1,6 +1,6 @@
 import BlogsList from "./BlogsList.tsx";
 
-import { BlogType } from "../../../Types/BlogType.tsx";
+import { BlogType } from "../../Types/BlogType.tsx";
 import { useNavigate } from "react-router-dom";
 
 interface BlogsWrapperProps {

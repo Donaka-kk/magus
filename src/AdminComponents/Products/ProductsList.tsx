@@ -1,7 +1,7 @@
 import { memo } from "react";
 import Product from "./Product.tsx";
 
-import { ProductSchemeType } from "../../../Types/ProductType";
+import { ProductSchemeType } from "../../Types/ProductType.tsx";
 
 interface ProductsListProps {
    products: ProductSchemeType[];

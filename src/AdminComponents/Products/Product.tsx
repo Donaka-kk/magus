@@ -2,7 +2,7 @@ import { memo } from "react";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { ProductSchemeType } from "../../../Types/ProductType";
+import { ProductSchemeType } from "../../Types/ProductType";
 interface ProductProps {
    product: ProductSchemeType;
    onDeleteRequest: (productName: string, productId: number) => void;

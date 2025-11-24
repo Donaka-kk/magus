@@ -10,6 +10,10 @@ import {
    faBell,
    faTruckFast,
    faCircleQuestion,
+   faTag,
+   faArrowRightArrowLeft,
+   faImages,
+   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 
 function AdminPanel() {
@@ -42,7 +46,7 @@ function AdminPanel() {
             />
             <Icon
                navigate={() => {
-                  nav("");
+                  nav("tickets");
                }}
                icon={faFileLines}
                title={"Tickets"}
@@ -67,6 +71,34 @@ function AdminPanel() {
                }}
                icon={faChartLine}
                title={"Sales"}
+            />
+            <Icon
+               navigate={() => {
+                  nav("");
+               }}
+               icon={faArrowRightArrowLeft}
+               title={"Carousel"}
+            />
+            <Icon
+               navigate={() => {
+                  nav("");
+               }}
+               icon={faTag}
+               title={"Special offers"}
+            />
+            <Icon
+               navigate={() => {
+                  nav("");
+               }}
+               icon={faImages}
+               title={"Hero Section"}
+            />
+            <Icon
+               navigate={() => {
+                  nav("");
+               }}
+               icon={faUserGroup}
+               title={"About Us"}
             />
             <Icon
                navigate={() => {

@@ -25,6 +25,8 @@ import AdminBlogs from "./Pages/AdminBlogs.tsx";
 import AdminProducts from "./Pages/AdminProducts.tsx";
 import ProductUpsert from "./Pages/ProductUpsert.tsx";
 import BlogUpsert from "./Pages/BlogUpsert.tsx";
+import AdminTickets from "./Pages/AdminTickets.tsx";
+import AdminTicket from "./Pages/AdminTicket.tsx";
 
 const queryClient = new QueryClient();
 const persister = createAsyncStoragePersister({
@@ -72,6 +74,8 @@ function App() {
                         element={<ProductUpsert />}
                      />
                      <Route path="panel/BlogUpsert" element={<BlogUpsert />} />
+                     <Route path="panel/tickets" element={<AdminTickets />} />
+                     <Route path="panel/ticket" element={<AdminTicket />} />
                      <Route path="*" element={<NotFound />} />
                   </Route>
                </Routes>

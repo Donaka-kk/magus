@@ -1,6 +1,6 @@
 import BlogForm from "./BlogForm.tsx";
 
-import { BlogType } from "../../../Types/BlogType";
+import { BlogType } from "../../Types/BlogType.tsx";
 
 interface BlogUpsertWrapperProps {
    blog?: BlogType;

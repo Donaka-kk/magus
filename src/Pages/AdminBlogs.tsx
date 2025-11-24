@@ -1,5 +1,5 @@
 import axios from "axios";
-import BlogsWrapper from "../Components/AdminPanel/Blogs/BlogsWrapper.tsx";
+import BlogsWrapper from "../AdminComponents/Blogs/BlogsWrapper.tsx";
 
 import { useQuery } from "@tanstack/react-query";
 import { BlogsDummyData } from "../Components/API/BlogsDummyData.tsx";

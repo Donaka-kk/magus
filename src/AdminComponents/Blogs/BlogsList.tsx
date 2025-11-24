@@ -1,6 +1,6 @@
 import Blog from "./Blog.tsx";
 
-import { BlogType } from "../../../Types/BlogType.tsx";
+import { BlogType } from "../../Types/BlogType.tsx";
 
 interface BlogListProps {
    blogs: BlogType[];
