@@ -14,19 +14,21 @@ import Product from "./Pages/Product.tsx";
 import Login from "./Pages/Login.tsx";
 import Cart from "./Pages/Cart";
 import Profile from "./Pages/Profile.tsx";
-import AdminLogin from "./Pages/AdminLogin";
 //layouts
 import AdminLayout from "./MainLayouts/AdminLayout";
 import MainLayout from "./MainLayouts/MainLayout";
 import ProtectedRoute from "./MainLayouts/ProtectedRoute";
 //admin section
-import AdminPanel from "./Pages/AdminPanel.tsx";
-import AdminBlogs from "./Pages/AdminBlogs.tsx";
-import AdminProducts from "./Pages/AdminProducts.tsx";
-import ProductUpsert from "./Pages/ProductUpsert.tsx";
-import BlogUpsert from "./Pages/BlogUpsert.tsx";
-import AdminTickets from "./Pages/AdminTickets.tsx";
-import AdminTicket from "./Pages/AdminTicket.tsx";
+import AdminLogin from "./AdminPages/AdminLogin.tsx";
+import AdminPanel from "./AdminPages/AdminPanel.tsx";
+import Products from "./AdminPages/Products.tsx";
+import ProductUpsert from "./AdminPages/ProductUpsert.tsx";
+import Blogs from "./AdminPages/Blogs.tsx";
+import BlogUpsert from "./AdminPages/BlogUpsert.tsx";
+import Tickets from "./AdminPages/Tickets.tsx";
+import Ticket from "./AdminPages/Ticket.tsx";
+import Carousel from "./AdminPages/Carousel.tsx";
+import HeroSection from "./AdminPages/HeroSection.tsx";
 
 const queryClient = new QueryClient();
 const persister = createAsyncStoragePersister({
@@ -64,18 +66,20 @@ function App() {
                      }
                   >
                      <Route path="panel" element={<AdminPanel />} />
-                     <Route path="panel/AdminBlogs" element={<AdminBlogs />} />
-                     <Route
-                        path="panel/AdminProducts"
-                        element={<AdminProducts />}
-                     />
+                     <Route path="panel/Blogs" element={<Blogs />} />
+                     <Route path="panel/Products" element={<Products />} />
                      <Route
                         path="panel/ProductUpsert"
                         element={<ProductUpsert />}
                      />
                      <Route path="panel/BlogUpsert" element={<BlogUpsert />} />
-                     <Route path="panel/tickets" element={<AdminTickets />} />
-                     <Route path="panel/ticket" element={<AdminTicket />} />
+                     <Route path="panel/tickets" element={<Tickets />} />
+                     <Route path="panel/ticket" element={<Ticket />} />
+                     <Route path="panel/carousel" element={<Carousel />} />
+                     <Route
+                        path="panel/herosection"
+                        element={<HeroSection />}
+                     />
                      <Route path="*" element={<NotFound />} />
                   </Route>
                </Routes>

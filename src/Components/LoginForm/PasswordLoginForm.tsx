@@ -1,21 +1,24 @@
 import { useState } from "react";
 
-function PasswordLoginForm({ onSumbit, switchMode }) {
-   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
-   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
-   const [message, setMessage] = useState("");
+interface PasswordLoginFormProps {
+   onSubmit: (username: string, password: string) => void;
+   switchMode: (mode: "password" | "one-time") => void;
+   message: string;
+}
+
+function PasswordLoginForm({
+   onSubmit,
+   switchMode,
+   message,
+}: PasswordLoginFormProps) {
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
 
+   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
+   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+
    const handleLogin = async () => {
-      onSumbit({
-         username: username,
-         password: password,
-         method: "password",
-         codeRequired: false,
-      });
-      //will be removed
-      setMessage("123");
+      onSubmit(username, password);
    };
 
    return (
@@ -81,7 +84,7 @@ function PasswordLoginForm({ onSumbit, switchMode }) {
             </div>
          </form>
          <button
-            onClick={() => switchMode("onetime")}
+            onClick={() => switchMode("one-time")}
             className="border border-black px-4 py-2"
          >
             Sign in with one-time code

@@ -25,14 +25,14 @@ function AdminPanel() {
          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-2 md:p-4">
             <Icon
                navigate={() => {
-                  nav("adminproducts");
+                  nav("products");
                }}
                icon={faShapes}
                title={"Products"}
             />
             <Icon
                navigate={() => {
-                  nav("adminblogs");
+                  nav("blogs");
                }}
                icon={faFileLines}
                title={"Blogs"}
@@ -74,7 +74,7 @@ function AdminPanel() {
             />
             <Icon
                navigate={() => {
-                  nav("");
+                  nav("carousel");
                }}
                icon={faArrowRightArrowLeft}
                title={"Carousel"}
@@ -88,7 +88,7 @@ function AdminPanel() {
             />
             <Icon
                navigate={() => {
-                  nav("");
+                  nav("herosection");
                }}
                icon={faImages}
                title={"Hero Section"}

@@ -34,3 +34,5 @@ export const HeroSectionDummyData = [
       id: 2,
    },
 ];
+
+export const NewHeroSectionDummyData = [image1, image2, image3];

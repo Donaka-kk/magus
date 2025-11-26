@@ -1,68 +1,35 @@
 import { useState } from "react";
 
-function OneTimeLoginForm({ onSubmit, switchMode }) {
-   const [isPhoneNumberFocused, setIsPhoneNumberFocused] = useState(false);
-   const [isCodeFocused, setIsCodeFocused] = useState(false);
-   const [message, setMessage] = useState("");
+interface OneTimeLoginFormProps {
+   onSubmit: (phoneNumber: string, password: string) => void;
+   switchMode: (mode: "password" | "one-time") => void;
+   message: string;
+}
+
+function OneTimeLoginForm({
+   onSubmit,
+   switchMode,
+   message,
+}: OneTimeLoginFormProps) {
    const [phoneNumber, setPhoneNumber] = useState("");
    const [code, setCode] = useState("");
+
+   const [isPhoneNumberFocused, setIsPhoneNumberFocused] = useState(false);
+   const [isCodeFocused, setIsCodeFocused] = useState(false);
    const [isCodeSent, setIsCodeSent] = useState(false);
 
-   const handleLogin = async (event) => {
-      event.preventDefault();
-      try {
-         onSubmit({
-            username: phoneNumber,
-            password: code,
-            method: "onetime",
-            codeRequired: !isCodeSent,
-         }).then((response) => {
-            if (response?.status > 400) {
-               setMessage(
-                  "Username or password is incorrect : " + response.status
-               );
-            } else if (response?.status < 400) {
-            } else {
-               setMessage("Something went wrong !");
-            }
-         });
-      } catch (error) {
-         console.log(error);
-      }
-   };
-   const handleSendingCode = (event) => {
-      event.preventDefault();
-      try {
-         onSubmit({
-            username: phoneNumber,
-            password: code,
-            method: "onetime",
-            codeRequired: !isCodeSent,
-         }).then((response) => {
-            if (response?.status > 400) {
-               setMessage(
-                  "Username or password is incorrect : " + response.status
-               );
-            } //if(response?.status < 400){
-            else setMessage("Expiring code has been sent !");
-            setIsCodeSent(true);
-            // }else{
-            //     setMessage("Something went wrong !")
-            // }
-         });
-      } catch (error) {
-         console.log(error);
-      }
+   const handleLogin = async () => {
+      onSubmit(phoneNumber, code);
+      setIsCodeSent(true);
    };
 
    return (
       <div className="w-[600px] h-fit flex flex-col justify-between items-center border-2 border-black rounded-md p-5 gap-5">
          <form
-            onSubmit={
-               isCodeSent
-                  ? (event) => handleLogin(event)
-                  : (event) => handleSendingCode(event)
-            }
+            onSubmit={(event) => {
+               event.preventDefault();
+               handleLogin();
+            }}
             className="flex flex-col w-full h-fit gap-7"
          >
             <p className="text-2xl font-bold text-center">
