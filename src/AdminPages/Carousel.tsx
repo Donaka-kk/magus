@@ -1,5 +1,5 @@
 import axios from "axios";
-import CarouselCards from "../AdminComponents/Carousel/CarouselCards.tsx";
+import CardList from "../AdminComponents/CardList/CardList.tsx";
 
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { ProductSchemeType } from "../Types/ProductType";
@@ -48,7 +48,7 @@ function Carousel() {
 
    return (
       <div>
-         <CarouselCards products={data} toEditCarousel={editCarousel.mutate} />
+         <CardList products={data} toEditList={editCarousel.mutate} />
       </div>
    );
 }

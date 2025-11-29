@@ -1,3 +1,4 @@
+import { PostType } from "../../Types/PostType.tsx";
 import {
    faChevronDown,
    faChevronUp,
@@ -6,27 +7,31 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { memo } from "react";
 
-interface SlideProps {
-   slide: string;
+interface PostProps {
+   post: PostType;
    index: number;
-   moveUp: (productId: number) => void;
-   moveDown: (productId: number) => void;
-   removeSlide: (index: number) => void;
+   moveUp: (index: number) => void;
+   moveDown: (index: number) => void;
+   removePost: (index: number) => void;
 }
 
-function Slide({ slide, index, moveUp, moveDown, removeSlide }: SlideProps) {
-   console.log("Slide");
+function Post({ post, index, moveUp, moveDown, removePost }: PostProps) {
+   console.log("Post");
    return (
-      <div className="flex border border-black p-2 gap-2">
+      <div className="flex flex-col md:flex-row border border-black p-2 gap-2">
          <img
-            src={slide}
+            src={post.image}
             alt="heroSectionSlide"
-            className="h-[300px] flex-1 object-cover min-w-0"
+            className="min-h-52 max-h-52 flex-1 md:max-w-60 md:min-w-60 object-cover"
          />
+         <div>
+            <p className="font-semibold text-lg">{post.title}</p>
+            <p className="line-clamp-3">{post.text}</p>
+         </div>
 
-         <div className="flex flex-col justify-center gap-2 flex-none w-7">
+         <div className="flex flex-row md:flex-col justify-center gap-2 flex-none w-full md:w-7">
             <button
-               onClick={() => removeSlide(index)}
+               onClick={() => removePost(index)}
                className="text-2xl text-red-600"
             >
                <FontAwesomeIcon icon={faCircleXmark} />
@@ -49,4 +54,4 @@ function Slide({ slide, index, moveUp, moveDown, removeSlide }: SlideProps) {
    );
 }
 
-export default memo(Slide);
+export default memo(Post);

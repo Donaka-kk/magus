@@ -29,6 +29,9 @@ import Tickets from "./AdminPages/Tickets.tsx";
 import Ticket from "./AdminPages/Ticket.tsx";
 import Carousel from "./AdminPages/Carousel.tsx";
 import HeroSection from "./AdminPages/HeroSection.tsx";
+import SpecialOffers from "./AdminPages/SpecialOffers.tsx";
+import Orders from "./AdminPages/Orders.tsx";
+import AboutUs from "./AdminPages/AboutUs.tsx";
 
 const queryClient = new QueryClient();
 const persister = createAsyncStoragePersister({
@@ -76,9 +79,15 @@ function App() {
                      <Route path="panel/tickets" element={<Tickets />} />
                      <Route path="panel/ticket" element={<Ticket />} />
                      <Route path="panel/carousel" element={<Carousel />} />
+                     <Route path="panel/orders" element={<Orders />} />
+                     <Route path="panel/aboutus" element={<AboutUs />} />
                      <Route
                         path="panel/herosection"
                         element={<HeroSection />}
+                     />
+                     <Route
+                        path="panel/specialoffers"
+                        element={<SpecialOffers />}
                      />
                      <Route path="*" element={<NotFound />} />
                   </Route>

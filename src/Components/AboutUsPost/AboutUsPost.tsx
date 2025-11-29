@@ -11,11 +11,11 @@ function AboutUsPost({ post, index }: AboutUsPostProps) {
       >
          <img
             src={post.image}
-            alt={post.alt}
+            alt="post-image"
             className="w-full md:w-6/12 lg:w-5/12 xl:w-4/12"
          />
          <div className="w-full md:w-6/12 lg:w-5/12 xl:w-4/12">
-            <h1 className="text-2xl font-semibold">{post.subject}</h1>
+            <h1 className="text-2xl font-semibold">{post.title}</h1>
             <p>{post.text}</p>
          </div>
       </div>

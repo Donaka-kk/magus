@@ -1,40 +1,39 @@
-import Slide from "./Slide.tsx";
+import ProductCard from "./ProductCard.tsx";
 
 import { useState } from "react";
+import { ProductSchemeType } from "../../Types/ProductType.tsx";
 import { useNavigate } from "react-router-dom";
 
-interface HeroSectionSlidesProps {
-   slides: string[];
-   toEditHeroSection: (newSlides: string[]) => void;
+interface CardListProps {
+   products: ProductSchemeType[];
+   toEditList: (slides: ProductSchemeType[]) => void;
 }
 
-function HeroSectionSlides({
-   slides,
-   toEditHeroSection,
-}: HeroSectionSlidesProps) {
-   const [slidesArray, setSlidesArray] = useState<string[]>(slides);
+function CardList({ products, toEditList }: CardListProps) {
+   const [productsArray, setProductsArray] =
+      useState<ProductSchemeType[]>(products);
    const nav = useNavigate();
 
    const handleDiscard = () => {
-      setSlidesArray(slides);
+      setProductsArray(products);
    };
-   const handleMoveUp = (index: number) => {
+   const handleMoveToLeft = (index: number) => {
       if (index === 0) return;
-      const newArray = [...slidesArray];
+      const newArray = [...productsArray];
       [newArray[index - 1], newArray[index]] = [
          newArray[index],
          newArray[index - 1],
       ];
-      setSlidesArray(newArray);
+      setProductsArray(newArray);
    };
-   const handleMoveDown = (index: number) => {
-      if (index === slidesArray.length - 1) return;
-      const newArray = [...slidesArray];
+   const handleMoveToRight = (index: number) => {
+      if (index === productsArray.length - 1) return;
+      const newArray = [...productsArray];
       [newArray[index + 1], newArray[index]] = [
          newArray[index],
          newArray[index + 1],
       ];
-      setSlidesArray(newArray);
+      setProductsArray(newArray);
    };
 
    return (
@@ -50,7 +49,7 @@ function HeroSectionSlides({
                onClick={() => {}}
                className="border border-black p-1 rounded-lg"
             >
-               Add slide
+               Add Product Card
             </button>
             <button
                onClick={handleDiscard}
@@ -59,25 +58,27 @@ function HeroSectionSlides({
                Discard Changes
             </button>
             <button
-               onClick={() => toEditHeroSection(slidesArray)}
+               onClick={() => toEditList(productsArray)}
                className="border border-black p-1 rounded-lg"
             >
                Save Changes
             </button>
          </div>
-         <div className="w-full flex flex-col gap-4">
-            {slidesArray.map((slide, index) => (
-               <Slide
-                  key={index}
-                  slide={slide}
-                  index={index}
-                  moveUp={handleMoveUp}
-                  moveDown={handleMoveDown}
-               />
-            ))}
+         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+            {productsArray.map((product, index) => {
+               return (
+                  <ProductCard
+                     key={product.id}
+                     product={product}
+                     index={index}
+                     moveToLeft={handleMoveToLeft}
+                     moveToRight={handleMoveToRight}
+                  />
+               );
+            })}
          </div>
       </div>
    );
 }
 
-export default HeroSectionSlides;
+export default CardList;

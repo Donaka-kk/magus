@@ -39,7 +39,7 @@ function AdminPanel() {
             />
             <Icon
                navigate={() => {
-                  nav("");
+                  nav("orders");
                }}
                icon={faTruckFast}
                title={"Orders"}
@@ -53,21 +53,21 @@ function AdminPanel() {
             />
             <Icon
                navigate={() => {
-                  nav("");
+                  nav("specialorders");
                }}
                icon={faCircleQuestion}
                title={"Special orders"}
             />
             <Icon
                navigate={() => {
-                  nav("");
+                  nav("notifications");
                }}
                icon={faBell}
                title={"Notifications"}
             />
             <Icon
                navigate={() => {
-                  nav("");
+                  nav("sales");
                }}
                icon={faChartLine}
                title={"Sales"}
@@ -81,7 +81,7 @@ function AdminPanel() {
             />
             <Icon
                navigate={() => {
-                  nav("");
+                  nav("specialoffers");
                }}
                icon={faTag}
                title={"Special offers"}
@@ -95,7 +95,7 @@ function AdminPanel() {
             />
             <Icon
                navigate={() => {
-                  nav("");
+                  nav("aboutus");
                }}
                icon={faUserGroup}
                title={"About Us"}

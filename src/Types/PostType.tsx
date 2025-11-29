@@ -1,6 +1,5 @@
 export interface PostType {
-   subject: string;
+   title: string;
    image: string;
    text: string;
-   alt: string;
 }

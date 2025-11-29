@@ -1,15 +1,16 @@
 import axios from "axios";
-import HeroSectionWrapper from "../AdminComponents/HeroSection/HeroSectionWrapper.tsx";
+import AboutUsWrapper from "../AdminComponents/AboutUs/AboutUsWrapper.tsx";
 
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { NewHeroSectionDummyData } from "../Components/API/HeroSectionDummyData.tsx";
+import { AboutUsDummyData } from "../Components/API/AboutUsDummyData.tsx";
+import { PostType } from "../Types/PostType.ts";
 
-function HeroSection() {
-   console.log("HeroSection");
+function AboutUs() {
+   console.log("AboutUs");
    const { data, isPending, isError } = useQuery({
-      queryKey: ["HeroSectionSlides"],
+      queryKey: ["AboutUsPosts"],
       queryFn: async () => {
-         const response = await axios.get<string[]>(
+         const response = await axios.get<PostType[]>(
             "https://reqres.in/api/users/1",
             {
                headers: {
@@ -17,13 +18,13 @@ function HeroSection() {
                },
             }
          );
-         return NewHeroSectionDummyData || response.data;
+         return AboutUsDummyData || response.data;
       },
    });
 
-   const editHeroSection = useMutation({
+   const editPosts = useMutation({
       mutationKey: ["editHeroSectionSlides"],
-      mutationFn: async (newSlides: string[]) => {
+      mutationFn: async (newSlides: PostType[]) => {
          const response = await axios.put(
             "https://reqres.in/api/users/2",
             {
@@ -49,12 +50,9 @@ function HeroSection() {
 
    return (
       <div>
-         <HeroSectionWrapper
-            slides={data}
-            toEditHeroSection={editHeroSection.mutate}
-         />
+         <AboutUsWrapper toEditPosts={editPosts.mutate} posts={data} />
       </div>
    );
 }
 
-export default HeroSection;
+export default AboutUs;
