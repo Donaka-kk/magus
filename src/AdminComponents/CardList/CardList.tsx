@@ -1,23 +1,26 @@
 import ProductCard from "./ProductCard.tsx";
+import deepEqual from "fast-deep-equal";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { ProductSchemeType } from "../../Types/ProductType.tsx";
 import { useNavigate } from "react-router-dom";
 
 interface CardListProps {
    products: ProductSchemeType[];
-   toEditList: (slides: ProductSchemeType[]) => void;
+   toEditList: (products: number[]) => void;
+   toOpenForm: () => void;
 }
 
-function CardList({ products, toEditList }: CardListProps) {
+function CardList({ products, toEditList, toOpenForm }: CardListProps) {
    const [productsArray, setProductsArray] =
       useState<ProductSchemeType[]>(products);
    const nav = useNavigate();
+   const hasChanged = !deepEqual(productsArray, products);
 
-   const handleDiscard = () => {
+   const handleDiscard = useCallback(() => {
       setProductsArray(products);
-   };
-   const handleMoveToLeft = (index: number) => {
+   }, []);
+   const handleMoveToLeft = useCallback((index: number) => {
       if (index === 0) return;
       const newArray = [...productsArray];
       [newArray[index - 1], newArray[index]] = [
@@ -25,8 +28,8 @@ function CardList({ products, toEditList }: CardListProps) {
          newArray[index - 1],
       ];
       setProductsArray(newArray);
-   };
-   const handleMoveToRight = (index: number) => {
+   }, []);
+   const handleMoveToRight = useCallback((index: number) => {
       if (index === productsArray.length - 1) return;
       const newArray = [...productsArray];
       [newArray[index + 1], newArray[index]] = [
@@ -34,7 +37,14 @@ function CardList({ products, toEditList }: CardListProps) {
          newArray[index + 1],
       ];
       setProductsArray(newArray);
-   };
+   }, []);
+   const handleRemoveProduct = useCallback(
+      (index: number) => {
+         const newArray = productsArray.filter((_, i) => i !== index);
+         setProductsArray(newArray);
+      },
+      [productsArray]
+   );
 
    return (
       <div className="flex flex-col p-2 md:p-4 gap-4">
@@ -46,20 +56,24 @@ function CardList({ products, toEditList }: CardListProps) {
                Back to panel
             </button>
             <button
-               onClick={() => {}}
+               onClick={toOpenForm}
                className="border border-black p-1 rounded-lg"
             >
                Add Product Card
             </button>
             <button
                onClick={handleDiscard}
-               className="border border-black p-1 rounded-lg"
+               className={`border p-1 rounded-lg ${hasChanged ? "border-black text-black" : "border-gray-500 text-gray-500"}`}
+               disabled={!hasChanged}
             >
                Discard Changes
             </button>
             <button
-               onClick={() => toEditList(productsArray)}
-               className="border border-black p-1 rounded-lg"
+               onClick={() =>
+                  toEditList(productsArray.map((product) => product.id))
+               }
+               className={`border p-1 rounded-lg ${hasChanged ? "border-black text-black" : "border-gray-500 text-gray-500"}`}
+               disabled={!hasChanged}
             >
                Save Changes
             </button>
@@ -73,6 +87,7 @@ function CardList({ products, toEditList }: CardListProps) {
                      index={index}
                      moveToLeft={handleMoveToLeft}
                      moveToRight={handleMoveToRight}
+                     removeProduct={handleRemoveProduct}
                   />
                );
             })}

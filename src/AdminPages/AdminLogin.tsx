@@ -25,14 +25,14 @@ function AdminLogin() {
       try {
          console.log(username, password);
          const response = await axios.post(
-            "https://reqres.in/api/users",
-            JSON.stringify({
-               name: "morpheus",
-               job: "leader",
-            }),
+            "https://reqres.in/api/login",
+            {
+               email: "eve.holt@reqres.in",
+               password: "cityslicka",
+            },
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );

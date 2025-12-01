@@ -1,5 +1,5 @@
 import axios from "axios";
-import CardList from "../AdminComponents/CardList/CardList.tsx";
+import CarouselWrapper from "../AdminComponents/Carousel/CarouselWrapper.tsx";
 
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { ProductSchemeType } from "../Types/ProductType";
@@ -23,7 +23,7 @@ function Carousel() {
 
    const editCarousel = useMutation({
       mutationKey: ["editCarousel"],
-      mutationFn: async (newSlides: ProductSchemeType[]) => {
+      mutationFn: async (productsIds: number[]) => {
          const response = await axios.put(
             "https://reqres.in/api/users/2",
             {
@@ -48,7 +48,7 @@ function Carousel() {
 
    return (
       <div>
-         <CardList products={data} toEditList={editCarousel.mutate} />
+         <CarouselWrapper products={data} toEditList={editCarousel.mutate} />
       </div>
    );
 }

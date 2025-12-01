@@ -1,5 +1,5 @@
 import axios from "axios";
-import CardList from "../AdminComponents/CardList/CardList.tsx";
+import SpecialOffersWrapper from "../AdminComponents/SpecialOffers/SpecialOffersWrapper.tsx";
 
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { ProductSchemeType } from "../Types/ProductType";
@@ -23,7 +23,8 @@ function SpecialOffers() {
 
    const editSpecialOffers = useMutation({
       mutationKey: ["editSpecialOffers"],
-      mutationFn: async (newSlides: ProductSchemeType[]) => {
+      mutationFn: async (productsIds: number[]) => {
+         console.log(productsIds);
          const response = await axios.put(
             "https://reqres.in/api/users/2",
             {
@@ -48,7 +49,10 @@ function SpecialOffers() {
 
    return (
       <div>
-         <CardList products={data} toEditList={editSpecialOffers.mutate} />
+         <SpecialOffersWrapper
+            products={data}
+            toEditList={editSpecialOffers.mutate}
+         />
       </div>
    );
 }

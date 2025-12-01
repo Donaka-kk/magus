@@ -2,14 +2,16 @@ import axios from "axios";
 import OrdersWrapper from "../AdminComponents/Orders/OrdersWrapper.tsx";
 
 import { useQuery } from "@tanstack/react-query";
-import { TicketType } from "../Types/TicketType.tsx";
-import { OpenTickets } from "../AdminComponents/DummyDatas/Tickets.tsx";
-import { ClosedTickets } from "../AdminComponents/DummyDatas/Tickets.tsx";
-import { InProgressTickets } from "../AdminComponents/DummyDatas/Tickets.tsx";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { OrderType } from "../Types/OrderType.tsx";
 import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-const VALID_SECTIONS = ["proccessing", "shipped"];
+//dummy data
+import { ProccessingOrders } from "../AdminComponents/DummyDatas/Orders.tsx";
+import { ShippedOrders } from "../AdminComponents/DummyDatas/Orders.tsx";
+import { DeliveredOrders } from "../AdminComponents/DummyDatas/Orders.tsx";
+
+const VALID_SECTIONS = ["proccessing", "shipped", "delivered"];
 
 function Orders() {
    const [searchParams] = useSearchParams();
@@ -23,22 +25,22 @@ function Orders() {
    }, [section, nav]);
 
    const { data, isPending, isError } = useQuery({
-      queryKey: ["Tickets", section],
+      queryKey: ["Orders", section],
       queryFn: async () => {
-         const response = await axios.get<TicketType[]>(
+         const response = await axios.get<OrderType[]>(
             "https://reqres.in/api/users/1",
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
-         if (section === "in-progress") {
-            return InProgressTickets || response.data;
-         } else if (section === "closed") {
-            return ClosedTickets;
+         if (section === "shipped") {
+            return ShippedOrders || response.data;
+         } else if (section === "delivered") {
+            return DeliveredOrders;
          } else {
-            return OpenTickets;
+            return ProccessingOrders;
          }
       },
       enabled: !!section,
