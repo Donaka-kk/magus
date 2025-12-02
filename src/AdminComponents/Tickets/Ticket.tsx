@@ -10,7 +10,7 @@ function Ticket({ ticket }: TicketProps) {
 
    return (
       <div
-         onClick={() => nav("/admin/panel/ticket?id=" + ticket.id)}
+         onClick={() => nav("/admin/panel/TicketUpsert?id=" + ticket.id)}
          className="border rounded-xl shadow-xl hover:cursor-pointer p-2"
       >
          <p className="font-bold text-lg">{ticket.subject}</p>

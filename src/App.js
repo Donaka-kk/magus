@@ -26,7 +26,7 @@ import ProductUpsert from "./AdminPages/ProductUpsert.tsx";
 import Blogs from "./AdminPages/Blogs.tsx";
 import BlogUpsert from "./AdminPages/BlogUpsert.tsx";
 import Tickets from "./AdminPages/Tickets.tsx";
-import Ticket from "./AdminPages/Ticket.tsx";
+import TicketUpsert from "./AdminPages/TicketUpsert.tsx";
 import Carousel from "./AdminPages/Carousel.tsx";
 import HeroSection from "./AdminPages/HeroSection.tsx";
 import SpecialOffers from "./AdminPages/SpecialOffers.tsx";
@@ -77,7 +77,10 @@ function App() {
                      />
                      <Route path="panel/BlogUpsert" element={<BlogUpsert />} />
                      <Route path="panel/tickets" element={<Tickets />} />
-                     <Route path="panel/ticket" element={<Ticket />} />
+                     <Route
+                        path="panel/TicketUpsert"
+                        element={<TicketUpsert />}
+                     />
                      <Route path="panel/carousel" element={<Carousel />} />
                      <Route path="panel/orders" element={<Orders />} />
                      <Route path="panel/aboutus" element={<AboutUs />} />

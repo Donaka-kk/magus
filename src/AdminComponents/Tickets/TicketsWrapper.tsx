@@ -22,19 +22,19 @@ function TicketsWrapper({ tickets }: TicketsWrapperProps) {
                onClick={() => nav("/admin/panel/tickets?section=open")}
                className="p-2 border border-black rounded-xl"
             >
-               Open Tickets
+               "Open" Tickets
             </button>
             <button
                onClick={() => nav("/admin/panel/tickets?section=in-progress")}
                className="p-2 border border-black rounded-xl"
             >
-               In-Progress Tickets
+               "In-Progress" Tickets
             </button>
             <button
                onClick={() => nav("/admin/panel/tickets?section=closed")}
                className="p-2 border border-black rounded-xl"
             >
-               Closed Tickets
+               "Closed" Tickets
             </button>
          </div>
          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">

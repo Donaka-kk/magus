@@ -1,5 +1,5 @@
 import axios from "axios";
-import TicketForm from "../AdminComponents/Ticket/TicketForm.tsx";
+import TicketForm from "../AdminComponents/TicketForm/TicketForm.tsx";
 import NotifyPopUp from "../Components/Layout/NotifyPopUp.tsx";
 
 import { useSearchParams } from "react-router-dom";
@@ -20,7 +20,7 @@ function AdminTicket() {
             "https://reqres.in/api/users/1",
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
