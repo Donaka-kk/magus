@@ -1,6 +1,6 @@
 import { OrderType } from "../../Types/OrderType";
 
-export const ProccessingOrders: OrderType[] = [
+export const ProcessingOrders: OrderType[] = [
    {
       id: 123,
       totalPrice: 244,

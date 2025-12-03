@@ -1,33 +1,35 @@
 import axios from "axios";
-import OrdersWrapper from "../AdminComponents/Orders/OrdersWrapper.tsx";
+import SpecialOrderWrapper from "../AdminComponents/SpecialOrders/SpecialOrderWrapper.tsx";
 
 import { useQuery } from "@tanstack/react-query";
-import { OrderType } from "../Types/OrderType.tsx";
+import { SpecialOrderType } from "../Types/SpecialOrderType.tsx";
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 //dummy data
-import { ProcessingOrders } from "../AdminComponents/DummyDatas/Orders.tsx";
-import { ShippedOrders } from "../AdminComponents/DummyDatas/Orders.tsx";
-import { DeliveredOrders } from "../AdminComponents/DummyDatas/Orders.tsx";
+import { ProcessingOrders } from "../AdminComponents/DummyDatas/SpecialOrders.tsx";
+import { ShippedOrders } from "../AdminComponents/DummyDatas/SpecialOrders.tsx";
+import { DeliveredOrders } from "../AdminComponents/DummyDatas/SpecialOrders.tsx";
 
 const VALID_SECTIONS = ["proccessing", "shipped", "delivered"];
 
-function Orders() {
+function SpecialOrders() {
    const [searchParams] = useSearchParams();
    const section = searchParams.get("section");
    const nav = useNavigate();
 
    useEffect(() => {
       if (!VALID_SECTIONS.includes(section || "")) {
-         nav("/admin/panel/orders?section=proccessing", { replace: true });
+         nav("/admin/panel/specialorders?section=proccessing", {
+            replace: true,
+         });
       }
    }, [section, nav]);
 
    const { data, isPending, isError } = useQuery({
-      queryKey: ["Orders", section],
+      queryKey: ["SpecialOrders", section],
       queryFn: async () => {
-         const response = await axios.get<OrderType[]>(
+         const response = await axios.get<SpecialOrderType[]>(
             "https://reqres.in/api/users/1",
             {
                headers: {
@@ -49,6 +51,6 @@ function Orders() {
    if (isPending) return <div>...loading</div>;
    if (isError) return <div>...failed</div>;
 
-   return <OrdersWrapper orders={data} />;
+   return <SpecialOrderWrapper orders={data} />;
 }
-export default Orders;
+export default SpecialOrders;
