@@ -1,15 +1,19 @@
-import Order from "./Order.tsx";
+import OrdersList from "./OrdersList.tsx";
 import OrderPopUp from "./OrderPopUp.tsx";
 
+import { PageType } from "../../Types/PageType.tsx";
 import { OrderType } from "../../Types/OrderType.tsx";
 import { useNavigate } from "react-router-dom";
 import { useState, useCallback } from "react";
+import Paginator from "../Pagination/Paginator.tsx";
 
 interface OrdersWrapperProps {
-   orders: OrderType[];
+   page: PageType;
+   nextPage: () => void;
+   prevPage: () => void;
 }
 
-function OrdersWrapper({ orders }: OrdersWrapperProps) {
+function OrdersWrapper({ page, nextPage, prevPage }: OrdersWrapperProps) {
    const [showModal, setShowModal] = useState<boolean>(false);
    const [selectedOrder, setSelectedOrder] = useState<OrderType | null>(null);
    const nav = useNavigate();
@@ -53,17 +57,13 @@ function OrdersWrapper({ orders }: OrdersWrapperProps) {
                toClose={() => setShowModal(false)}
             />
          )}
-         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
-            {orders.map((order) => {
-               return (
-                  <Order
-                     key={order.id}
-                     order={order}
-                     toOpenModal={toOpenModal}
-                  />
-               );
-            })}
-         </div>
+         <OrdersList orders={page.data} toOpenModal={toOpenModal} />
+         <Paginator
+            currentPage={page.pageNumber}
+            totalPages={page.totalPages}
+            nextPage={nextPage}
+            prevPage={prevPage}
+         />
       </div>
    );
 }
