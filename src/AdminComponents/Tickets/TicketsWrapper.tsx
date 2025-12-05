@@ -1,13 +1,16 @@
-import Ticket from "./Ticket.tsx";
+import TicketsList from "./TicketsList.tsx";
+import Paginator from "../Pagination/Paginator.tsx";
 
-import { TicketType } from "../../Types/TicketType.tsx";
+import { PageType } from "../../Types/PageType.tsx";
 import { useNavigate } from "react-router-dom";
 
 interface TicketsWrapperProps {
-   tickets: TicketType[];
+   page: PageType;
+   nextPage: () => void;
+   prevPage: () => void;
 }
 
-function TicketsWrapper({ tickets }: TicketsWrapperProps) {
+function TicketsWrapper({ page, nextPage, prevPage }: TicketsWrapperProps) {
    const nav = useNavigate();
    return (
       <div className="flex flex-col gap-2 md:gap-4 p-2 md:p-4">
@@ -37,11 +40,13 @@ function TicketsWrapper({ tickets }: TicketsWrapperProps) {
                "Closed" Tickets
             </button>
          </div>
-         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
-            {tickets.map((ticket) => {
-               return <Ticket key={ticket.id} ticket={ticket} />;
-            })}
-         </div>
+         <TicketsList tickets={page.data} />
+         <Paginator
+            currentPage={page.pageNumber}
+            totalPages={page.totalPages}
+            nextPage={nextPage}
+            prevPage={prevPage}
+         />
       </div>
    );
 }
