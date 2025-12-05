@@ -8,7 +8,7 @@ import { ShopPageTwo } from "../Components/API/ShopDummyData.tsx";
 import { ShopPageThree } from "../Components/API/ShopDummyData.tsx";
 import { ShopPageFour } from "../Components/API/ShopDummyData.tsx";
 import { ShopPageFive } from "../Components/API/ShopDummyData.tsx";
-import { ShopPageType } from "../Types/ShopPageType.tsx";
+import { PageType } from "../Types/PageType.tsx";
 import { dummyCategories } from "../Components/API/CategoriesDummyData.tsx";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -16,44 +16,19 @@ import { useState } from "react";
 const Shop = () => {
    const [index, setIndex] = useState<number>(1);
    const { data, isPending, isError, fetchNextPage } =
-      useInfiniteQuery<ShopPageType>({
+      useInfiniteQuery<PageType>({
          queryKey: ["shopProducts"],
          queryFn: async ({ pageParam }) => {
             if (pageParam === 1) {
-               return {
-                  products: ShopPageOne,
-                  pageNumber: 1,
-                  totalPages: 5,
-                  totalCount: 50,
-               };
+               return ShopPageOne;
             } else if (pageParam === 2) {
-               return {
-                  products: ShopPageTwo,
-                  pageNumber: 2,
-                  totalPages: 5,
-                  totalCount: 50,
-               };
+               return ShopPageTwo;
             } else if (pageParam === 3) {
-               return {
-                  products: ShopPageThree,
-                  pageNumber: 3,
-                  totalPages: 5,
-                  totalCount: 50,
-               };
+               return ShopPageThree;
             } else if (pageParam === 4) {
-               return {
-                  products: ShopPageFour,
-                  pageNumber: 4,
-                  totalPages: 5,
-                  totalCount: 50,
-               };
+               return ShopPageFour;
             } else {
-               return {
-                  products: ShopPageFive,
-                  pageNumber: 5,
-                  totalPages: 5,
-                  totalCount: 50,
-               };
+               return ShopPageFive;
             }
          },
          initialPageParam: 1,
@@ -62,7 +37,7 @@ const Shop = () => {
             return lastPage.pageNumber + 1;
          },
       });
-   const page: ShopPageType = data?.pages[index - 1]!;
+   const page: PageType = data?.pages[index - 1]!;
 
    const {
       data: categories,
@@ -104,13 +79,14 @@ const Shop = () => {
       }
    };
 
+   console.log(page);
    return (
       <div className="relative flex flex-row p-5 gap-5">
          <div className="w-full flex flex-col justify-between">
             {page && (
                <>
                   <ShowCase
-                     products={page.products}
+                     products={page.data}
                      isPending={isPending}
                      isError={isError}
                   />

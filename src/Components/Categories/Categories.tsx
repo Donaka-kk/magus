@@ -2,8 +2,9 @@ import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import LoadingComponent from "../Layout/LoadingComponent";
+import { CategoryType } from "../../Types/CategoryType";
 interface CategorieProps {
-   categories: string[];
+   categories: CategoryType[];
    toHandleSearch: (searchText: string) => void;
    toChangeCategory: (newCategory: string) => void;
    categoriesPending: boolean;
@@ -16,7 +17,7 @@ const Categories = ({
    categoriesPending,
    categoriesError,
 }: CategorieProps) => {
-   const [selectedCategory, setSelectedCategory] = useState<string>(
+   const [selectedCategory, setSelectedCategory] = useState<CategoryType>(
       categories[0]
    );
    const [searchString, setSearchString] = useState<string>("");

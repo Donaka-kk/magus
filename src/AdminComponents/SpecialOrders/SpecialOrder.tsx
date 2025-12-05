@@ -40,7 +40,11 @@ function SpecialOrder({ order, toOpenModal }: SpecialOrderProps) {
                </div>
             </div>
          </div>
-         <img src={order.image} alt="specialOrderImage" />
+         <img
+            src={order.image}
+            alt="specialOrderImage"
+            className="w-40 h-40 object-cover"
+         />
          <p className="line-clamp-3">{order.description}</p>
          <button
             onClick={() => toOpenModal(order)}

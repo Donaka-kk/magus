@@ -1,24 +1,30 @@
-import SpecialOrder from "./SpecialOrder.tsx";
 import SpecialOrderPopUp from "./SpecialOrderPopUp.tsx";
+import Paginator from "../Pagination/Paginator.tsx";
+import SpecialOrderList from "./SpecialOrderList.tsx";
 
+import { PageType } from "../../Types/PageType.tsx";
 import { SpecialOrderType } from "../../Types/SpecialOrderType.tsx";
 import { useNavigate } from "react-router-dom";
 import { useState, useCallback } from "react";
 
 interface SpecialOrdersWrapperProps {
-   orders: SpecialOrderType[];
+   page: PageType;
+   nextPage: () => void;
+   prevPage: () => void;
 }
 
-function OrdersWrapper({ orders }: SpecialOrdersWrapperProps) {
+function OrdersWrapper({
+   page,
+   nextPage,
+   prevPage,
+}: SpecialOrdersWrapperProps) {
    const [showModal, setShowModal] = useState<boolean>(false);
-   const [selectedOrder, setSelectedOrder] = useState<SpecialOrderType | null>(
-      null
-   );
+   const [Order, setOrder] = useState<SpecialOrderType | null>(null);
    const nav = useNavigate();
+
    const toOpenModal = useCallback((order: SpecialOrderType) => {
-      console.log(order);
       setShowModal(true);
-      setSelectedOrder(order);
+      setOrder(order);
    }, []);
 
    return (
@@ -32,11 +38,11 @@ function OrdersWrapper({ orders }: SpecialOrdersWrapperProps) {
             </button>
             <button
                onClick={() =>
-                  nav("/admin/panel/specialorders?section=proccessing")
+                  nav("/admin/panel/specialorders?section=processing")
                }
                className="p-2 border border-black rounded-xl"
             >
-               "Proccessing" Orders
+               "Processing" Orders
             </button>
             <button
                onClick={() => nav("/admin/panel/specialorders?section=shipped")}
@@ -53,23 +59,19 @@ function OrdersWrapper({ orders }: SpecialOrdersWrapperProps) {
                "Delivered" Orders
             </button>
          </div>
-         {showModal && selectedOrder && (
+         {showModal && Order && (
             <SpecialOrderPopUp
-               order={selectedOrder}
+               order={Order}
                toClose={() => setShowModal(false)}
             />
          )}
-         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
-            {orders.map((order) => {
-               return (
-                  <SpecialOrder
-                     key={order.id}
-                     order={order}
-                     toOpenModal={toOpenModal}
-                  />
-               );
-            })}
-         </div>
+         <SpecialOrderList orders={page.data} toOpenModal={toOpenModal} />
+         <Paginator
+            currentPage={page.pageNumber}
+            totalPages={page.totalPages}
+            nextPage={nextPage}
+            prevPage={prevPage}
+         />
       </div>
    );
 }
