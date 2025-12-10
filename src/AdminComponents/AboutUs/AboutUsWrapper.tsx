@@ -1,8 +1,8 @@
-import Post from "./Post.tsx";
 import PostForm from "./PostForm.tsx";
 import deepEqual from "fast-deep-equal";
+import PostsList from "./PostsList.tsx";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PostType } from "../../Types/PostType";
 
@@ -12,12 +12,17 @@ interface AboutUsWrapperProps {
 }
 
 function AboutUsWrapper({ posts, toEditPosts }: AboutUsWrapperProps) {
-   console.log("AboutUsWrapper");
-   const [newPostForm, setNewPostForm] = useState<boolean>(false);
+   const [showPostForm, setShowPostForm] = useState<boolean>(false);
    const [postsArray, setPostsArray] = useState<PostType[]>(posts);
+   const [selectedPost, setSelectedPost] = useState<PostType | undefined>(
+      undefined
+   );
    const nav = useNavigate();
    const hasChanged = !deepEqual(postsArray, posts);
 
+   useEffect(() => {
+      setPostsArray(posts);
+   }, [posts]);
    const handleDiscard = useCallback(() => {
       setPostsArray(posts);
    }, [posts]);
@@ -45,7 +50,14 @@ function AboutUsWrapper({ posts, toEditPosts }: AboutUsWrapperProps) {
       },
       [postsArray]
    );
-   const handleRemoveSlide = useCallback(
+   const handleEditPost = useCallback(
+      (post: PostType) => {
+         setSelectedPost(post);
+         setShowPostForm(true);
+      },
+      [setSelectedPost, setShowPostForm]
+   );
+   const handleRemovePost = useCallback(
       (index: number) => {
          const newArray = postsArray.filter((_, i) => i !== index);
          setPostsArray(newArray);
@@ -54,47 +66,52 @@ function AboutUsWrapper({ posts, toEditPosts }: AboutUsWrapperProps) {
    );
 
    return (
-      <div className="flex flex-col p-2 md:p-4 gap-4">
-         <div className="flex justify-center w-full gap-4">
+      <div className="flex flex-col py-4 px-2 md:px-4 gap-4 bg-background">
+         <div className="flex justify-center w-full gap-2 md:gap-4 text-sm md:text-base">
             <button
                onClick={() => nav("/admin/panel")}
-               className="border border-black p-1 rounded-lg"
+               className="border border-black p-2 rounded-lg shadow-lg active:shadow-inner active:scale-95"
             >
                Back to panel
             </button>
             <button
-               onClick={() => setNewPostForm(true)}
-               className="border border-black p-1 rounded-lg"
+               onClick={() => setShowPostForm(true)}
+               className="border border-black p-2 rounded-lg shadow-lg active:shadow-inner active:scale-95"
             >
                Add new post
             </button>
             <button
                onClick={handleDiscard}
-               className={`border p-1 rounded-lg ${hasChanged ? "border-black text-black" : "border-gray-500 text-gray-500"}`}
+               className={`border p-2 rounded-lg shadow-lg ${hasChanged ? "border-black text-black active:shadow-inner active:scale-95" : "border-gray-500 text-gray-500"}`}
                disabled={!hasChanged}
             >
                Discard Changes
             </button>
             <button
                onClick={() => toEditPosts(postsArray)}
-               className={`border p-1 rounded-lg ${hasChanged ? "border-black text-black" : "border-gray-500 text-gray-500"}`}
+               className={`border p-2 rounded-lg shadow-lg ${hasChanged ? "border-black text-black active:shadow-inner active:scale-95" : "border-gray-500 text-gray-500"}`}
                disabled={!hasChanged}
             >
                Save Changes
             </button>
          </div>
-         {newPostForm && <PostForm toClose={() => setNewPostForm(false)} />}
-         <div className="w-full flex flex-col gap-4">
-            {postsArray.map((post, index) => (
-               <Post
-                  key={index}
-                  post={post}
-                  index={index}
-                  moveUp={handleMoveUp}
-                  moveDown={handleMoveDown}
-                  removePost={handleRemoveSlide}
-               />
-            ))}
+         {showPostForm && (
+            <PostForm
+               toClose={() => {
+                  setSelectedPost(undefined);
+                  setShowPostForm(false);
+               }}
+               post={selectedPost}
+            />
+         )}
+         <div className="w-full">
+            <PostsList
+               posts={postsArray}
+               handleMoveUp={handleMoveUp}
+               handleMoveDown={handleMoveDown}
+               handleEditPost={handleEditPost}
+               handleRemovePost={handleRemovePost}
+            />
          </div>
       </div>
    );

@@ -81,6 +81,16 @@ module.exports = {
                "50%": { transform: "translate(0,0)", opacity: 1 },
                "100%": { transform: "translate(0,0)", opacity: 1 },
             },
+
+            //gradient border
+            border_spin: {
+               "100%": { transform: "rotate(-360deg)" },
+            },
+            shine: {
+               "0%": { left: "-400px" },
+               "10%": { left: "100%" }, // animation happens quickly
+               "100%": { left: "100%" }, // stays still for the remaining 5s
+            },
          },
          animation: {
             wiggle: "wiggle 1s ease-in-out infinite",
@@ -99,6 +109,9 @@ module.exports = {
 
             hero_fadeOutRight: "hero_fadeOutRight 1s ease-in-out forwards",
             hero_fadeInLeft: "hero_fadeInLeft 1s ease-in-out forwards",
+
+            border_spin: "border_spin 4s linear infinite",
+            shine: "shine 4s linear infinite",
          },
          colors: {
             transparent02: "#00000033",
@@ -118,5 +131,13 @@ module.exports = {
          },
       },
    },
-   plugins: [],
+   plugins: [
+      plugin(({ addUtilities }) => {
+         addUtilities({
+            ".no-overflow-anchoring": {
+               overflowAnchor: "none",
+            },
+         });
+      }),
+   ],
 };

@@ -1,38 +1,42 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserProvider } from "./Context/User.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { persistQueryClient } from "@tanstack/react-query-persist-client";
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
-
-import Home from "./Pages/Home.tsx";
-import Aboutus from "./Pages/Aboutus.tsx";
-import NotFound from "./Pages/NotFound";
-import Contact from "./Pages/Contact.tsx";
-import Shop from "./Pages/Shop.tsx";
-import Product from "./Pages/Product.tsx";
-import Login from "./Pages/Login.tsx";
-import Cart from "./Pages/Cart";
-import Profile from "./Pages/Profile.tsx";
 //layouts
-import AdminLayout from "./MainLayouts/AdminLayout";
-import MainLayout from "./MainLayouts/MainLayout";
-import ProtectedRoute from "./MainLayouts/ProtectedRoute";
+const AdminLayout = lazy(() => import("./MainLayouts/AdminLayout"));
+const MainLayout = lazy(() => import("./MainLayouts/MainLayout"));
+const ProtectedRoute = lazy(() => import("./MainLayouts/ProtectedRoute"));
+const LazyComponent1 = lazy(
+   () => import("./Components/Layout/LazyComponent1.tsx")
+);
 //admin section
-import AdminLogin from "./AdminPages/AdminLogin.tsx";
-import AdminPanel from "./AdminPages/AdminPanel.tsx";
-import Products from "./AdminPages/Products.tsx";
-import ProductUpsert from "./AdminPages/ProductUpsert.tsx";
-import Blogs from "./AdminPages/Blogs.tsx";
-import BlogUpsert from "./AdminPages/BlogUpsert.tsx";
-import Tickets from "./AdminPages/Tickets.tsx";
-import TicketUpsert from "./AdminPages/TicketUpsert.tsx";
-import Carousel from "./AdminPages/Carousel.tsx";
-import HeroSection from "./AdminPages/HeroSection.tsx";
-import SpecialOffers from "./AdminPages/SpecialOffers.tsx";
-import Orders from "./AdminPages/Orders.tsx";
-import AboutUs from "./AdminPages/AboutUs.tsx";
-import SpecialOrders from "./AdminPages/SpecialOrders.tsx";
+const AdminLogin = lazy(() => import("./AdminPages/AdminLogin.tsx"));
+const AdminPanel = lazy(() => import("./AdminPages/AdminPanel.tsx"));
+const Products = lazy(() => import("./AdminPages/Products.tsx"));
+const ProductUpsert = lazy(() => import("./AdminPages/ProductUpsert.tsx"));
+const Blogs = lazy(() => import("./AdminPages/Blogs.tsx"));
+const BlogUpsert = lazy(() => import("./AdminPages/BlogUpsert.tsx"));
+const Tickets = lazy(() => import("./AdminPages/Tickets.tsx"));
+const TicketUpsert = lazy(() => import("./AdminPages/TicketUpsert.tsx"));
+const Carousel = lazy(() => import("./AdminPages/Carousel.tsx"));
+const HeroSection = lazy(() => import("./AdminPages/HeroSection.tsx"));
+const SpecialOffers = lazy(() => import("./AdminPages/SpecialOffers.tsx"));
+const Orders = lazy(() => import("./AdminPages/Orders.tsx"));
+const AboutUs = lazy(() => import("./AdminPages/AboutUs.tsx"));
+const SpecialOrders = lazy(() => import("./AdminPages/SpecialOrders.tsx"));
+//main app
+const Home = lazy(() => import("./Pages/Home.tsx"));
+const Aboutus = lazy(() => import("./Pages/Aboutus.tsx"));
+const NotFound = lazy(() => import("./Pages/NotFound"));
+const Contact = lazy(() => import("./Pages/Contact.tsx"));
+const Shop = lazy(() => import("./Pages/Shop.tsx"));
+const Product = lazy(() => import("./Pages/Product.tsx"));
+const Login = lazy(() => import("./Pages/Login.tsx"));
+const Cart = lazy(() => import("./Pages/Cart"));
+const Profile = lazy(() => import("./Pages/Profile.tsx"));
 
 const queryClient = new QueryClient();
 const persister = createAsyncStoragePersister({
@@ -64,9 +68,11 @@ function App() {
                   <Route
                      path="/admin/*"
                      element={
-                        <ProtectedRoute allowedRole={"admin"}>
-                           <AdminLayout />
-                        </ProtectedRoute>
+                        <Suspense fallback={<LazyComponent1 />}>
+                           <ProtectedRoute allowedRole={"admin"}>
+                              <AdminLayout />
+                           </ProtectedRoute>
+                        </Suspense>
                      }
                   >
                      <Route path="panel" element={<AdminPanel />} />
