@@ -66,7 +66,7 @@ function AboutUsWrapper({ posts, toEditPosts }: AboutUsWrapperProps) {
    );
 
    return (
-      <div className="flex flex-col py-4 px-2 md:px-4 gap-4 bg-background">
+      <div className="w-full min-h-screen flex flex-col py-4 px-2 md:px-4 gap-4 bg-background">
          <div className="flex justify-center w-full gap-2 md:gap-4 text-sm md:text-base">
             <button
                onClick={() => nav("/admin/panel")}

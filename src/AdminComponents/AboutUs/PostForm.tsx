@@ -69,67 +69,71 @@ function PostForm({ toClose, post }: NewPostFormProps) {
    };
 
    return (
-      <div className="fixed w-full h-full top-0 left-0 flex justify-center items-center z-20">
+      <div className="fixed inset-0 flex justify-center items-center z-20">
          <div
             onClick={() => toClose()}
             className="absolute w-full h-full bg-transparent06"
          />
-         <form
-            onSubmit={(event) => onSubmit(event)}
-            className="relative flex flex-col w-8/12 h-8/12 bg-white gap-4 p-4 z-10 overflow-y-auto"
-         >
-            <h2 className="text-center font-semibold text-lg">
-               {post ? "Edit post" : "Add new post"}
-            </h2>
-            <div className="flex flex-col">
-               <label htmlFor="slideImage">Post Image</label>
-               <input
-                  type="file"
-                  required={!post}
-                  accept="image/*"
-                  onChange={(e) => setImage(e.target.files?.[0] || null)}
-               />
-            </div>
-            {imagePreview && (
-               <img src={imagePreview} alt="postImage" className="w-96" />
-            )}
-            <div className="flex flex-col">
-               <label>Title</label>
-               <input
-                  type="text"
-                  defaultValue={post?.title}
-                  required
-                  placeholder="Enter title"
-                  className="outline-none border p-1"
-                  onChange={(e) => setTitle(e.target.value)}
-               />
-            </div>
-            <div className="flex flex-col flex-1">
-               <label>Text</label>
-               <textarea
-                  defaultValue={post?.text}
-                  required
-                  placeholder="Enter text"
-                  className="outline-none border p-1 w-full min-h-40 h-full resize-none"
-                  onChange={(e) => setText(e.target.value)}
-               />
-            </div>
-            <div>
-               {message && (
-                  <p
-                     className={`text-xl font-bold text-center ${message.successful ? "text-green-500" : "text-red-500"}`}
-                  >
-                     {message.text}
-                  </p>
+         <div className="max-h-screen overflow-y-auto relative w-9/12 sm:w-7/12 md:w-96">
+            <form
+               onSubmit={(event) => onSubmit(event)}
+               className="relative flex flex-col bg-white gap-2 p-2 md:gap-4 md:p-4 z-10"
+            >
+               <h2 className="text-center font-semibold text-lg">
+                  {post ? "Edit post" : "Add new post"}
+               </h2>
+               <div className="flex flex-col">
+                  <label>Title</label>
+                  <input
+                     type="text"
+                     defaultValue={post?.title}
+                     required
+                     placeholder="Enter title"
+                     className="outline-none border p-1"
+                     onChange={(e) => setTitle(e.target.value)}
+                  />
+               </div>
+               <div className="flex flex-col flex-1">
+                  <label>Text</label>
+                  <textarea
+                     defaultValue={post?.text}
+                     required
+                     placeholder="Enter text"
+                     className="outline-none border p-1 w-full h-full min-h-40 resize-none"
+                     onChange={(e) => setText(e.target.value)}
+                  />
+               </div>
+               <div>
+                  {message && (
+                     <p
+                        className={`text-xl font-bold text-center ${message.successful ? "text-green-500" : "text-red-500"}`}
+                     >
+                        {message.text}
+                     </p>
+                  )}
+               </div>
+               <div className="flex flex-col">
+                  <label htmlFor="slideImage">Post Image</label>
+                  <input
+                     type="file"
+                     required={!post}
+                     accept="image/*"
+                     onChange={(e) => setImage(e.target.files?.[0] || null)}
+                  />
+               </div>
+               {imagePreview && (
+                  <img src={imagePreview} alt="postImage" className="w-full" />
                )}
-            </div>
-            <div className="flex justify-center gap-4">
-               <button type="button" onClick={() => toClose()}>
-                  Cancel
-               </button>
-               <button type="submit">{post ? "Edit post" : "Add post"}</button>
-            </div>
-         </form>
+               <div className="flex justify-center gap-4">
+                  <button type="button" onClick={() => toClose()}>
+                     Cancel
+                  </button>
+                  <button type="submit">
+                     {post ? "Edit post" : "Add post"}
+                  </button>
+               </div>
+            </form>
+         </div>
       </div>
    );
 }

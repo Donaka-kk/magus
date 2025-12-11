@@ -1,3 +1,5 @@
+import { SlideType } from "../../Types/SlideType";
+
 import image1 from "../../utilities/hero4.jpg";
 import image2 from "../../utilities/hero5.jpg";
 import image3 from "../../utilities/hero6.jpg";
@@ -35,4 +37,20 @@ export const HeroSectionDummyData = [
    },
 ];
 
-export const NewHeroSectionDummyData = [image1, image2, image3];
+export const NewHeroSectionDummyData: SlideType[] = [
+   {
+      id: 1,
+      image: "https://cdn.pixabay.com/photo/2016/11/21/06/53/beautiful-natural-image-1844362_640.jpg",
+      destination: "https://www.google.com",
+   },
+   {
+      id: 2,
+      image: "https://png.pngtree.com/thumb_back/fh260/background/20240522/pngtree-abstract-cloudy-background-beautiful-natural-streaks-of-sky-and-clouds-red-image_15684333.jpg",
+      destination: "https://www.youtube.com",
+   },
+   {
+      id: 3,
+      image: "https://img.freepik.com/free-photo/beautiful-view-sunset-sea_23-2148019892.jpg?semt=ais_hybrid&w=740&q=80",
+      destination: "https://www.digikala.com",
+   },
+];

@@ -1,3 +1,4 @@
+import { SlideType } from "../../Types/SlideType";
 import {
    faChevronDown,
    faChevronUp,
@@ -7,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { memo } from "react";
 
 interface SlideProps {
-   slide: string;
+   slide: SlideType;
    index: number;
    moveUp: (productId: number) => void;
    moveDown: (productId: number) => void;
@@ -15,11 +16,10 @@ interface SlideProps {
 }
 
 function Slide({ slide, index, moveUp, moveDown, removeSlide }: SlideProps) {
-   console.log("Slide");
    return (
       <div className="flex border border-black p-2 gap-2">
          <img
-            src={slide}
+            src={slide.image}
             alt="heroSectionSlide"
             className="h-[300px] flex-1 object-cover min-w-0"
          />

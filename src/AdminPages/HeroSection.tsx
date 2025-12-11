@@ -1,19 +1,24 @@
 import axios from "axios";
 import HeroSectionWrapper from "../AdminComponents/HeroSection/HeroSectionWrapper.tsx";
 
-import { useMutation, useQuery } from "@tanstack/react-query";
+import {
+   useMutation,
+   useQueryClient,
+   useSuspenseQuery,
+} from "@tanstack/react-query";
 import { NewHeroSectionDummyData } from "../Components/API/HeroSectionDummyData.tsx";
+import { SlideType } from "../Types/SlideType.tsx";
 
 function HeroSection() {
-   console.log("HeroSection");
-   const { data, isPending, isError } = useQuery({
+   const queryClient = useQueryClient();
+   const { data } = useSuspenseQuery({
       queryKey: ["HeroSectionSlides"],
       queryFn: async () => {
-         const response = await axios.get<string[]>(
+         const response = await axios.get<SlideType[]>(
             "https://reqres.in/api/users/1",
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
@@ -22,38 +27,28 @@ function HeroSection() {
    });
 
    const editHeroSection = useMutation({
-      mutationKey: ["editHeroSectionSlides"],
-      mutationFn: async (newSlides: string[]) => {
+      mutationFn: async (newSlides: SlideType[]) => {
          const response = await axios.put(
             "https://reqres.in/api/users/2",
-            {
-               name: "morpheus",
-               job: "zion resident",
-            },
+            newSlides,
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
          return response.data;
       },
-      onSuccess(data, variables, onMutateResult, context) {
-         //will show a popup
-         console.log("HeroSection updated successfully");
+      onSuccess() {
+         queryClient.invalidateQueries({ queryKey: ["HeroSectionSlides"] });
       },
    });
 
-   if (isPending) return <div>...loading</div>;
-   if (isError) return <div>...failed</div>;
-
    return (
-      <div>
-         <HeroSectionWrapper
-            slides={data}
-            toEditHeroSection={editHeroSection.mutate}
-         />
-      </div>
+      <HeroSectionWrapper
+         toEditHeroSection={editHeroSection.mutate}
+         slides={data}
+      />
    );
 }
 
