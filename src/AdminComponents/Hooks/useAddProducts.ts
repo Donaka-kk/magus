@@ -1,33 +1,34 @@
-import { useQueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
-export function useAddProducts(toCloseModal: () => void) {
-   console.log("useAddProducts called");
+import { ResponseMessageType } from "../../Types/ResponseMessageType";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+
+export function useAddProducts(
+   toCloseModal: () => void,
+   setMessage: (response: ResponseMessageType) => void,
+   queryKey: string
+) {
    const queryClient = useQueryClient();
    return useMutation({
       mutationKey: ["addProduct"],
       mutationFn: async (productIds: number[]) => {
-         console.log(productIds);
          const response = await axios.post(
             "https://reqres.in/api/users",
-            {
-               name: "morpheus",
-               job: "leader",
-            },
+            productIds,
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
          return response.data;
       },
       onSuccess: () => {
-         queryClient.invalidateQueries({ queryKey: ["AboutUsPosts"] });
+         queryClient.invalidateQueries({ queryKey: [queryKey] });
          toCloseModal();
       },
       onError: (error) => {
-         console.error("Error adding new slide:", error);
+         setMessage({ text: error.message, successful: false });
       },
    });
 }

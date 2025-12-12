@@ -1,11 +1,10 @@
 import axios from "axios";
 
 import { useQuery } from "@tanstack/react-query";
-import { ProductSchemeType } from "../../Types/ProductType";
-import { ShopPageOne } from "../../Components/API/ShopDummyData.tsx";
+import { ProductSchemeType } from "../../Types/ProductType.tsx";
+import { CarouselDummyData } from "../../Components/API/CarouselDummyData.tsx";
 
 export function useGetProducts(category: string) {
-   console.log("useGetProducts called");
    return useQuery({
       queryKey: ["Products", category],
       queryFn: async () => {
@@ -13,11 +12,11 @@ export function useGetProducts(category: string) {
             "https://reqres.in/api/users/1",
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
-         return ShopPageOne || response.data;
+         return CarouselDummyData || response.data;
       },
       enabled: !!category,
    });
