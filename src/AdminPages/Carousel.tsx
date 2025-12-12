@@ -1,19 +1,19 @@
 import axios from "axios";
 import CarouselWrapper from "../AdminComponents/Carousel/CarouselWrapper.tsx";
 
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useSuspenseQuery, useMutation } from "@tanstack/react-query";
 import { ProductSchemeType } from "../Types/ProductType";
 import { CarouselDummyData } from "../Components/API/CarouselDummyData.tsx";
 
 function Carousel() {
-   const { data, isPending, isError } = useQuery({
+   const { data } = useSuspenseQuery({
       queryKey: ["CarouselProducts"],
       queryFn: async () => {
          const response = await axios.get<ProductSchemeType[]>(
             "https://reqres.in/api/users/1",
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
@@ -22,17 +22,13 @@ function Carousel() {
    });
 
    const editCarousel = useMutation({
-      mutationKey: ["editCarousel"],
       mutationFn: async (productsIds: number[]) => {
          const response = await axios.put(
             "https://reqres.in/api/users/2",
-            {
-               name: "morpheus",
-               job: "zion resident",
-            },
+            productsIds,
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
@@ -43,14 +39,5 @@ function Carousel() {
       },
    });
 
-   if (isPending) return <div>...loading</div>;
-   if (isError) return <div>...failed</div>;
-
-   return (
-      <div>
-         <CarouselWrapper products={data} toEditList={editCarousel.mutate} />
-      </div>
-   );
+   return <CarouselWrapper products={data} toEditList={editCarousel.mutate} />;
 }
-
-export default Carousel;

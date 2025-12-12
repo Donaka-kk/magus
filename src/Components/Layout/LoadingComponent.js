@@ -1,10 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
+// interface LoadingComponentProps {
+//    failed?: boolean;
+// }
+
 function LoadingComponent({ failed }) {
    if (failed) {
       return (
-         <div className="w-full h-full flex flex-col items-center justify-center gap-4">
+         <div className="w-full h-full flex flex-col items-center justify-center gap-4 p-5">
             <p className="font-bold text-3xl">something went wrong ...</p>
             <p className="font-semibold text-xl">try again </p>
          </div>
@@ -12,7 +16,7 @@ function LoadingComponent({ failed }) {
    }
 
    return (
-      <div className="w-full h-full flex flex-col justify-center items-center gap-4">
+      <div className="w-full h-full flex flex-col justify-center items-center gap-4 p-5">
          <p className="animate-spin text-4xl">
             <FontAwesomeIcon icon={faSpinner} />
          </p>

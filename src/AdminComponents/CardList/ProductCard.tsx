@@ -21,12 +21,13 @@ function ProductCard({
    moveToRight,
    removeProduct,
 }: ProductCardProps) {
-   console.log("ProductCard");
    return (
-      <div className="border">
+      <div className="border border-black">
          <img src={product.image} alt={"productImage"} />
-         <p>{product.name}</p>
-         <p>{product.category}</p>
+         <div className="flex flex-col p-1 text-sm md:text-base">
+            <p>{product.name}</p>
+            <p>{product.category}</p>
+         </div>
          <div className="flex w-full justify-center items-center gap-2">
             <button
                onClick={() => moveToLeft(index)}

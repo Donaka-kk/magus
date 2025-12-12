@@ -46,7 +46,7 @@ export const CarouselDummyData: ProductSchemeType[] = [
       id: 11,
       name: "Orchid",
       price: 2,
-      image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/orchids-lowers.jpg.avif",
+      image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/orchids-flowers.jpg.avif",
       discount: 0,
       category: "flower",
       selectedColor: "#4287f5",
