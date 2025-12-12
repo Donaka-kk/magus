@@ -41,3 +41,4 @@ function Carousel() {
 
    return <CarouselWrapper products={data} toEditList={editCarousel.mutate} />;
 }
+export default Carousel;
