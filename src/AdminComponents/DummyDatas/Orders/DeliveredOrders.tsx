@@ -8,11 +8,11 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "delivered",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
-         deliveredDate: "unknown",
+         shippedDate: "20/02/2020",
+         deliveredDate: "21/02/2020",
          items: [
             {
                count: 2,
@@ -106,11 +106,11 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "delivered",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
-         deliveredDate: "unknown",
+         shippedDate: "20/02/2020",
+         deliveredDate: "21/02/2020",
          items: [
             {
                count: 2,
@@ -204,11 +204,11 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "delivered",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
-         deliveredDate: "unknown",
+         shippedDate: "20/02/2020",
+         deliveredDate: "21/02/2020",
          items: [
             {
                count: 2,
@@ -302,11 +302,11 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "delivered",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
-         deliveredDate: "unknown",
+         shippedDate: "20/02/2020",
+         deliveredDate: "21/02/2020",
          items: [
             {
                count: 2,
@@ -400,11 +400,11 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "delivered",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
-         deliveredDate: "unknown",
+         shippedDate: "20/02/2020",
+         deliveredDate: "21/02/2020",
          items: [
             {
                count: 2,
@@ -498,11 +498,11 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "delivered",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
-         deliveredDate: "unknown",
+         shippedDate: "20/02/2020",
+         deliveredDate: "21/02/2020",
          items: [
             {
                count: 2,
@@ -596,11 +596,11 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "delivered",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
-         deliveredDate: "unknown",
+         shippedDate: "20/02/2020",
+         deliveredDate: "21/02/2020",
          items: [
             {
                count: 2,
@@ -694,11 +694,11 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "delivered",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
-         deliveredDate: "unknown",
+         shippedDate: "20/02/2020",
+         deliveredDate: "21/02/2020",
          items: [
             {
                count: 2,
@@ -792,11 +792,11 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "delivered",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
-         deliveredDate: "unknown",
+         shippedDate: "20/02/2020",
+         deliveredDate: "21/02/2020",
          items: [
             {
                count: 2,
@@ -890,11 +890,11 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "delivered",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
-         deliveredDate: "unknown",
+         shippedDate: "20/02/2020",
+         deliveredDate: "21/02/2020",
          items: [
             {
                count: 2,

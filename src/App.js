@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { persistQueryClient } from "@tanstack/react-query-persist-client";
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
+import { Toaster } from "react-hot-toast";
 //layouts
 const AdminLayout = lazy(() => import("./MainLayouts/AdminLayout"));
 const MainLayout = lazy(() => import("./MainLayouts/MainLayout"));
@@ -46,70 +47,76 @@ persistQueryClient({ queryClient, persister });
 
 function App() {
    return (
-      <Router>
-         <QueryClientProvider client={queryClient}>
-            <UserProvider>
-               <Routes>
-                  {/* Main site layout */}
-                  <Route element={<MainLayout />}>
-                     <Route path="/" element={<Home />} />
-                     <Route path="/aboutus" element={<Aboutus />} />
-                     <Route path="/contact" element={<Contact />} />
-                     <Route path="/login" element={<Login />} />
-                     <Route path="/Shop" element={<Shop />} />
-                     <Route path="/Product" element={<Product />} />
-                     <Route path="/Cart" element={<Cart />} />
-                     <Route path="/Profile" element={<Profile />} />
-                     <Route path="/*" element={<NotFound />} />
-                  </Route>
+      <>
+         <Toaster />
+         <Router>
+            <QueryClientProvider client={queryClient}>
+               <UserProvider>
+                  <Routes>
+                     {/* Main site layout */}
+                     <Route element={<MainLayout />}>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/aboutus" element={<Aboutus />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/Shop" element={<Shop />} />
+                        <Route path="/Product" element={<Product />} />
+                        <Route path="/Cart" element={<Cart />} />
+                        <Route path="/Profile" element={<Profile />} />
+                        <Route path="/*" element={<NotFound />} />
+                     </Route>
 
-                  {/* Admin layout */}
-                  <Route path="/admin" element={<AdminLogin />} />
-                  <Route
-                     path="/admin/*"
-                     element={
-                        <Suspense fallback={<LazyComponent1 />}>
-                           <ProtectedRoute allowedRole={"admin"}>
-                              <AdminLayout />
-                           </ProtectedRoute>
-                        </Suspense>
-                     }
-                  >
-                     <Route path="panel" element={<AdminPanel />} />
-                     <Route path="panel/Blogs" element={<Blogs />} />
-                     <Route path="panel/Products" element={<Products />} />
+                     {/* Admin layout */}
+                     <Route path="/admin" element={<AdminLogin />} />
                      <Route
-                        path="panel/ProductUpsert"
-                        element={<ProductUpsert />}
-                     />
-                     <Route path="panel/BlogUpsert" element={<BlogUpsert />} />
-                     <Route path="panel/tickets" element={<Tickets />} />
-                     <Route
-                        path="panel/TicketUpsert"
-                        element={<TicketUpsert />}
-                     />
-                     <Route path="panel/carousel" element={<Carousel />} />
-                     <Route path="panel/orders" element={<Orders />} />
-                     <Route path="panel/aboutus" element={<AboutUs />} />
-                     <Route
-                        path="panel/specialorders"
-                        element={<SpecialOrders />}
-                     />
-                     <Route
-                        path="panel/herosection"
-                        element={<HeroSection />}
-                     />
-                     <Route
-                        path="panel/specialoffers"
-                        element={<SpecialOffers />}
-                     />
-                     <Route path="*" element={<NotFound />} />
-                  </Route>
-               </Routes>
-               <ReactQueryDevtools />
-            </UserProvider>
-         </QueryClientProvider>
-      </Router>
+                        path="/admin/*"
+                        element={
+                           <Suspense fallback={<LazyComponent1 />}>
+                              <ProtectedRoute allowedRole={"admin"}>
+                                 <AdminLayout />
+                              </ProtectedRoute>
+                           </Suspense>
+                        }
+                     >
+                        <Route path="panel" element={<AdminPanel />} />
+                        <Route path="panel/Blogs" element={<Blogs />} />
+                        <Route path="panel/Products" element={<Products />} />
+                        <Route
+                           path="panel/ProductUpsert"
+                           element={<ProductUpsert />}
+                        />
+                        <Route
+                           path="panel/BlogUpsert"
+                           element={<BlogUpsert />}
+                        />
+                        <Route path="panel/tickets" element={<Tickets />} />
+                        <Route
+                           path="panel/TicketUpsert"
+                           element={<TicketUpsert />}
+                        />
+                        <Route path="panel/carousel" element={<Carousel />} />
+                        <Route path="panel/orders" element={<Orders />} />
+                        <Route path="panel/aboutus" element={<AboutUs />} />
+                        <Route
+                           path="panel/specialorders"
+                           element={<SpecialOrders />}
+                        />
+                        <Route
+                           path="panel/herosection"
+                           element={<HeroSection />}
+                        />
+                        <Route
+                           path="panel/specialoffers"
+                           element={<SpecialOffers />}
+                        />
+                        <Route path="*" element={<NotFound />} />
+                     </Route>
+                  </Routes>
+                  <ReactQueryDevtools />
+               </UserProvider>
+            </QueryClientProvider>
+         </Router>
+      </>
    );
 }
 

@@ -6,19 +6,28 @@ import { OrderType } from "../../Types/OrderType.tsx";
 import { useNavigate } from "react-router-dom";
 import { useState, useCallback } from "react";
 import Paginator from "../Pagination/Paginator.tsx";
+import { UseMutationResult } from "@tanstack/react-query";
 
 interface OrdersWrapperProps {
    page: PageType;
    nextPage: () => void;
    prevPage: () => void;
+   changeStatus: UseMutationResult<any, Error, number>;
+   section: string | null;
 }
 
-function OrdersWrapper({ page, nextPage, prevPage }: OrdersWrapperProps) {
+function OrdersWrapper({
+   page,
+   nextPage,
+   prevPage,
+   changeStatus,
+   section,
+}: OrdersWrapperProps) {
+   console.log("OrdersWrapper");
    const [showModal, setShowModal] = useState<boolean>(false);
    const [selectedOrder, setSelectedOrder] = useState<OrderType | null>(null);
    const nav = useNavigate();
    const toOpenModal = useCallback((order: OrderType) => {
-      console.log(order);
       setShowModal(true);
       setSelectedOrder(order);
    }, []);
@@ -33,20 +42,20 @@ function OrdersWrapper({ page, nextPage, prevPage }: OrdersWrapperProps) {
                Back to panel
             </button>
             <button
-               onClick={() => nav("/admin/panel/orders?section=proccessing")}
-               className="p-2 border border-black rounded-xl"
+               onClick={() => nav("/admin/panel/orders?section=processing")}
+               className={`p-2 border border-black rounded-xl ${section === "processing" && "text-primary bg-secondary font-semibold"}`}
             >
                "Proccessing" Orders
             </button>
             <button
                onClick={() => nav("/admin/panel/orders?section=shipped")}
-               className="p-2 border border-black rounded-xl"
+               className={`p-2 border border-black rounded-xl ${section === "shipped" && "text-primary bg-secondary font-semibold"}`}
             >
                "Shipped" Orders
             </button>
             <button
                onClick={() => nav("/admin/panel/orders?section=delivered")}
-               className="p-2 border border-black rounded-xl"
+               className={`p-2 border border-black rounded-xl ${section === "delivered" && "text-primary bg-secondary font-semibold"}`}
             >
                "Delivered" Orders
             </button>
@@ -55,6 +64,7 @@ function OrdersWrapper({ page, nextPage, prevPage }: OrdersWrapperProps) {
             <OrderPopUp
                order={selectedOrder}
                toClose={() => setShowModal(false)}
+               changeStatus={changeStatus}
             />
          )}
          <OrdersList orders={page.data} toOpenModal={toOpenModal} />

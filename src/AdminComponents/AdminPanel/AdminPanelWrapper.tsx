@@ -39,7 +39,7 @@ function AdminPanel() {
             />
             <Icon
                navigate={() => {
-                  nav("orders");
+                  nav("orders?section=processing");
                }}
                icon={faTruckFast}
                title={"Orders"}

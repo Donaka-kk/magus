@@ -8,10 +8,10 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -106,10 +106,10 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -204,10 +204,10 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -302,10 +302,10 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -400,10 +400,10 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -498,10 +498,10 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -596,10 +596,10 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -694,10 +694,10 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -792,10 +792,10 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -890,10 +890,10 @@ export const PageOne: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -996,10 +996,10 @@ export const PageTwo: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -1094,10 +1094,10 @@ export const PageTwo: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -1192,10 +1192,10 @@ export const PageTwo: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -1290,10 +1290,10 @@ export const PageTwo: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -1388,10 +1388,10 @@ export const PageTwo: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -1486,10 +1486,10 @@ export const PageTwo: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -1584,10 +1584,10 @@ export const PageTwo: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -1682,10 +1682,10 @@ export const PageTwo: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -1780,10 +1780,10 @@ export const PageTwo: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -1878,10 +1878,10 @@ export const PageTwo: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -1983,10 +1983,10 @@ export const PageThree: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -2081,10 +2081,10 @@ export const PageThree: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -2179,10 +2179,10 @@ export const PageThree: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -2277,10 +2277,10 @@ export const PageThree: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -2375,10 +2375,10 @@ export const PageThree: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -2473,10 +2473,10 @@ export const PageThree: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -2571,10 +2571,10 @@ export const PageThree: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
@@ -2669,10 +2669,10 @@ export const PageThree: PageType = {
          totalItems: 20,
          discount: 0,
          purchaseDate: "19/02/2020",
-         status: "processing",
+         status: "shipped",
          customerName: "Agha Javad",
          customerId: 456,
-         shippedDate: "unknown",
+         shippedDate: "31/02/2020",
          deliveredDate: "unknown",
          items: [
             {
