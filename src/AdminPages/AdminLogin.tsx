@@ -1,16 +1,16 @@
 import axios from "axios";
-import OneTimeLoginForm from "../Components/LoginForm/OneTimeLoginForm.tsx";
-import PasswordLoginForm from "../Components/LoginForm/PasswordLoginForm.tsx";
+import LoginForm from "../Components/LoginForm/LoginForm.tsx";
 
 import { useUser } from "../Context/User.tsx";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fakeData } from "../AdminComponents/DummyDatas/AdminLogin.tsx";
+import { useMutation } from "@tanstack/react-query";
 
 function AdminLogin() {
    const { user, updateUser } = useUser();
    const [message, setMessage] = useState("");
-   const [switchMode, setSwitchMode] = useState<"password" | "one-time">(
+   const [method, setMethod] = useState<"password" | "oneTimePassword">(
       "password"
    );
    const nav = useNavigate();
@@ -21,9 +21,9 @@ function AdminLogin() {
       }
    }, [user, nav]);
 
-   const handlePasswordLogin = async (username: string, password: string) => {
-      try {
-         console.log(username, password);
+   const passwordLoginMutation = useMutation({
+      mutationFn: async (payload: any) => {
+         console.log(payload);
          const response = await axios.post(
             "https://reqres.in/api/login",
             {
@@ -36,22 +36,20 @@ function AdminLogin() {
                },
             }
          );
-         if (response.status < 400) {
-            updateUser(fakeData ?? response.data);
-            nav("/admin/panel");
-         } else {
-            setMessage("Login failed with status: " + response.status);
-         }
-      } catch (error: any) {
-         console.log(error.message);
-      }
-   };
+         return response.data;
+      },
+      onSuccess() {
+         updateUser(fakeData);
+         nav("/admin/panel");
+      },
+      onError() {
+         setMessage("Invalid username or password");
+      },
+   });
 
-   const handleOneTimeLogin = async (phoneNumber: string, code: string) => {
-      const userInfo = code
-         ? { phoneNumber: phoneNumber, code: code }
-         : { phoneNumber: phoneNumber };
-      try {
+   const sendOTPMutation = useMutation({
+      mutationFn: async (payload: any) => {
+         console.log(payload);
          const response = await axios.post(
             "https://reqres.in/api/login",
             {
@@ -60,42 +58,59 @@ function AdminLogin() {
             },
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
-         if (response.status < 400) {
-            if (response.data.token) {
-               updateUser(fakeData ?? response.data);
-               nav("/admin/panel");
-            } else {
-               setMessage("Code sent to " + phoneNumber);
+         return response.data;
+      },
+      onSuccess() {
+         setMessage("Code has been sent to your phone number");
+      },
+      onError() {
+         setMessage("Failed to send code");
+      },
+   });
+
+   const verifyOPTMutation = useMutation({
+      mutationFn: async (payload: any) => {
+         console.log(payload);
+         const response = await axios.post(
+            method === "password"
+               ? "https://reqres.in/api/login"
+               : "https://reqres.in/api/login",
+            {
+               email: "eve.holt@reqres.in",
+               password: "cityslicka",
+            },
+            {
+               headers: {
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
+               },
             }
-         } else {
-            setMessage("Login failed with status: " + response.status);
-         }
-      } catch (error: any) {
-         console.log(error.message);
-      }
-   };
+         );
+         return response.data;
+      },
+      onSuccess() {
+         updateUser(fakeData);
+         nav("/admin/panel");
+      },
+      onError() {
+         setMessage("Invalid code");
+      },
+   });
 
    return (
-      <div>
-         <div className="max-w-screen h-full flex justify-center items-center my-20">
-            {switchMode === "password" ? (
-               <PasswordLoginForm
-                  onSubmit={handlePasswordLogin}
-                  switchMode={setSwitchMode}
-                  message={message}
-               />
-            ) : (
-               <OneTimeLoginForm
-                  onSubmit={handleOneTimeLogin}
-                  switchMode={setSwitchMode}
-                  message={message}
-               />
-            )}
-         </div>
+      <div className="max-w-screen min-h-screen flex justify-center items-center bg-background">
+         <LoginForm
+            method={method}
+            setMethod={setMethod}
+            passwordLoginMutation={passwordLoginMutation}
+            sendOTPMutation={sendOTPMutation}
+            verifyOPTMutation={verifyOPTMutation}
+            message={message}
+            setMessage={setMessage}
+         />
       </div>
    );
 }
