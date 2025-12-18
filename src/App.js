@@ -1,3 +1,5 @@
+import ShopFallback from "./Components/Shop/ShopFallback.tsx";
+
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserProvider } from "./Context/User.tsx";
@@ -7,12 +9,10 @@ import { persistQueryClient } from "@tanstack/react-query-persist-client";
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 import { Toaster } from "react-hot-toast";
 //layouts
-const AdminLayout = lazy(() => import("./MainLayouts/AdminLayout"));
-const MainLayout = lazy(() => import("./MainLayouts/MainLayout"));
+const AdminLayout = lazy(() => import("./MainLayouts/AdminLayout.tsx"));
+const MainLayout = lazy(() => import("./MainLayouts/MainLayout.tsx"));
 const ProtectedRoute = lazy(() => import("./MainLayouts/ProtectedRoute"));
-const LazyComponent1 = lazy(
-   () => import("./Components/Layout/LazyComponent1.tsx")
-);
+
 //admin section
 const AdminLogin = lazy(() => import("./AdminPages/AdminLogin.tsx"));
 const AdminPanel = lazy(() => import("./AdminPages/AdminPanel.tsx"));
@@ -59,7 +59,14 @@ function App() {
                         <Route path="/aboutus" element={<Aboutus />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/login" element={<Login />} />
-                        <Route path="/Shop" element={<Shop />} />
+                        <Route
+                           path="/Shop"
+                           element={
+                              <Suspense fallback={<ShopFallback />}>
+                                 <Shop />
+                              </Suspense>
+                           }
+                        />
                         <Route path="/Product" element={<Product />} />
                         <Route path="/Cart" element={<Cart />} />
                         <Route path="/Profile" element={<Profile />} />
@@ -71,11 +78,9 @@ function App() {
                      <Route
                         path="/admin/*"
                         element={
-                           <Suspense fallback={<LazyComponent1 />}>
-                              <ProtectedRoute allowedRole={"admin"}>
-                                 <AdminLayout />
-                              </ProtectedRoute>
-                           </Suspense>
+                           <ProtectedRoute allowedRole={"admin"}>
+                              <AdminLayout />
+                           </ProtectedRoute>
                         }
                      >
                         <Route path="panel" element={<AdminPanel />} />
