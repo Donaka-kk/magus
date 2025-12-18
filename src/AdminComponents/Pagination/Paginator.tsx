@@ -8,6 +8,7 @@ import { memo } from "react";
 interface PaginatorProps {
    currentPage: number;
    totalPages: number;
+   goToPage: (page: number) => void;
    nextPage: () => void;
    prevPage: () => void;
 }
@@ -15,6 +16,7 @@ interface PaginatorProps {
 function Paginator({
    nextPage,
    prevPage,
+   goToPage,
    currentPage,
    totalPages,
 }: PaginatorProps) {
@@ -27,25 +29,38 @@ function Paginator({
             >
                <FontAwesomeIcon icon={faChevronLeft} />
             </button>
+
             {currentPage - 3 > 0 && <span>...</span>}
             {currentPage - 2 > 0 && (
-               <button onClick={() => {}} className="active:scale-95">
+               <button
+                  onClick={() => goToPage(currentPage - 2)}
+                  className="active:scale-95"
+               >
                   {currentPage - 2}
                </button>
             )}
             {currentPage - 1 > 0 && (
-               <button onClick={() => {}} className="active:scale-95">
+               <button
+                  onClick={() => goToPage(currentPage - 1)}
+                  className="active:scale-95"
+               >
                   {currentPage - 1}
                </button>
             )}
             <p className="font-bold text-lg">{currentPage}</p>
             {currentPage + 1 <= totalPages && (
-               <button onClick={() => {}} className="active:scale-95">
+               <button
+                  onClick={() => goToPage(currentPage + 1)}
+                  className="active:scale-95"
+               >
                   {currentPage + 1}
                </button>
             )}
             {currentPage + 2 <= totalPages && (
-               <button onClick={() => {}} className="active:scale-95">
+               <button
+                  onClick={() => goToPage(currentPage + 2)}
+                  className="active:scale-95"
+               >
                   {currentPage + 2}
                </button>
             )}
