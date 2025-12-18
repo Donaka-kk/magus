@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { useQuery } from "@tanstack/react-query";
 import { ProductSchemeType } from "../../Types/ProductType";
-import { dummyCategories } from "../../Components/API/CategoriesDummyData.tsx";
+import { AdminCategories } from "../../Components/API/CategoriesDummyData.tsx";
 
 export function useGetCategories() {
    return useQuery({
@@ -16,7 +16,7 @@ export function useGetCategories() {
                },
             }
          );
-         return dummyCategories || response.data;
+         return AdminCategories || response.data;
       },
    });
 }

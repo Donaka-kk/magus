@@ -1,21 +1,19 @@
+import LoadingComponent from "../Layout/LoadingComponent";
+
 import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import LoadingComponent from "../Layout/LoadingComponent";
 import { CategoryType } from "../../Types/CategoryType";
+
 interface CategorieProps {
    categories: CategoryType[];
    toHandleSearch: (searchText: string) => void;
-   toChangeCategory: (newCategory: string) => void;
-   categoriesPending: boolean;
-   categoriesError: boolean;
+   toChangeCategory: (newCategory: CategoryType) => void;
 }
 const Categories = ({
    categories,
    toChangeCategory,
    toHandleSearch,
-   categoriesPending,
-   categoriesError,
 }: CategorieProps) => {
    const [selectedCategory, setSelectedCategory] = useState<CategoryType>(
       categories[0]
@@ -25,13 +23,10 @@ const Categories = ({
    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
       if (event.key === "Enter") {
          toHandleSearch(searchString);
-         setSelectedCategory("All");
+         setSelectedCategory({ title: "All", id: 999 });
          searchInput.current?.blur();
       }
    };
-
-   if (categoriesPending) return <LoadingComponent failed={false} />;
-   if (categoriesError) return <LoadingComponent failed={true} />;
 
    return (
       <div className="flex flex-col gap-2">
@@ -46,7 +41,7 @@ const Categories = ({
             />
             <button
                onClick={() => {
-                  setSelectedCategory("All");
+                  setSelectedCategory({ title: "All", id: 998 });
                   toHandleSearch(searchString);
                }}
                className="absolute ml-2 active:scale-95"
@@ -54,24 +49,26 @@ const Categories = ({
                <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
          </div>
-         {categories && (
-            <div className="flex flex-col justify-end items-center gap-2">
-               {categories?.map((element, index) => {
-                  return (
-                     <button
-                        key={index}
-                        onClick={() => {
-                           toChangeCategory(element);
-                           setSelectedCategory(element);
-                        }}
-                        className={`w-full rounded-md active:scale-95 ${selectedCategory === element && " bg-gray-600 text-white"}`}
-                     >
-                        {element}
-                     </button>
-                  );
-               })}
-            </div>
-         )}
+         <div className="flex flex-col justify-end items-center gap-2">
+            {categories && (
+               <>
+                  {categories?.map((category) => {
+                     return (
+                        <button
+                           key={category.id}
+                           onClick={() => {
+                              toChangeCategory(category);
+                              setSelectedCategory(category);
+                           }}
+                           className={`w-full rounded-md active:scale-95 ${selectedCategory.id === category.id && " bg-gray-600 text-white"}`}
+                        >
+                           {category.title}
+                        </button>
+                     );
+                  })}
+               </>
+            )}
+         </div>
       </div>
    );
 };

@@ -19,7 +19,7 @@ const Home = () => {
             "https://reqres.in/api/users/1",
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
@@ -36,7 +36,7 @@ const Home = () => {
                "https://reqres.in/api/users/1",
                {
                   headers: {
-                     "x-api-key": "reqres-free-v1",
+                     "x-api-key": process.env.REACT_APP_REQRES_KEY,
                   },
                }
             );

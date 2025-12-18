@@ -1,14 +1,13 @@
 import Card2 from "../Carousel/Card2.tsx";
 import LoadingComponent from "../Layout/LoadingComponent.js";
 
-function ShowCase({ products, isPending, isError }) {
-   if (isPending) {
-      <LoadingComponent failed={false} />;
-   }
-   if (isError) {
-      <LoadingComponent failed={true} />;
-   }
+import { ProductSchemeType } from "../../Types/ProductType.tsx";
 
+interface ShowCaseProps {
+   products: ProductSchemeType[];
+}
+
+function ShowCase({ products }: ShowCaseProps) {
    return (
       <div>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 scroll-smooth">
