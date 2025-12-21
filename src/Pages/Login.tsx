@@ -1,94 +1,112 @@
-import PasswordLoginForm from "../Components/LoginForm/PasswordLoginForm.tsx";
-import OneTimeLoginForm from "../Components/LoginForm/OneTimeLoginForm.tsx";
 import axios from "axios";
+import LoginForm from "../Components/LoginForm/LoginForm.tsx";
+
 import { useUser } from "../Context/User.tsx";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { fakeCustomer } from "../AdminComponents/DummyDatas/AdminLogin.tsx";
+import { useMutation } from "@tanstack/react-query";
 
-const Login = () => {
-   const { user, updateUser } = useUser();
-   const [switchMode, setSwitchMode] = useState("password");
-   const queryClient = useQueryClient();
+function Login() {
+   const { updateUser } = useUser();
+   const [message, setMessage] = useState("");
+   const [method, setMethod] = useState<"password" | "oneTimePassword">(
+      "password"
+   );
    const nav = useNavigate();
 
-   const userLogin = useMutation({
-      mutationKey: ["user"],
-      mutationFn: async (user: {
-         username: string;
-         password: string;
-         method: string;
-         codeRequired: boolean;
-      }) => {
-         // next line should change to post later
-         const response = await axios.patch(
-            "https://reqres.in/api/users/1",
-            JSON.stringify({
-               data: {
-                  id: 123,
-                  email: "string",
-                  first_name: "string",
-                  last_name: "string",
-                  avatar: "string",
-               },
-            }),
+   const passwordLoginMutation = useMutation({
+      mutationFn: async (payload: any) => {
+         console.log(payload);
+         const response = await axios.post(
+            "https://reqres.in/api/login",
+            {
+               email: "eve.holt@reqres.in",
+               password: "cityslicka",
+            },
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
-         return response;
+         return response.data;
       },
-      onSuccess: (data) => {
-         const user = {
-            firstname: "Qwertyuiop",
-            lastname: "asodiwerweryn",
-            image: "https://cdn.web.imagine.art/imagine-frontend/assets/images/ai-image-generator-hero-image.png",
-            age: 26,
-            role: "customer",
-            phoneNumber: 989123456789,
-            address: "siktir abad sofla , kooche shahid siktirian",
-            email: "an@gmail.com",
-         };
-         queryClient.setQueryData(["user"], user);
-         updateUser(user);
-         window.scrollTo({ top: 0, behavior: "smooth" });
+      onSuccess() {
+         updateUser(fakeCustomer);
          nav("/");
+      },
+      onError() {
+         setMessage("Invalid username or password");
       },
    });
 
-   if (user) {
-      return (
-         <div className="flex flex-col justify-center items-center gap-5 p-5">
-            <p className="text-3xl font-bold">You already logged in</p>
-            <button
-               onClick={() => nav("/")}
-               className="px-4 py-2 border border-black rounded-md"
-            >
-               Go Home
-            </button>
-         </div>
-      );
-   }
+   const sendOTPMutation = useMutation({
+      mutationFn: async (payload: any) => {
+         console.log(payload);
+         const response = await axios.post(
+            "https://reqres.in/api/login",
+            {
+               email: "eve.holt@reqres.in",
+               password: "cityslicka",
+            },
+            {
+               headers: {
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
+               },
+            }
+         );
+         return response.data;
+      },
+      onSuccess() {
+         setMessage("Code has been sent to your phone number");
+      },
+      onError() {
+         setMessage("Failed to send code");
+      },
+   });
+
+   const verifyOPTMutation = useMutation({
+      mutationFn: async (payload: any) => {
+         console.log(payload);
+         const response = await axios.post(
+            method === "password"
+               ? "https://reqres.in/api/login"
+               : "https://reqres.in/api/login",
+            {
+               email: "eve.holt@reqres.in",
+               password: "cityslicka",
+            },
+            {
+               headers: {
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
+               },
+            }
+         );
+         return response.data;
+      },
+      onSuccess() {
+         updateUser(fakeCustomer);
+         nav("/");
+      },
+      onError() {
+         setMessage("Invalid code");
+      },
+   });
 
    return (
-      <div>
-         <div className="max-w-screen h-full flex justify-center items-center my-20 p-5">
-            {switchMode === "password" ? (
-               <PasswordLoginForm
-                  onSumbit={userLogin.mutate}
-                  switchMode={setSwitchMode}
-               />
-            ) : (
-               <OneTimeLoginForm
-                  onSubmit={userLogin.mutate}
-                  switchMode={setSwitchMode}
-               />
-            )}
-         </div>
+      <div className="max-w-screen min-h-screen flex justify-center items-center bg-background">
+         <LoginForm
+            method={method}
+            setMethod={setMethod}
+            passwordLoginMutation={passwordLoginMutation}
+            sendOTPMutation={sendOTPMutation}
+            verifyOPTMutation={verifyOPTMutation}
+            message={message}
+            setMessage={setMessage}
+         />
       </div>
    );
-};
+}
 
 export default Login;
