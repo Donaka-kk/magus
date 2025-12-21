@@ -6,21 +6,43 @@ import Navigator from "./Navigator.tsx";
 
 import { ProductSchemeType } from "../../Types/ProductType";
 import { ImageCarouselDummyData } from "../API/ImageCarouselDummyData.tsx";
+import { useState } from "react";
+
 interface ProductWrapperProps {
    product: ProductSchemeType;
-   handleChangeSize: (size: string) => void;
-   handleChangeColor: (color: string) => void;
-   handleAddToCart: () => void;
-   handleAddToWishlist: () => void;
+   handleAddToCart: (size: string, color: string, quantity: number) => void;
+   handleWishlistButton: () => void;
+   isInWishlist: boolean;
+   isWishlistPending: boolean;
+   isCartPending: boolean;
 }
 
 function ProductWrapper({
    product,
-   handleChangeSize,
-   handleChangeColor,
    handleAddToCart,
-   handleAddToWishlist,
+   handleWishlistButton,
+   isInWishlist,
+   isWishlistPending,
+   isCartPending,
 }: ProductWrapperProps) {
+   const [selectedSize, setSelectedSize] = useState<string>(
+      product.selectedSize
+   );
+   const [selectedColor, setSelectedColor] = useState<string>(
+      product.selectedColor
+   );
+   const [quantity, setQuantity] = useState<number>(1);
+
+   const handleChangeSize = (size: string) => {
+      setSelectedSize(size);
+   };
+   const handleChangeColor = (color: string) => {
+      setSelectedColor(color);
+   };
+   const handleChangeQuantity = (quantity: number) => {
+      setQuantity(Math.max(1, Math.min(99, quantity)));
+   };
+
    return (
       <div className="w-full flex flex-col md:flex-row gap-2 p-2 md:p-4">
          <div className="w-full md:w-1/2">
@@ -33,13 +55,25 @@ function ProductWrapper({
             <BasicInfo product={product} />
             <AdditionalInfo product={product} />
             <ProductOptions
-               product={product}
-               handleChangeColor={handleChangeColor}
+               sizes={product.sizes}
+               colors={product.colors}
+               price={product.price}
                handleChangeSize={handleChangeSize}
+               selectedSize={selectedSize}
+               handleChangeColor={handleChangeColor}
+               selectedColor={selectedColor}
+               handleChangeQuantity={handleChangeQuantity}
+               quantity={quantity}
             />
             <Navigator
-               handleAddToCart={handleAddToCart}
-               handleAddToWishlist={handleAddToWishlist}
+               handleAddToCart={() => {
+                  if (!product) return;
+                  handleAddToCart(selectedSize, selectedColor, quantity);
+               }}
+               handleWishlistButton={handleWishlistButton}
+               isInWishlist={isInWishlist}
+               isWishlistPending={isWishlistPending}
+               isCartPending={isCartPending}
             />
          </div>
       </div>

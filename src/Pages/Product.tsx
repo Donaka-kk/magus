@@ -1,61 +1,51 @@
 import axios from "axios";
 import ProductWrapper from "../Components/ProductProfile/ProductWrapper.tsx";
 
-import { useState } from "react";
 import { ProductSchemeType } from "../Types/ProductType.tsx";
 import { useSearchParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ProductDummyData } from "../Components/API/ProductDummyData.tsx";
+import { useCart } from "../Components/Hooks/useCart.ts";
+import { useWishlist } from "../Components/Hooks/useWishlist.ts";
 
 const Product = () => {
    const [params] = useSearchParams();
-   const [product, setProduct] = useState<ProductSchemeType | null>(null);
    const id = params.get("id");
 
-   const handleChangeSize = (size: string) => {
-      if (!product) return;
-      setProduct({ ...product, selectedSize: size });
-   };
-   const handleChangeColor = (color: string) => {
-      if (!product) return;
-      setProduct({ ...product, selectedColor: color });
-   };
-   const handleAddToCart = () => {
-      console.log("adding to cart");
-   };
-   const handleAddToWishlist = () => {
-      console.log("adding to wishlist");
-   };
-
-   //const { data, isPending } =
-   useQuery({
-      queryKey: ["Product"],
+   const { data } = useSuspenseQuery({
+      queryKey: ["Product", id],
       queryFn: async () => {
          const response = await axios.get<ProductSchemeType>(
             `https://reqres.in/api/users/${id}`,
             {
                headers: {
-                  "x-api-key": "reqres-free-v1",
+                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
                },
             }
          );
          //change this to response before build
-         setProduct(ProductDummyData);
          return ProductDummyData || response;
       },
    });
 
-   if (!product) {
-      return <div>...loading!</div>;
-   }
+   const { handleAdd: handleAddToCart, isPending: isCartPending } = useCart(
+      data.name,
+      data.id
+   );
+   const {
+      editWishlist: handleWishlistButton,
+      isPending: isWishlistPending,
+      isInWishlist,
+   } = useWishlist(data);
 
    return (
       <ProductWrapper
-         product={product}
-         handleChangeSize={handleChangeSize}
-         handleChangeColor={handleChangeColor}
+         product={data}
+         handleWishlistButton={handleWishlistButton}
          handleAddToCart={handleAddToCart}
-         handleAddToWishlist={handleAddToWishlist}
+         isInWishlist={isInWishlist}
+         isWishlistPending={isWishlistPending}
+         isCartPending={isCartPending}
       />
    );
 };

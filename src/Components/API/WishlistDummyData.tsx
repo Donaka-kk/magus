@@ -1,0 +1,73 @@
+import { ProductSchemeType } from "../../Types/ProductType";
+
+export const DummyWishList: ProductSchemeType[] = [
+   {
+      id: 153,
+      name: "Cypress",
+      price: 3.5,
+      image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/cypress-flowers.jpg.avif",
+      discount: 3,
+      category: "flower",
+      selectedColor: "#4287f5",
+      selectedSize: "md",
+      colors: ["#67d4db", "#5ede50", "#eb154e"],
+      sizes: ["sm", "lg"],
+      score: {
+         totalScore: 3.5,
+         quality: 4,
+         conformity: 3,
+         intact: 4,
+         economical: 3,
+      },
+      sales: 200,
+      comments: [],
+      description:
+         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, illo doloribus rem quis possimus adipisci id, provident nulla qui tenetur porro nisi cum molestiae nobis quos aperiam architecto sint libero.",
+   },
+   {
+      id: 154,
+      name: "Hibiscus",
+      price: 2.5,
+      image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/hibiscus-flowers.jpg.avif",
+      discount: 0,
+      category: "flower",
+      selectedColor: "#4287f5",
+      selectedSize: "md",
+      colors: ["#67d4db", "#5ede50", "#eb154e"],
+      sizes: ["sm", "lg"],
+      score: {
+         totalScore: 3.5,
+         quality: 4,
+         conformity: 3,
+         intact: 4,
+         economical: 3,
+      },
+      sales: 200,
+      comments: [],
+      description:
+         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, illo doloribus rem quis possimus adipisci id, provident nulla qui tenetur porro nisi cum molestiae nobis quos aperiam architecto sint libero.",
+   },
+   {
+      id: 155,
+      name: "Jasmine",
+      price: 1.5,
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmjnfGFbreMI44LkRDqTCc9Os1d44X2eEf7Q&s",
+      discount: 0,
+      category: "flower",
+      selectedColor: "#4287f5",
+      selectedSize: "md",
+      colors: ["#67d4db", "#5ede50", "#eb154e"],
+      sizes: ["sm", "lg"],
+      score: {
+         totalScore: 3.5,
+         quality: 4,
+         conformity: 3,
+         intact: 4,
+         economical: 3,
+      },
+      sales: 200,
+      comments: [],
+      description:
+         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, illo doloribus rem quis possimus adipisci id, provident nulla qui tenetur porro nisi cum molestiae nobis quos aperiam architecto sint libero.",
+   },
+];

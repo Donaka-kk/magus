@@ -1,63 +1,99 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ProductSchemeType } from "../../Types/ProductType";
 import {
    faCaretDown,
    faCircle,
    faMinus,
    faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+type Dropdown = "color" | "size" | null;
 
 interface ProductOptionsProps {
-   product: ProductSchemeType;
+   sizes: string[];
+   colors: string[];
+   quantity: number;
+   price: number;
    handleChangeSize: (size: string) => void;
+   selectedSize: string;
    handleChangeColor: (color: string) => void;
+   selectedColor: string;
+   handleChangeQuantity: (quantity: number) => void;
 }
 
 function ProductOptions({
-   product,
+   sizes,
+   colors,
+   quantity,
+   price,
    handleChangeSize,
+   selectedSize,
    handleChangeColor,
+   selectedColor,
+   handleChangeQuantity,
 }: ProductOptionsProps) {
-   const [colorDropDown, setColorDropDown] = useState<boolean>(false);
-   const [sizeDropDown, setSizeDropDown] = useState<boolean>(false);
-   if (!product) return;
+   const [openDropdown, setOpenDropdown] = useState<Dropdown>(null);
+
+   const closeDropdowns = () => setOpenDropdown(null);
+
+   const toggleDropdown = (name: Dropdown) =>
+      setOpenDropdown((prev) => (prev === name ? null : name));
+
+   useEffect(() => {
+      const handleClick = () => closeDropdowns();
+      const handleKeyDown = (e: KeyboardEvent) =>
+         e.key === "Escape" && closeDropdowns();
+
+      document.addEventListener("click", handleClick);
+      document.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+         document.removeEventListener("click", handleClick);
+         document.removeEventListener("keydown", handleKeyDown);
+      };
+   }, []);
+
    return (
       <div className="w-full flex flex-row justify-around gap-2">
          <div className="Color w-24">
             <h1>Color</h1>
             <div className="relative">
-               <button
-                  onClick={() => setColorDropDown((prev) => !prev)}
-                  className="relative z-10 flex flex-row items-center justify-around bg-secondary w-full p-2 gap-2 rounded-2xl group h-12"
-               >
-                  <span
-                     className="text-3xl"
-                     style={{ color: product.selectedColor }}
+               <div onClick={(e) => e.stopPropagation()}>
+                  <button
+                     onClick={() => toggleDropdown("color")}
+                     className="relative z-10 flex flex-row items-center justify-around bg-secondary w-full p-2 gap-2 rounded-2xl group h-12"
                   >
-                     <FontAwesomeIcon icon={faCircle} />
-                  </span>
-                  <span className="text-lg group-hover:scale-110">
-                     <FontAwesomeIcon icon={faCaretDown} />
-                  </span>
-               </button>
+                     <span
+                        className="text-3xl"
+                        style={{ color: selectedColor }}
+                     >
+                        <FontAwesomeIcon icon={faCircle} />
+                     </span>
+                     <span className="text-lg group-hover:scale-110">
+                        <FontAwesomeIcon icon={faCaretDown} />
+                     </span>
+                  </button>
+               </div>
                <div
-                  className={`absolute z-0 top-3 w-full flex flex-col gap-2 duration-500 overflow-hidden rounded-2xl bg-primary ${colorDropDown ? "pt-10 pb-2" : "h-0"}`}
+                  className={`absolute z-0 top-3 w-full flex flex-col gap-2 duration-500 overflow-hidden rounded-2xl bg-primary ${openDropdown === "color" ? "pt-10 pb-2" : "h-0"}`}
                   style={
-                     colorDropDown
+                     openDropdown === "color"
                         ? {
-                             height: `${product.colors.length * 36 + (product.colors.length - 1) * 8 + 52}px`,
+                             height: `${colors.length * 36 + (colors.length - 1) * 8 + 52}px`,
                           }
                         : { height: "0px" }
                   }
                >
-                  {product.colors.map((color, index) => {
+                  {colors.map((color, index) => {
                      return (
                         <button
                            key={index}
                            className="active:scale-95 text-3xl"
                            style={{ color: color }}
-                           onClick={() => {}}
+                           onClick={() => {
+                              handleChangeColor(color);
+                              setOpenDropdown(null);
+                           }}
                         >
                            <FontAwesomeIcon icon={faCircle} />
                         </button>
@@ -69,31 +105,36 @@ function ProductOptions({
          <div className="Size w-24">
             <h1>Size</h1>
             <div className="relative">
-               <button
-                  onClick={() => setSizeDropDown((prev) => !prev)}
-                  className="relative z-10 flex flex-row items-center justify-around bg-secondary w-full p-2 gap-2 rounded-2xl group h-12"
-               >
-                  <span className="text-xl">{product.selectedSize}</span>
-                  <span className="text-lg group-hover:scale-110">
-                     <FontAwesomeIcon icon={faCaretDown} />
-                  </span>
-               </button>
+               <div onClick={(e) => e.stopPropagation()}>
+                  <button
+                     onClick={() => toggleDropdown("size")}
+                     className="relative z-10 flex flex-row items-center justify-around bg-secondary w-full p-2 gap-2 rounded-2xl group h-12"
+                  >
+                     <span className="text-xl">{selectedSize}</span>
+                     <span className="text-lg group-hover:scale-110">
+                        <FontAwesomeIcon icon={faCaretDown} />
+                     </span>
+                  </button>
+               </div>
                <div
-                  className={`absolute z-0 top-3 w-full flex flex-col gap-2 duration-500 overflow-hidden rounded-2xl bg-primary ${sizeDropDown ? "pt-10 pb-2" : "h-0"}`}
+                  className={`absolute z-0 top-3 w-full flex flex-col gap-2 duration-500 overflow-hidden rounded-2xl bg-primary ${openDropdown === "size" ? "pt-10 pb-2" : "h-0"}`}
                   style={
-                     sizeDropDown
+                     openDropdown === "size"
                         ? {
-                             height: `${product.sizes.length * 28 + (product.sizes.length - 1) * 8 + 52}px`,
+                             height: `${sizes.length * 28 + (sizes.length - 1) * 8 + 52}px`,
                           }
                         : { height: "0px" }
                   }
                >
-                  {product.sizes.map((size, index) => {
+                  {sizes.map((size, index) => {
                      return (
                         <button
                            key={index}
                            className="active:scale-95 text-xl"
-                           onClick={() => {}}
+                           onClick={() => {
+                              handleChangeSize(size);
+                              setOpenDropdown(null);
+                           }}
                         >
                            {size}
                         </button>
@@ -105,11 +146,20 @@ function ProductOptions({
          <div className="Quantity w-24">
             <h1>Quantity</h1>
             <div className="relative z-10 flex flex-row items-center justify-around bg-secondary w-full p-2 gap-2 rounded-xl h-12 text-xl">
-               <button>
+               <button onClick={() => handleChangeQuantity(quantity - 1)}>
                   <FontAwesomeIcon icon={faMinus} />
                </button>
-               <span>3</span>
-               <button>
+               <input
+                  value={quantity}
+                  type="number"
+                  className="no-spinner w-full text-center bg-transparent"
+                  onChange={(e) => {
+                     const value = Number(e.target.value);
+                     if (isNaN(value)) return;
+                     handleChangeQuantity(value);
+                  }}
+               />
+               <button onClick={() => handleChangeQuantity(quantity + 1)}>
                   <FontAwesomeIcon icon={faPlus} />
                </button>
             </div>
@@ -117,7 +167,7 @@ function ProductOptions({
          <div className="Total w-24">
             <h1>Total</h1>
             <div className="text-center bg-secondary w-full p-2 gap-2 rounded-xl h-12 text-xl">
-               <p>$123</p>
+               <p>${price * quantity}</p>
             </div>
          </div>
       </div>

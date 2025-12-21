@@ -43,7 +43,16 @@ const queryClient = new QueryClient();
 const persister = createAsyncStoragePersister({
    storage: window.sessionStorage,
 });
-persistQueryClient({ queryClient, persister });
+persistQueryClient({
+   queryClient,
+   persister,
+   dehydrateOptions: {
+      shouldDehydrateQuery: (query) => {
+         const key = query.queryKey[0];
+         return key === "guest-cart" || key === "guest-wishlist";
+      },
+   },
+});
 
 function App() {
    return (
