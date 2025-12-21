@@ -68,6 +68,7 @@ const LoginForm = ({
                   <label>Username</label>
                   <input
                      required
+                     autoFocus
                      className="rounded-md border border-black p-1"
                      onChange={(e) => setUsername(e.target.value)}
                   />
