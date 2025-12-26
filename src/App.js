@@ -1,4 +1,5 @@
 import ShopFallback from "./Components/Shop/ShopFallback.tsx";
+import CartFallback from "./Components/Cart/CartFallback.tsx";
 
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -36,7 +37,7 @@ const Contact = lazy(() => import("./Pages/Contact.tsx"));
 const Shop = lazy(() => import("./Pages/Shop.tsx"));
 const Product = lazy(() => import("./Pages/Product.tsx"));
 const Login = lazy(() => import("./Pages/Login.tsx"));
-const Cart = lazy(() => import("./Pages/Cart"));
+const Cart = lazy(() => import("./Pages/Cart.tsx"));
 const Profile = lazy(() => import("./Pages/Profile.tsx"));
 
 const queryClient = new QueryClient();
@@ -46,12 +47,14 @@ const persister = createAsyncStoragePersister({
 persistQueryClient({
    queryClient,
    persister,
-   dehydrateOptions: {
-      shouldDehydrateQuery: (query) => {
-         const key = query.queryKey[0];
-         return key === "guest-cart" || key === "guest-wishlist";
-      },
-   },
+   // dehydrateOptions: {
+   //    shouldDehydrateQuery: (query) => {
+   //       const key = query.queryKey[0];
+   //       return (
+   //          key === "guest-cart" || key === "guest-wishlist" || key === "user"
+   //       );
+   //    },
+   // },
 });
 
 function App() {
@@ -77,7 +80,14 @@ function App() {
                            }
                         />
                         <Route path="/Product" element={<Product />} />
-                        <Route path="/Cart" element={<Cart />} />
+                        <Route
+                           path="/Cart"
+                           element={
+                              <Suspense fallback={<CartFallback />}>
+                                 <Cart />
+                              </Suspense>
+                           }
+                        />
                         <Route path="/Profile" element={<Profile />} />
                         <Route path="/*" element={<NotFound />} />
                      </Route>

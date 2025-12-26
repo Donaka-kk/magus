@@ -1,10 +1,8 @@
 import axios from "axios";
 import ProductWrapper from "../Components/ProductProfile/ProductWrapper.tsx";
 
-import { ProductSchemeType } from "../Types/ProductType.tsx";
 import { useSearchParams } from "react-router-dom";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { ProductDummyData } from "../Components/API/ProductDummyData.tsx";
 import { useCart } from "../Components/Hooks/useCart.ts";
 import { useWishlist } from "../Components/Hooks/useWishlist.ts";
 
@@ -15,29 +13,26 @@ const Product = () => {
    const { data } = useSuspenseQuery({
       queryKey: ["Product", id],
       queryFn: async () => {
-         const response = await axios.get<ProductSchemeType>(
-            `https://reqres.in/api/users/${id}`,
+         const response = await axios.get(
+            `${process.env.REACT_APP_SUPABASE_URL}/rest/v1/AllProducts?id=eq.${id}&select=*,AllProductsComments(*,AllProductsCommentsScores(*)),AllProductsScore(*)`,
             {
                headers: {
-                  "x-api-key": process.env.REACT_APP_REQRES_KEY,
+                  apikey: process.env.REACT_APP_SUPABASE_ANON_KEY!,
+                  Authorization: `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`,
                },
             }
          );
-         //change this to response before build
-         return ProductDummyData || response;
+         return response.data[0];
       },
    });
 
-   const { handleAdd: handleAddToCart, isPending: isCartPending } = useCart(
-      data.name,
-      data.id
-   );
+   const { handleAdd: handleAddToCart, isPending: isCartPending } =
+      useCart(data);
    const {
       editWishlist: handleWishlistButton,
       isPending: isWishlistPending,
       isInWishlist,
    } = useWishlist(data);
-
    return (
       <ProductWrapper
          product={data}

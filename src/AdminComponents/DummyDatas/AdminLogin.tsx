@@ -1,4 +1,5 @@
 export const fakeData = {
+   ID: 1,
    firstname: "John",
    lastname: "Doe",
    image: "https://www.lib.uchicago.edu/efts/ARTFL/projects/mckee.old/NewHome-ARTFL_files/gavarni-reduced2.jpg",
@@ -10,6 +11,7 @@ export const fakeData = {
 };
 
 export const fakeCustomer = {
+   ID: 2,
    firstname: "John",
    lastname: "Doe",
    image: "https://www.lib.uchicago.edu/efts/ARTFL/projects/mckee.old/NewHome-ARTFL_files/gavarni-reduced2.jpg",

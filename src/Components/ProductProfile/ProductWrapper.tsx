@@ -5,7 +5,6 @@ import ProductOptions from "./ProductOptions.tsx";
 import Navigator from "./Navigator.tsx";
 
 import { ProductSchemeType } from "../../Types/ProductType";
-import { ImageCarouselDummyData } from "../API/ImageCarouselDummyData.tsx";
 import { useState } from "react";
 
 interface ProductWrapperProps {
@@ -47,8 +46,8 @@ function ProductWrapper({
       <div className="w-full flex flex-col md:flex-row gap-2 p-2 md:p-4">
          <div className="w-full md:w-1/2">
             <ImageCarousel
-               images={ImageCarouselDummyData}
-               discount={product.discount}
+               images={[product.image]}
+               // discount={product.discount}
             />
          </div>
          <div className="w-full md:w-1/2 flex flex-col gap-2">

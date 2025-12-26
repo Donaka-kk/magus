@@ -1,11 +1,11 @@
 export const ProductDummyData = {
-   id: 10,
+   id: 4,
    name: "Tulip",
    price: 12,
    image: "https://cdn2.stylecraze.com/wp-content/uploads/2013/07/tulips-flowers.jpg.avif",
    discount: 5,
    category: "flower",
-   selectedColor: "#4287f5",
+   selectedColor: "#638ccf",
    selectedSize: "md",
    colors: ["#638ccf", "#3f1d7a"],
    sizes: ["sm", "md"],
@@ -26,7 +26,7 @@ export const ProductDummyData = {
          authorImage:
             "https://img.freepik.com/premium-photo/personal-success-leads-business-success-cropped-portrait-attractive-young-businesswoman-standing-with-her-arms-folded-office_590464-65718.jpg?semt=ais_incoming&w=740&q=80",
          date: "01/01/2025",
-         time: "13:08 PM",
+         time: "13:08",
          message:
             "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis animi blanditiis eius possimus id enim, eveniet eaque molestiae ullam ab. Nobis consequuntur voluptatum cupiditate numquam. Praesentium velit incidunt provident sit!",
          score: {
@@ -43,7 +43,7 @@ export const ProductDummyData = {
          authorImage:
             "https://hips.hearstapps.com/hmg-prod/images/muammar-al-qaddafi-gettyimages-108501512.jpg?crop=1xw:1.0xh;center,top&resize=640:*",
          date: "04/04/2025",
-         time: "11:59 AM",
+         time: "11:59",
          message:
             "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis animi blanditiis eius possimus id enim, eveniet eaque molestiae ullam ab. Nobis consequuntur voluptatum cupiditate numquam. Praesentium velit incidunt provident sit!",
          score: {
@@ -60,7 +60,7 @@ export const ProductDummyData = {
          authorImage:
             "https://i2-prod.lancs.live/whats-on/film-news/article9832873.ece/ALTERNATES/s615/absolutely-anything.jpg",
          date: "02/02/2025",
-         time: "01:13 AM",
+         time: "01:13",
          message:
             "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis animi blanditiis eius possimus id enim, eveniet eaque molestiae ullam ab. Nobis consequuntur voluptatum cupiditate numquam. Praesentium velit incidunt provident sit!",
          score: {
@@ -77,7 +77,7 @@ export const ProductDummyData = {
          authorImage:
             "https://webp.vp.cdn.pxr.nl/news-content/2025/09/17/IG%20SLIDERS%201080X1350%20ROY.jpg?width=1800",
          date: "03/03/2025",
-         time: "05:13 AM",
+         time: "05:13",
          message:
             "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis animi blanditiis eius possimus id enim, eveniet eaque molestiae ullam ab. Nobis consequuntur voluptatum cupiditate numquam. Praesentium velit incidunt provident sit!",
          score: {

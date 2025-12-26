@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { ProductSchemeType } from "../../Types/ProductType.tsx";
-import { CommentType } from "../../Types/CommentType.tsx";
-import { ScoreType } from "../../Types/ScoreType.tsx";
 import RatingBars from "../Rating/RatingBars.tsx";
 import Comment from "./Comment.tsx";
 
+import { useState } from "react";
+import { CommentType } from "../../Types/CommentType.tsx";
+import { ScoreType } from "../../Types/ScoreType.tsx";
+
 interface AdditionalInfoProps {
-   product: ProductSchemeType;
+   product: any;
 }
 
 /* ---------------- Sections ---------------- */
@@ -27,6 +27,8 @@ function DescriptionSection({
 }
 
 function CommentsSection({ comments }: { comments: CommentType[] }) {
+   console.log(comments);
+
    return (
       <div className="flex flex-col gap-3">
          {comments.map((comment, idx) => (
@@ -81,18 +83,15 @@ export default function AdditionalInfo({ product }: AdditionalInfoProps) {
       description: (
          <DescriptionSection
             description={product.description}
-            score={product.score}
+            score={product.AllProductsScore[0]}
          />
       ),
-      comments: <CommentsSection comments={product.comments} />,
+      comments: <CommentsSection comments={product.AllProductsComments} />,
    }[activeSection];
 
    return (
       <div className="flex flex-col h-[400px]">
-         {/* height controls the scrollable area */}
-
          <Tabs active={activeSection} onChange={setActiveSection} />
-
          <div className="flex-1 overflow-y-auto pr-2">{content}</div>
       </div>
    );
